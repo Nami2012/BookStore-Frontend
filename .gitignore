@@ -43,3 +43,9 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+## Manual Addition
+# test Files
+*.spec.ts
+*.prod.ts
+test.ts
