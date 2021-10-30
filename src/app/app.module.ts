@@ -9,6 +9,9 @@ import { LoginComponent } from './auth/components/login/login.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { MenuComponent } from './shared/components/menu/menu.component';
+import { SignupComponent } from './auth/components/signup/signup.component';
+import { BookComponent } from './book/book.component';
+import { CreateBookComponent } from './book/components/create-book/create-book.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +20,9 @@ import { MenuComponent } from './shared/components/menu/menu.component';
     HeaderComponent,
     FooterComponent,
     MenuComponent,
+    SignupComponent,
+    BookComponent,
+    CreateBookComponent,
   ],
   imports: [
     BrowserModule,

@@ -23,4 +23,12 @@ export class AuthService {
         })
       );
   }
+
+  signup(userDetails: any): Observable<any> {
+    return this.http.post<any>(`${this.REST_API_URL}/signup`, userDetails).pipe(
+      map((res) => {
+        return res;
+      })
+    );
+  }
 }
