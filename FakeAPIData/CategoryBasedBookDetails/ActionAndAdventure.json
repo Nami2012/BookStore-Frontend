@@ -5,7 +5,7 @@
     "BYEAR":"2013",
     "BPrice":125,
     "BDescription":"Think of the high seas and of a buccaneer ship; of a wild seaman with a sea chest full of gold; of Long John Silver; of a buried treasure and of young Jim Hawkins, the boy with the treasure map the key to it all.",
-    "BImage":"../assets/BookDetails/ActionAndAdventure/TreasureIsland.jpg"
+    "BImage":"../../assets/BookDetails/ActionAndAdventure/TreasureIsland.jpg"
 },{
     "CName":"Action and Adventure",
     "BTitle":"The Count of Monte Cristo",
@@ -13,7 +13,7 @@
     "BYEAR":"1997",
     "BPrice":250,
     "BDescription":"the victim of a miscarriage of justice, Edmund Dantes is fired by a desire for retribution and empowered by a stroke of Providence. In his campaign of vengeance, he becomes an anonymous agent of fate.",
-    "BImage":"../assets/BookDetails/ActionAndAdventure/CountOfMonteCristo.jpg"
+    "BImage":"../../assets/BookDetails/ActionAndAdventure/CountOfMonteCristo.jpg"
 },{
     "CName":"Action and Adventure",
     "BTitle":"The Three Musketeers",
@@ -21,7 +21,7 @@
     "BYEAR":"2013",
     "BPrice":270,
     "BDescription":"17th century France: Young D'Artagnan leaves his home and travels to Paris with dreams of joining The Musketeers of Guard—the glamourous and gallant group of men who guard Louis XIII, the King of France. There he meets Athos, Porthos and Aramis, the three best musketeers and inseparable friends who believe with all their heart in the words 'all for one, one for all.What the young and gallant D'Artagnan does not realise is that he has, inadvertently, landed himself in the very centre of one of the foulest conspiracies in monarchist France.",
-    "BImage":"../assets/BookDetails/ActionAndAdventure/TheThreeMusketeers.jpg"
+    "BImage":"../../assets/BookDetails/ActionAndAdventure/TheThreeMusketeers.jpg"
 },{
     "CName":"Action and Adventure",
     "BTitle":"Twenty Thousand Leagues Under the Sea",
@@ -29,7 +29,7 @@
     "BYEAR":"1992",
     "BPrice":300,
     "BDescription":"Professor Aronnax, his faithful servant, Conseil, and the Canadian harpooner, Ned Land, begin a hazardous voyage to rid the seas of a little-known and terrifying sea monster. However, the 'monster' turns out to be a giant submarine, commanded by the mysterious Captain Nemo, by whom they are soon held captive.",
-    "BImage":"../assets/BookDetails/ActionAndAdventure/Twenty Thousand Leagues Under the Sea.jpg"
+    "BImage":"../../assets/BookDetails/ActionAndAdventure/Twenty Thousand Leagues Under the Sea.jpg"
 },{
     "CName":"Action and Adventure",
     "BTitle":"The Call of the Wild",
@@ -37,5 +37,5 @@
     "BYEAR":"2012",
     "BPrice":500,
     "BDescription":"This classic book brings out the true spirit of the Gold Rush days at the turn of the last century and portrays the brutality, kindness, love, and folly that Jack London experienced during his time in the far north.",
-    "BImage":"../assets/BookDetails/ActionAndAdventure/TheCallOfTheWild.jpg"
+    "BImage":"../../assets/BookDetails/ActionAndAdventure/TheCallOfTheWild.jpg"
 }]
