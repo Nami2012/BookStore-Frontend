@@ -1,0 +1,36 @@
+{
+    "data": [
+        {
+            "CName": "Action and Adventure",
+            "CDescription": "Books that constantly have you on the edge of your seat with excitement",
+            "CImage": "https://unsplash.com/photos/xtOaajNOe-8",
+            "CPosition": "5"
+        },
+        {
+            "CName": "Classics",
+            "CDescription": "Books that have continued to impact generations",
+            "CImage": "https://unsplash.com/photos/aCSHSJCcrc8",
+            "CPosition": "4"
+        },
+        {
+            "CName": "Graphic Novel",
+            "CDescription": "For those who like having  the dialogue presented in the tell-tale word balloons next to the respective characters.",
+            "CImage": "https://unsplash.com/photos/nUL9aPgGvgM",
+            "CPosition": "3"
+        },
+        {
+            "CName": "Detective and Mystery",
+            "CDescription": "The plot always revolves around a crime of sorts that must be solved—or foiled—by the protagonists.",
+            "CImage": "https://unsplash.com/photos/lbekri_riMg",
+            "CPosition": "2"
+        },
+        {
+            "CName": "Science Fiction (Sci-Fi)",
+            "CDescription": "Heavy Themes of technology and future science",
+            "CImage": "https://unsplash.com/photos/OYzbqk2y26c",
+            "CPosition": "1"
+        }
+    ] 
+}
+
+
