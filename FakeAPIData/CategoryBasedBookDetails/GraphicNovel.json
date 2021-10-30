@@ -1,0 +1,41 @@
+[{
+    "CName":"Graphic Novels",
+    "BTitle":"The Complete MAUS",
+    "BISBN":"978-0141014081",
+    "BYEAR":"2003",
+    "BPrice":686,
+    "BDescription":"Maus tells the story of Vladek Spiegelman, a Jewish survivor of Hitler's Europe, and his son, a cartoonist coming to terms with his father's story.",
+    "BImage":""
+},{
+    "CName":"Graphic Novels",
+    "BTitle":"Jimmy Corrigan: The Smartest Kid on Earth",
+    "BISBN":"978-0224063975",
+    "BYEAR":"2003",
+    "BPrice":661,
+    "BDescription":"It is the tragic autobiography of an office dogsbody in Chicago who one day meets the father who abandoned him as a child. With a subtle, complex and moving story and the drawings that are as simple and original as they are strikingly beautiful, Jimmy Corrigan is a book unlike any other and certainly not to be missed.",
+    "BImage":""
+},{
+    "CName":"Graphic Novels",
+    "BTitle":"Fun Home: A Family Tragicomic ",
+    "BISBN":"978-0544709041",
+    "BYEAR":"2007",
+    "BPrice":1200,
+    "BDescription":"An unusual memoir done in the form of a graphic novel by a cult favorite comic artist offers a darkly funny family portrait that details her relationship with her father, a historic preservation expert dedicated to restoring the family's Victorian home, funeral home director, high-school English teacher, and closeted homosexual. ",
+    "BImage":""
+},{
+    "CName":"Graphic Novels",
+    "BTitle":"Persepolis: The Story of a Childhood",
+    "BISBN":"978-0375714573",
+    "BYEAR":"2004",
+    "BPrice":1322,
+    "BDescription":"In powerful black-and-white comic strip images, Satrapi tells the story of her life in Tehran from ages six to fourteen, years that saw the overthrow of the Shah’s regime, the triumph of the Islamic Revolution, and the devastating effects of war with Iraq.",
+    "BImage":""
+},{
+    "CName":"Graphic Novels",
+    "BTitle":"A Contract with God – And Other Tenement Stories",
+    "BISBN":"978-0393609189",
+    "BYEAR":"2017",
+    "BPrice":1741,
+    "BDescription":"A Contract with God begins with a gripping tale that mirrors the artist’s real-life tragedy, the death of his daughter. Frimme Hersh, a devout Jew, questions his relationship with God after the loss of his own beloved child.",
+    "BImage":""
+}]

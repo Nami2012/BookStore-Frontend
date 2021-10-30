@@ -1,0 +1,41 @@
+[{
+    "CName":"Detective And Mystery",
+    "BTitle":"Murder on the Orient Express",
+    "BISBN":"9780007527502",
+    "BYEAR":"2017",
+    "BPrice":150,
+    "BDescription":"Isolated and with a killer in their midst, detective Hercule Poirot must identify the murderer – in case he or she decides to strike again.",
+    "BImage":""
+},{
+    "CName":"Detective And Mystery",
+    "BTitle":"The Hound of the Baskervilles",
+    "BISBN":"978-9350362990",
+    "BYEAR":"2013",
+    "BPrice":120,
+    "BDescription":" tells the story of an attempted murder inspired by the legend of a fearsome, diabolical hound of supernatural origin. Sherlock Holmes and his companion Dr. Watson investigate the case.",
+    "BImage":""
+},{
+    "CName":"Detective And Mystery",
+    "BTitle":"The Big Sleep",
+    "BISBN":"978-0394758282",
+    "BYEAR":"1988",
+    "BPrice":880,
+    "BDescription":"A dying millionaire hires private eye Philip Marlowe to handle the blackmailer of one of his two troublesome daughters, and Marlowe finds himself involved with more than extortion. Kidnapping, pornography, seduction, and murder are just a few of the complications he gets caught up in.",
+    "BImage":""
+},{
+    "CName":"Detective And Mystery",
+    "BTitle":"The Moonstone",
+    "BISBN":"978-9350333433",
+    "BYEAR":"2010",
+    "BPrice":855,
+    "BDescription":"It catches one up and unfolds its amazing story through the recountings of its several narrators, all of them enticing and singular. Wilkie Collins’s spellbinding tale of romance, theft, and murder inspired a hugely popular genre–the detective mystery. ",
+    "BImage":""
+},{
+    "CName":"Detective And Mystery",
+    "BTitle":"The Mysterious Affair At Styles",
+    "BISBN":"978-9350260425",
+    "BYEAR":"2000",
+    "BPrice":500,
+    "BDescription":"Introducing Hercule Poirot, the brilliant-and eccentric- detective who, at a friend’s request, steps out of retirement- and into the shadows of a classic mystery on the outskirts of Essex.",
+    "BImage":""
+}]

@@ -1,0 +1,41 @@
+[{
+    "CName":"Science Fiction",
+    "BTitle":"The Martian",
+    "BISBN":"978-1785031137",
+    "BYEAR":"2015",
+    "BPrice":330,
+    "BDescription":"Stranded on Mars, one astronaut fights to survive",
+    "BImage":""
+},{
+    "CName":"Science Fiction",
+    "BTitle":"Fahrenheit 451",
+    "BISBN":"978-1451673319",
+    "BYEAR":"2012",
+    "BPrice":562,
+    "BDescription":"Throughout Fahrenheit 451, Ray Bradbury warns readers about potential issues arising from increased technology, censorship, prescription medication, consumer culture, politics, war, and reliance on mass media.",
+    "BImage":""
+},{
+    "CName":"Science Fiction",
+    "BTitle":"The Left Hand of Darkness",
+    "BISBN":"978-0441478125",
+    "BYEAR":"2015",
+    "BPrice":450,
+    "BDescription":"Embracing the aspects of psychology, society, and human emotion on an alien world, The Left Hand of Darkness stands as a landmark achievement in the annals of intellectual science fiction.",
+    "BImage":""
+},{
+    "CName":"Science Fiction",
+    "BTitle":"Brave New World",
+    "BISBN":"978-0060850524",
+    "BYEAR":"2006",
+    "BPrice":870,
+    "BDescription":"Aldous Huxley's profoundly important classic of world literature, Brave New World is a searching vision of an unequal, technologically-advanced future where humans are genetically bred, socially",
+    "BImage":""
+},{
+    "CName":"Science Fiction",
+    "BTitle":"The Time Machine",
+    "BISBN":"978-8175992955",
+    "BYEAR":"2015",
+    "BPrice":400,
+    "BDescription":"A compelling science fiction, the Time Machine is a first-hand account of a Time Traveler's journey into the future. a pull of the lever and the machine sends him to the year 802,701, when humanity has split into two bizarre races—the ethereal Eloi and the subterranean Morlocks. Here, his machine is stolen and with the help of Weena, an Eloi he saved from drowning, the traveler is able to retrieve it.",
+    "BImage":""
+}]

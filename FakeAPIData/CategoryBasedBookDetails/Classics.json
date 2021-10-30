@@ -1,0 +1,41 @@
+[{
+    "CName":"Classics",
+    "BTitle":"Pride and Prejudice",
+    "BISBN":"978-8172344504",
+    "BYEAR":1813,
+    "BPrice":150,
+    "BDescription":"Pride and Prejudice follows the turbulent relationship between Elizabeth Bennet, the daughter of a country gentleman, and Fitzwilliam Darcy, a rich aristocratic landowner. They must overcome the titular sins of pride and prejudice in order to fall in love and marry.",
+    "BImage":""
+},{
+    "CName":"Classics",
+    "BTitle":"The Catcher in the Rye",
+    "BISBN":"978-7543321724",
+    "BYEAR":"1991",
+    "BPrice":750,
+    "BDescription":"The hero-narrator of The Catcher in the Rye is an ancient child of sixteen, a native New Yorker named Holden Caufield. Through circumstances that tend to preclude adult, secondhand description, he leaves his prep school in Pennsylvania and goes underground in New York City for three days.",
+    "BImage":""
+},{
+    "CName":"Classics",
+    "BTitle":"Wuthering Heights",
+    "BISBN":"978-8172344894",
+    "BYEAR":"2013",
+    "BPrice":200,
+    "BDescription":"In this epic story of love, envy, betrayal and revenge, Heathcliff and Catherine come together in a romance that destroys them and those around them. Set in the lonely and bleak Yorkshire moors, this classic tale of thwarted passion begins when the new tenant of Thrushcross Grange, a Mr Lockwood, is forced to seek shelter for a night at Wuthering Heights. As the night passes, Lockwood learns of the tumultuous past of Wuthering Heights and of those connected with it.",
+    "BImage":""
+},{
+    "CName":"Classics",
+    "BTitle":"The Great Gatsby",
+    "BISBN":"978-0743273565",
+    "BYEAR":"2004",
+    "BPrice":990,
+    "BDescription":"The story of the mysteriously wealthy Jay Gatsby and his love for the beautiful Daisy Buchanan, of lavish parties on Long Island at a time when The New York Times noted “gin was the national drink and sex the national obsession,” it is an exquisitely crafted tale of America in the 1920s.",
+    "BImage":""
+},{
+    "CName":"Classics",
+    "BTitle":"Nineteen Eighty Four",
+    "BISBN":"978-0141036144",
+    "BYEAR":"2008",
+    "BPrice":300,
+    "BDescription":"Nineteen Eighty-Four is George Orwell's terrifying vision of a totalitarian future in which everything and everyone is slave to a tyrannical regime.",
+    "BImage":""
+}]
