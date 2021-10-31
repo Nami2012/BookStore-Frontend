@@ -1,17 +1,44 @@
-<div class="card col-sm-3" *ngFor="let book of bookList">
-    <div class="card">
+<div class="container">
+    <div class="card " *ngFor="let book of bookList">
+
         <div class="card-header">
-          {{book.CName}}
+            {{book.CName}}
         </div>
+
+
         <div class="card-body">
-          <h5 class="card-title">Special title treatment</h5>
-          <img class="card-img-top" src={{book.BImage}} alt="Card image cap">
-          <p class="card-text">{{book.BDescription}}</p>
-          <p class="card-text">Year: {{book.BYEAR}}</p>
-          <img src="" alt="ISBN"> {{book.BISBN}}
-          <a href="#"> <img alt="Add to cart"></a>
-          <a href="#" > <img alt="Add to wishlist"></a>
-          
+            <div class="row">
+                <div class="col-4"><img class="card-img-top" src={{book.BImage}} alt="Card image cap"></div>
+                <div class="col-6">
+                    <div class="row">
+                        <div class="col">
+                            <h5 class="card-title">{{book.BTitle}}</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p class="card-text">{{book.BDescription}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3">
+                            <p class="card-text">Year: {{book.BYEAR}}</p>
+                            
+                        </div>
+                        <div class="col-4" style="padding-left: 0px;  padding-right: 0px;">
+                            <fa-icon [icon]="faISBN"></fa-icon>
+                           
+                            <p>{{book.BISBN}}</p>
+                        </div>
+                            
+                        
+                    </div>
+                </div>
+                <div class="col-2" style="padding-top: 6rem;  padding-bottom: 3rem;">
+                    <fa-icon [icon]="faCart"></fa-icon>
+                    <fa-icon [icon]="faHeart"></fa-icon>
+                </div>
+            </div>
         </div>
-      </div>
+    </div>
 </div>
