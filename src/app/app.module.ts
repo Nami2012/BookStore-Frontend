@@ -1,7 +1,7 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +13,8 @@ import { SignupComponent } from './auth/components/signup/signup.component';
 import { BookComponent } from './book/book.component';
 import { CreateBookComponent } from './book/components/create-book/create-book.component';
 
+import { CategoryComponent } from './category/category.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +25,7 @@ import { CreateBookComponent } from './book/components/create-book/create-book.c
     SignupComponent,
     BookComponent,
     CreateBookComponent,
+    CategoryComponent,
   ],
   imports: [
     BrowserModule,
