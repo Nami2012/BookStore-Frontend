@@ -9,6 +9,8 @@ import { HomeComponent } from './home/home.component';
 import { OrdersComponent } from './orders/orders.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { CreateBookComponent } from './book/components/create-book/create-book.component';
+import { CreateCategoryComponent } from './category/components/create-category/create-category.component';
+import { CouponComponent } from './coupon/coupon.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -20,6 +22,8 @@ const routes: Routes = [
   { path: 'categories', component: CategoryComponent },
   { path: 'category', component: BookDetailsComponent },
   { path: 'book/create', component: CreateBookComponent },
+  { path: 'category/create', component: CreateCategoryComponent },
+  { path: 'coupon', component: CouponComponent },
 ];
 
 @NgModule({

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { Category } from 'src/app/category/model/category.model';
+import { Book } from '../book-details/model/book.model';
 
 @Injectable({
   providedIn: 'root',
@@ -20,5 +21,18 @@ export class BookService {
         return res;
       })
     );
+  }
+
+  addBook(bookDetails: Book): Observable<any> {
+    return this.http
+      .post(
+        'https://bookstore-soti-default-rtdb.firebaseio.com/' + 'BookList.json',
+        bookDetails
+      )
+      .pipe(
+        map((res: any) => {
+          return res;
+        })
+      );
   }
 }

@@ -20,6 +20,8 @@ import { HomeComponent } from './home/home.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { OrdersComponent } from './orders/orders.component';
 import { CartComponent } from './cart/cart.component';
+import { CreateCategoryComponent } from './category/components/create-category/create-category.component';
+import { CouponComponent } from './coupon/coupon.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,8 @@ import { CartComponent } from './cart/cart.component';
     WishlistComponent,
     OrdersComponent,
     CartComponent,
+    CreateCategoryComponent,
+    CouponComponent,
   ],
   imports: [
     BrowserModule,

@@ -9,12 +9,12 @@
         <div class="row g-5">
             <div class="col-sm-0 col-md-1 col-lg-2 "></div>
             <div class="col-md-7 col-lg-8">
-                <form class="needs-validation">
+                <form class="needs-validation" [formGroup]="addBookForm" (ngSubmit)="handleAddBook()">
                     <div class="row g-3">
                         <div class="col-sm-6">
                             <label for="country" class="form-label">Category</label>
-                            <select class="form-select" id="category" required>
-                                <option value="">Choose...</option>
+                            <select class="form-select" id="category" required formControlName="cid"
+                                [ngClass]="{ 'is-invalid': addBookForm.get('cid')?.touched && addBookForm.get('cid')?.invalid }">
                                 <option *ngFor="let category of categories" value="{{category.CId}}">{{category.CName}}
                                 </option>
                             </select>
@@ -25,7 +25,9 @@
                         <div class="col-sm-6 col-md-0"></div>
                         <div class="col-sm-12">
                             <label for="title" class="form-label">Title</label>
-                            <input type="text" class="form-control" id="title" placeholder="" value="" required="">
+                            <input type="text" class="form-control" formControlName="title" id="title" placeholder=""
+                                value="" required=""
+                                [ngClass]="{ 'is-invalid': addBookForm.get('title')?.touched && addBookForm.get('title')?.invalid }">
                             <div class="invalid-feedback">
                                 Valid Title is required.
                             </div>
@@ -33,7 +35,9 @@
 
                         <div class="col-sm-12">
                             <label for="isbn" class="form-label">ISBN</label>
-                            <input type="text" class="form-control" id="isbn" placeholder="" value="" required="">
+                            <input type="text" class="form-control" id="isbn" formControlName="isbn" placeholder=""
+                                value="" required=""
+                                [ngClass]="{ 'is-invalid': addBookForm.get('isbn')?.touched && addBookForm.get('isbn')?.invalid }">
                             <div class="invalid-feedback">
                                 Valid ISBN is required.
                             </div>
@@ -42,7 +46,8 @@
                         <div class="col-sm-6">
                             <label for="year" class="form-label">Year</label>
                             <input type="number" min="1500" max="2500" step="1" class="form-control" id="isbn"
-                                placeholder="" value="2000" required>
+                                placeholder="" value="2000" formControlName="year" required
+                                [ngClass]="{ 'is-invalid': addBookForm.get('year')?.touched && addBookForm.get('year')?.invalid }">
                             <div class="invalid-feedback">
                                 Enter Year between 1500 and 2500.
                             </div>
@@ -53,7 +58,8 @@
                             <div class="input-group has-validation">
                                 <span class="input-group-text">$</span>
                                 <input type="number" min="0" step="0.01" class="form-control" id="price"
-                                    placeholder="0.00" required=>
+                                    placeholder="0.00" required formControlName="price"
+                                    [ngClass]="{ 'is-invalid': addBookForm.get('price')?.touched && addBookForm.get('price')?.invalid }">
                                 <div class="invalid-feedback">
                                     Enter a valid price
                                 </div>
@@ -61,14 +67,16 @@
                         </div>
 
                         <div class="col-12">
-                            <label for="description">Comments</label>
+                            <label for="description">Description</label>
                             <textarea class="form-control" placeholder="Enter book description(Optional)"
-                                id="description"></textarea>
+                                id="description" formControlName="description"
+                                [ngClass]="{ 'is-invalid': addBookForm.get('description')?.touched && addBookForm.get('description')?.invalid }"></textarea>
                         </div>
                     </div>
                     <div class="row mt-3">
                         <div class="col-md-3 col-sm-12 col-lg-2">
-                            <button class="btn btn-primary" type="submit">Add Book</button>
+                            <button [disabled]="addBookForm.invalid" class="btn btn-primary" type="submit">Add
+                                Book</button>
                         </div>
                     </div>
                 </form>
