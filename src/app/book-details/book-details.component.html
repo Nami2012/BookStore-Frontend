@@ -1,0 +1,17 @@
+<div class="card col-sm-3" *ngFor="let book of bookList">
+    <div class="card">
+        <div class="card-header">
+          {{book.CName}}
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Special title treatment</h5>
+          <img class="card-img-top" src={{book.BImage}} alt="Card image cap">
+          <p class="card-text">{{book.BDescription}}</p>
+          <p class="card-text">Year: {{book.BYEAR}}</p>
+          <img src="" alt="ISBN"> {{book.BISBN}}
+          <a href="#"> <img alt="Add to cart"></a>
+          <a href="#" > <img alt="Add to wishlist"></a>
+          
+        </div>
+      </div>
+</div>

@@ -14,6 +14,7 @@ import { BookComponent } from './book/book.component';
 import { CreateBookComponent } from './book/components/create-book/create-book.component';
 
 import { CategoryComponent } from './category/category.component';
+import { BookDetailsComponent } from './book-details/book-details.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { CategoryComponent } from './category/category.component';
     BookComponent,
     CreateBookComponent,
     CategoryComponent,
+    BookDetailsComponent,
   ],
   imports: [
     BrowserModule,
