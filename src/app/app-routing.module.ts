@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'categories', component: CategoryComponent },
-  { path: 'category/:cid', component: BookDetailsComponent },
+  { path: 'category', component: BookDetailsComponent },
   { path: 'book/create', component: CreateBookComponent },
 ];
 

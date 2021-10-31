@@ -2,12 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Book } from './model/book.model';
 import { BookService } from './services/book.service';
+import {  faHeart,faCartArrowDown,faBarcode } from '@fortawesome/free-solid-svg-icons';
+
 @Component({
   selector: 'app-book-details',
   templateUrl: './book-details.component.html',
   styleUrls: ['./book-details.component.scss']
 })
 export class BookDetailsComponent implements OnInit {
+  //icons
+  faHeart  =  faHeart;
+  faCart =  faCartArrowDown;
+  faISBN = faBarcode;
+
   bookList : Book[] =[];
   bookSubscription !: Subscription;
   constructor(private bookService:BookService) { }
