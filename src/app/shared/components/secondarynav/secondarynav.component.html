@@ -1,0 +1,11 @@
+
+<nav class="navbar navbar-expand-lg  navbar-light bg-light "  role="navigation">
+   
+        <ul class="nav navbar-nav me-auto mb-2 mb-lg-0" >
+           <li class="nav-item" *ngFor="let category of categoryList">
+                <a class="nav-link" routerLink="/category/{{category.CId}}">{{category.CName}}</a>
+            </li>
+        </ul>
+    
+
+  </nav>

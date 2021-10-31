@@ -20,6 +20,8 @@ import { HomeComponent } from './home/home.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { OrdersComponent } from './orders/orders.component';
 import { CartComponent } from './cart/cart.component';
+import { SecondarynavComponent } from './shared/components/secondarynav/secondarynav.component';
+
 
 @NgModule({
   declarations: [
@@ -37,6 +39,7 @@ import { CartComponent } from './cart/cart.component';
     WishlistComponent,
     OrdersComponent,
     CartComponent,
+    SecondarynavComponent
   ],
   imports: [
     BrowserModule,
