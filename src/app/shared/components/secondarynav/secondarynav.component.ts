@@ -1,7 +1,7 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Category } from './model/secondarynav.model';
-import { SecondarynavService } from './services/secondarynav.service'; 
+import { Category } from '../../../category/model/category.model';
+import { CategoryService } from '../../../category/services/category.service'; 
 
 @Component({
   selector: 'app-secondarynav',
@@ -16,7 +16,7 @@ export class SecondarynavComponent implements OnInit {
 
   categoryList: Category[] = [];
   categorySubscription!: Subscription;
-  constructor(private categoryService:SecondarynavService) { }
+  constructor(private categoryService:CategoryService) { }
 
   ngOnInit(): void {
     this.categorySubscription = this.categoryService.getCategories()

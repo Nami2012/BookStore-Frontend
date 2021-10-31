@@ -1,6 +1,6 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +14,8 @@ import { CartComponent } from './cart/cart.component';
 import { SecondarynavComponent } from './shared/components/secondarynav/secondarynav.component';
 
 
+import { CategoryComponent } from './category/category.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +26,8 @@ import { SecondarynavComponent } from './shared/components/secondarynav/secondar
     WishlistComponent,
     OrdersComponent,
     CartComponent,
-    SecondarynavComponent
+    SecondarynavComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,
