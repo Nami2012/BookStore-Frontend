@@ -22,6 +22,7 @@ import { OrdersComponent } from './orders/orders.component';
 import { CartComponent } from './cart/cart.component';
 import { CreateCategoryComponent } from './category/components/create-category/create-category.component';
 import { CouponComponent } from './coupon/coupon.component';
+import { SecondarynavComponent } from './shared/components/secondarynav/secondarynav.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { CouponComponent } from './coupon/coupon.component';
     CartComponent,
     CreateCategoryComponent,
     CouponComponent,
+    SecondarynavComponent,
   ],
   imports: [
     BrowserModule,
