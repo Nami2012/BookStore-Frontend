@@ -1,22 +1,20 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 
-interface ICategory{
-
-    CName: string,
-    CDescription:string,
-    CImage:string,
-    CPosition:number
+interface ICategory {
+  CId: number;
+  CName: string;
+  CDescription: string;
+  CImage: string;
+  CPosition: number;
 }
 
 @Injectable({
-    providedIn: 'root'
-  })
-  
+  providedIn: 'root',
+})
 export class Category implements ICategory {
-    CName:string ="";
-    CDescription:string="";
-    CImage:string="";
-    CPosition:number=0;
-
+  CId: number = 0;
+  CName: string = '';
+  CDescription: string = '';
+  CImage: string = '';
+  CPosition: number = 0;
 }
-

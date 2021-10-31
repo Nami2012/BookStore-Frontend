@@ -1,1 +1,78 @@
-<p>create-book works!</p>
+<div class="container">
+    <main>
+        <div class="py-5 text-center">
+            <img class="d-block mx-auto mb-4" src="https://getbootstrap.com/docs/5.1/assets/brand/bootstrap-logo.svg"
+                alt="" width="72" height="57">
+            <h2>Add Book</h2>
+        </div>
+
+        <div class="row g-5">
+            <div class="col-sm-0 col-md-1 col-lg-2 "></div>
+            <div class="col-md-7 col-lg-8">
+                <form class="needs-validation">
+                    <div class="row g-3">
+                        <div class="col-sm-6">
+                            <label for="country" class="form-label">Category</label>
+                            <select class="form-select" id="category" required>
+                                <option value="">Choose...</option>
+                                <option *ngFor="let category of categories" value="{{category.CId}}">{{category.CName}}
+                                </option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Please select a Category.
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-0"></div>
+                        <div class="col-sm-12">
+                            <label for="title" class="form-label">Title</label>
+                            <input type="text" class="form-control" id="title" placeholder="" value="" required="">
+                            <div class="invalid-feedback">
+                                Valid Title is required.
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <label for="isbn" class="form-label">ISBN</label>
+                            <input type="text" class="form-control" id="isbn" placeholder="" value="" required="">
+                            <div class="invalid-feedback">
+                                Valid ISBN is required.
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label for="year" class="form-label">Year</label>
+                            <input type="number" min="1500" max="2500" step="1" class="form-control" id="isbn"
+                                placeholder="" value="2000" required>
+                            <div class="invalid-feedback">
+                                Enter Year between 1500 and 2500.
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label for="price" class="form-label">Price</label>
+                            <div class="input-group has-validation">
+                                <span class="input-group-text">$</span>
+                                <input type="number" min="0" step="0.01" class="form-control" id="price"
+                                    placeholder="0.00" required=>
+                                <div class="invalid-feedback">
+                                    Enter a valid price
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <label for="description">Comments</label>
+                            <textarea class="form-control" placeholder="Enter book description(Optional)"
+                                id="description"></textarea>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-3 col-sm-12 col-lg-2">
+                            <button class="btn btn-primary" type="submit">Add Book</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+</div>

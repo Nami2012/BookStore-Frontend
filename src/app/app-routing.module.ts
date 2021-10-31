@@ -3,11 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './auth/components/login/login.component';
 import { SignupComponent } from './auth/components/signup/signup.component';
 import { CategoryComponent } from './category/category.component';
-import { BookDetailsComponent } from './book-details/book-details.component';
+import { BookDetailsComponent } from './book/book-details/book-details.component';
 import { CartComponent } from './cart/cart.component';
 import { HomeComponent } from './home/home.component';
 import { OrdersComponent } from './orders/orders.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
+import { CreateBookComponent } from './book/components/create-book/create-book.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -18,7 +19,7 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'categories', component: CategoryComponent },
   { path: 'category/:cid', component: BookDetailsComponent },
-  //{path: '', component: HomeComponent}
+  { path: 'book/create', component: CreateBookComponent },
 ];
 
 @NgModule({
