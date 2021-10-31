@@ -15,6 +15,10 @@ import { CreateBookComponent } from './book/components/create-book/create-book.c
 
 import { CategoryComponent } from './category/category.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
+import { HomeComponent } from './home/home.component';
+import { WishlistComponent } from './wishlist/wishlist.component';
+import { OrdersComponent } from './orders/orders.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +32,10 @@ import { BookDetailsComponent } from './book-details/book-details.component';
     CreateBookComponent,
     CategoryComponent,
     BookDetailsComponent,
+    HomeComponent,
+    WishlistComponent,
+    OrdersComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,

@@ -9,37 +9,27 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink='' routerLinkActive="active"
-              [routerLinkActiveOptions]="{exact:
-              true}">Home(Latest)</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false" routerLink='' routerLinkActive="active">
-              Featured
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Book1</a></li>
-              <li><a class="dropdown-item" href="#">Book2</a></li>
-              <li><a class="dropdown-item" href="#">Book3</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item" href="#">view more</a></li>
-            </ul>
+            <a class="nav-link" aria-current="page" routerLink="/" routerLinkActive="active"
+              [routerLinkActiveOptions]="{exact : true}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink='/cart' routerLinkActive="active">Cart</a>
+            <a class="nav-link" routerLink="/categories" routerLinkActive="active">Categories</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/wishlist" routerLinkActive="active">Wishlist</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/orders" routerLinkActive="active">Orders</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/cart" routerLinkActive="active">Cart</a>
           </li>
           <app-menu>
             <li class="nav-item">
-              <a class="nav-link" routerLink='/login' routerLinkActive="active">Login</a>
+              <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink='/signup' routerLinkActive="active">Sign Up</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink='/categories' routerLinkActive="active">Categories</a>
+              <a class="nav-link" routerLink="/signup" routerLinkActive="active">Sign Up</a>
             </li>
           </app-menu>
         </ul>
