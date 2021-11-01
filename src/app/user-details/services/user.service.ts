@@ -30,4 +30,22 @@ export class UserService {
         return res;
       }));
   }
+
+  //updateuser details
+  private UPDATE_USER_DETAILS_REST_API_URL ="";
+  updateUser(updateableUserData:UserDetails):any{
+    let API_URL = this.UPDATE_USER_DETAILS_REST_API_URL+updateableUserData.UId
+    console.log(updateableUserData);
+
+    return this.http.put("https://bookstore-soti-default-rtdb.firebaseio.com/User/%221%22.json",updateableUserData)
+      .toPromise()
+      .then((res:any)=>{
+        console.log(res);
+        return res
+      }).catch((err:any)=>{
+        console.log(err);
+      }).finally(()=>{
+        console.log('it is over');
+      });
+  }
 }

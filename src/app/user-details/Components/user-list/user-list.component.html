@@ -1,40 +1,40 @@
 <div class="card mx-auto" style="width: 50%;border: none;">
     <div class="card-header" style="background-color: white;border:none">
         <h1> Users </h1>
-      </div>
+    </div>
 
 
-<div class="card-body " >
-    <ul class="list-group " *ngFor="let user of users">
-      <li class="list-group-item">
-          <div class="row">
-            <div class="col-8">
-                <h5><b>Name:</b></h5>
-            {{user.Name}}
-            </div>  
-            <div class="col-2">  
-                <button type="button" class="btn btn-light">Details</button>
-            </div>
-            <ng-template [ngIf]="user.ActiveStatus" [ngIfElse]="elseBlock">
-                <div class="col-2">  
-                    <button type="button" class="btn btn-primary">Activate</button>
+    <div class="card-body ">
+        <ul class="list-group " *ngFor="let user of users">
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-8">
+                        <h5><b>Name:</b></h5>
+                        {{user.Name}}
+                    </div>
+                    <div class="col-2">
+                        <button type="button" class="btn btn-light">Details</button>
+                    </div>
+                    <ng-template [ngIf]="user.ActiveStatus" [ngIfElse]="elseBlock">
+                        <div class="col-2">
+                            <button type="button" class="btn btn-primary">Activate</button>
+                        </div>
+                    </ng-template>
+                    <ng-template #elseBlock>
+                        <div class="col-2">
+                            <button type="button" class="btn btn-danger">deactivate</button>
+                        </div>
+                    </ng-template>
+
+
                 </div>
-              </ng-template>
-              <ng-template #elseBlock>
-                <div class="col-2">  
-                    <button type="button" class="btn btn-danger">deactivate</button>
-                </div>
-              </ng-template>
-           
-            
-        </div>
-        </li>
+            </li>
 
-        
-    </ul>
-</div>
-<div>
 
-</div>
+        </ul>
+    </div>
+    <div>
+
+    </div>
 
 </div>

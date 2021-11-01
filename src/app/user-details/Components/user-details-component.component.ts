@@ -10,6 +10,11 @@ import { UserService } from '../services/user.service';
 })
 export class UserDetailsComponent implements OnInit {
   userDetails!:UserDetails;
+  isNameUpdated = false;
+  isEmailUpdated = false;
+  isPhoneNoUpdated = false;
+  isShippingAddressUpdated = false;
+  duplicateUserData:any;
   constructor(private userService:UserService, private route:ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -22,4 +27,38 @@ export class UserDetailsComponent implements OnInit {
 
   }
 
+  handleEditModalOpen():void{
+    this.duplicateUserData = {...this.userDetails};
+  }
+
+  // Modal Functions -- Reformat if poossible
+  async handleNameUpdate(){
+    let status = await this.userService.updateUser(this.duplicateUserData);
+    if(status && status.name){
+      this.isNameUpdated = true;
+    }
+ 
+  }
+  
+  async handleEmailUpdate(){
+    let status = await this.userService.updateUser(this.duplicateUserData);
+    if(status && status.Email){
+      this.isEmailUpdated = true;
+    }
+ 
+  }
+  async handlePhoneNoUpdate(){
+    let status = await this.userService.updateUser(this.duplicateUserData);
+    if(status && status.PhoneNo){
+      this.isPhoneNoUpdated = true;
+    }
+  }
+
+  async handleShippingAddressUpdate(){
+    let status = await this.userService.updateUser(this.duplicateUserData);
+    if(status && status.ShippingAddress){
+      this.isShippingAddressUpdated = true;
+    }
+  }
+  // end of modal handles //
 }
