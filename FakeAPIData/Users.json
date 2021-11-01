@@ -1,0 +1,12 @@
+[{"ActiveStatus":"True",
+"Email":"a@r.gmail.com",
+"Name":"Arun",
+"PhoneNo":"9876543210",
+"ShippingAddress":"Somewhere on earth",
+"UId":1},
+{"ActiveStatus":false,
+"Email":"v@r@gmail.com",
+"Name":"Varma",
+"PhoneNo":"9876543210",
+"ShippingAddress":"Nowhere",
+"UId":2}]
