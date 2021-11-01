@@ -22,7 +22,7 @@ export class UserService {
   }
 
   //getallusers endpoint
-  private REST_API_URL="";
+  private REST_API_URL="https://mocki.io/v1/4bf52c1d-2975-4f56-af7c-6acd15248f94";
   getUsers():Observable<UserDetails[]>{
     return this.http.get(this.REST_API_URL)
       .pipe(map((res:any)=>{

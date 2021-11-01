@@ -21,7 +21,8 @@ import { WishlistComponent } from './wishlist/wishlist.component';
 import { OrdersComponent } from './orders/orders.component';
 import { CartComponent } from './cart/cart.component';
 import { SecondarynavComponent } from './shared/components/secondarynav/secondarynav.component';
-import { UserDetailsComponent } from './user-details/user-details-component.component';
+import { UserDetailsComponent } from './user-details/Components/user-details-component.component';
+import { UserListComponent } from './user-details/Components/user-list/user-list.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { UserDetailsComponent } from './user-details/user-details-component.comp
     OrdersComponent,
     CartComponent,
     SecondarynavComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,
