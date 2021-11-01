@@ -21,6 +21,7 @@ import { WishlistComponent } from './wishlist/wishlist.component';
 import { OrdersComponent } from './orders/orders.component';
 import { CartComponent } from './cart/cart.component';
 import { SecondarynavComponent } from './shared/components/secondarynav/secondarynav.component';
+import { UserDetailsComponent } from './user-details/user-details-component.component';
 
 
 @NgModule({
@@ -39,13 +40,13 @@ import { SecondarynavComponent } from './shared/components/secondarynav/secondar
     WishlistComponent,
     OrdersComponent,
     CartComponent,
-    SecondarynavComponent
+    SecondarynavComponent,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule,
     HttpClientModule,
     FontAwesomeModule,
   ],
