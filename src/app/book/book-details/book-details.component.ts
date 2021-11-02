@@ -20,7 +20,7 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './book-details.component.html',
   styleUrls: ['./book-details.component.scss'],
 })
-export class BookDetailsComponent implements OnInit, OnChanges {
+export class BookDetailsComponent implements OnInit {
   //icons
   faHeart = faHeart;
   faCart = faCartArrowDown;
@@ -34,24 +34,22 @@ export class BookDetailsComponent implements OnInit, OnChanges {
   constructor(
     private bookService: BookService,
     private route: ActivatedRoute
-  ) {}
-  ngOnChanges(changes: SimpleChanges): void {
-    this.cid = this.route.snapshot.paramMap.get('id');
-    console.log(this.cid);
-    this.bookSubscription = this.bookService
+  ) {
+   
+    route.params.subscribe(val=>{
+      this.cid = this.route.snapshot.paramMap.get('id');
+      this.bookSubscription = this.bookService
       .getBooksByCategory(this.cid)
       .subscribe((res: Book[]) => {
         this.bookList = res;
       });
+    });
+   
+    
   }
-
+  
   ngOnInit(): void {
-    this.cid = this.route.snapshot.paramMap.get('id');
-    this.bookSubscription = this.bookService
-      .getBooksByCategory(this.cid)
-      .subscribe((res: Book[]) => {
-        this.bookList = res;
-      });
+   
   }
 
   ngOnDestroy(): void {
