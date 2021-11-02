@@ -23,6 +23,8 @@ import { CartComponent } from './cart/cart.component';
 import { CreateCategoryComponent } from './category/components/create-category/create-category.component';
 import { CouponComponent } from './coupon/coupon.component';
 import { SecondarynavComponent } from './shared/components/secondarynav/secondarynav.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ListHorizontalComponent } from './shared/components/list-horizontal/list-horizontal.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,7 @@ import { SecondarynavComponent } from './shared/components/secondarynav/secondar
     CreateCategoryComponent,
     CouponComponent,
     SecondarynavComponent,
+    ListHorizontalComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,6 +54,7 @@ import { SecondarynavComponent } from './shared/components/secondarynav/secondar
     HttpClientModule,
     HttpClientModule,
     FontAwesomeModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
