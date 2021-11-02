@@ -48,6 +48,8 @@ import { BookProductDetailComponent } from './book/components/book-product-detai
     SecondarynavComponent,
     ListHorizontalComponent,
     BookProductDetailComponent,
+    SecondarynavComponent,
+    CategoryComponent,
   ],
   imports: [
     BrowserModule,
