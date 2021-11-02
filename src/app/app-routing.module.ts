@@ -21,6 +21,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'categories', component: CategoryComponent },
+  { path: 'category/:id', component: BookDetailsComponent },
   { path: 'category', component: BookDetailsComponent },
   { path: 'book/create', component: CreateBookComponent },
   { path: 'category/create', component: CreateCategoryComponent },

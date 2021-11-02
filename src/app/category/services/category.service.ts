@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
 })
 export class CategoryService {
   private REST_API_URL =
-    'https://mocki.io/v1/19091420-a9b4-469d-a914-cdb911f75b78';
+    'https://raw.githubusercontent.com/Nami2012/BookStore-Frontend/FakeApiData/FakeAPIData/CategoryList.json';
   constructor(private http: HttpClient) {}
 
   getCategories(): Observable<Category[]> {
