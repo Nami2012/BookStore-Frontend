@@ -1,15 +1,20 @@
-<section class="p-5 bg-primary mt-3" id="book-list">
+<section class="p-5 bg-light mt-3" id="book-list">
     <div class="container">
         <button class="btn btn-secondary float-end" (click)="switchCategory()">Switch Category</button>
-        <h2 class="text-center text-white">{{ categoryList[currentCategory]?.CName }}</h2>
+        <a routerLink="category/{{ categoryList[currentCategory]?.CId }}"
+            style="text-decoration: none; color: inherited;">
+            <h2 class="text-center text-dark">{{ categoryList[currentCategory]?.CName }}</h2>
+        </a>
         <div class="row text-center g-4">
-            <div class="col-md-6 col-lg-3" *ngFor="let book of bookList" (click)="routeToBook(book.BId)">
-                <div class="card bg-white text-dark">
-                    <div class="card-body text-center">
-                        <img src="{{ book.BImage }}" alt="" class="mb-3 img-fluid" />
-                        <h3 class="card-title mb-3">{{ book.BTitle }}</h3>
+            <div class="col-md-6 col-lg-3" *ngFor="let book of bookList">
+                <a routerLink="book/{{book.BId}}" style="text-decoration: none; color: inherit;">
+                    <div class="card bg-white text-dark">
+                        <div class="card-body text-center">
+                            <img src="{{ book.BImage }}" alt="" class="mb-3 img-fluid" />
+                            <h3 class="card-title mb-3">{{ book.BTitle }}</h3>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </div>
