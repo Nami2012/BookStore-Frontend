@@ -25,6 +25,7 @@ import { CouponComponent } from './coupon/coupon.component';
 import { SecondarynavComponent } from './shared/components/secondarynav/secondarynav.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ListHorizontalComponent } from './shared/components/list-horizontal/list-horizontal.component';
+import { BookProductDetailComponent } from './book/components/book-product-detail/book-product-detail.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { ListHorizontalComponent } from './shared/components/list-horizontal/lis
     CouponComponent,
     SecondarynavComponent,
     ListHorizontalComponent,
+    BookProductDetailComponent,
   ],
   imports: [
     BrowserModule,

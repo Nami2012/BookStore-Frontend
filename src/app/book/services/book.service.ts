@@ -35,4 +35,19 @@ export class BookService {
         })
       );
   }
+
+  getBookById(bookId: string): Observable<Book> {
+    return this.http
+      .get(
+        'https://bookstore-soti-default-rtdb.firebaseio.com/' +
+          'books/' +
+          bookId +
+          '.json'
+      )
+      .pipe(
+        map((res: any) => {
+          return res;
+        })
+      );
+  }
 }
