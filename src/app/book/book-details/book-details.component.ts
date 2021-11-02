@@ -1,13 +1,8 @@
-import {
-  AfterContentInit,
-  Component,
-  OnChanges,
-  OnInit,
-  SimpleChanges,
-} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Book } from './model/book.model';
 import { BookService } from './services/book.service';
+import { switchMap } from 'rxjs/operators';
 import {
   faHeart,
   faCartArrowDown,
@@ -20,13 +15,13 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './book-details.component.html',
   styleUrls: ['./book-details.component.scss'],
 })
-export class BookDetailsComponent implements OnInit, OnChanges {
+export class BookDetailsComponent implements OnInit {
   //icons
   faHeart = faHeart;
   faCart = faCartArrowDown;
   faISBN = faBarcode;
 
-  cid: string | null = '';
+  cid: string = '1';
 
   bookList: Book[] = [];
   bookSubscription!: Subscription;
@@ -35,18 +30,16 @@ export class BookDetailsComponent implements OnInit, OnChanges {
     private bookService: BookService,
     private route: ActivatedRoute
   ) {}
-  ngOnChanges(changes: SimpleChanges): void {
-    this.cid = this.route.snapshot.paramMap.get('id');
-    console.log(this.cid);
-    this.bookSubscription = this.bookService
-      .getBooksByCategory(this.cid)
-      .subscribe((res: Book[]) => {
-        this.bookList = res;
-      });
-  }
 
   ngOnInit(): void {
-    this.cid = this.route.snapshot.paramMap.get('id');
+    this.route.params.subscribe((val) => {
+      this.cid = val.id || '1';
+      this.bookSubscription = this.bookService
+        .getBooksByCategory(this.cid)
+        .subscribe((res: Book[]) => {
+          this.bookList = res;
+        });
+    });
     this.bookSubscription = this.bookService
       .getBooksByCategory(this.cid)
       .subscribe((res: Book[]) => {
