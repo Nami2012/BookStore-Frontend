@@ -15,6 +15,10 @@ import { SecondarynavComponent } from './shared/components/secondarynav/secondar
 
 
 import { CategoryComponent } from './category/category.component';
+import { SearchComponent } from './shared/components/search/search.component';
+import { FormsModule } from '@angular/forms';
+import { SearchresultComponent } from './shared/components/search/searchresult/searchresult.component';
+import { DropdownComponent } from './shared/components/search/dropdown/dropdown.component';
 
 @NgModule({
   declarations: [
@@ -27,12 +31,16 @@ import { CategoryComponent } from './category/category.component';
     OrdersComponent,
     CartComponent,
     SecondarynavComponent,
-    CategoryComponent
+    CategoryComponent,
+    SearchComponent,
+    SearchresultComponent,
+    DropdownComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
