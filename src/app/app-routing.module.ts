@@ -12,6 +12,8 @@ import { CreateBookComponent } from './book/components/create-book/create-book.c
 import { CreateCategoryComponent } from './category/components/create-category/create-category.component';
 import { CouponComponent } from './coupon/coupon.component';
 import { BookProductDetailComponent } from './book/components/book-product-detail/book-product-detail.component';
+import { UserDetailsComponent } from './user-details/Components/user-details-component.component';
+import { UserListComponent } from './user-details/Components/user-list/user-list.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -22,11 +24,16 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'categories', component: CategoryComponent },
   { path: 'category/:id', component: BookDetailsComponent },
-  { path: 'category', component: BookDetailsComponent },
+  // { path: 'category', component: BookDetailsComponent },
+  { path: 'category', redirectTo: '/category/1', pathMatch: 'full' },
   { path: 'book/create', component: CreateBookComponent },
   { path: 'category/create', component: CreateCategoryComponent },
   { path: 'coupon', component: CouponComponent },
   { path: 'book/:id', component: BookProductDetailComponent },
+  { path: 'user/:id', component: UserDetailsComponent },
+  // { path: 'user', component: UserListComponent },
+  { path: 'user', redirectTo: '/userlist', pathMatch: 'full' },
+  { path: 'userlist', component: UserListComponent },
 ];
 
 @NgModule({

@@ -15,9 +15,6 @@ export class BookService {
       .get(this.REST_API_URL + 'booksByCategory/' + cid + '.json')
       .pipe(
         map((res: any) => {
-          console.log('Inside Service');
-          console.log(cid);
-          console.log(res);
           let books = [];
           for (let key in res) {
             books.push({ ...res[key], id: key });

@@ -1,7 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -26,6 +26,8 @@ import { SecondarynavComponent } from './shared/components/secondarynav/secondar
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ListHorizontalComponent } from './shared/components/list-horizontal/list-horizontal.component';
 import { BookProductDetailComponent } from './book/components/book-product-detail/book-product-detail.component';
+import { UserDetailsComponent } from './user-details/Components/user-details-component.component';
+import { UserListComponent } from './user-details/Components/user-list/user-list.component';
 
 @NgModule({
   declarations: [
@@ -50,15 +52,18 @@ import { BookProductDetailComponent } from './book/components/book-product-detai
     BookProductDetailComponent,
     SecondarynavComponent,
     CategoryComponent,
+    SecondarynavComponent,
+    UserDetailsComponent,
+    UserListComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    HttpClientModule,
     FontAwesomeModule,
     NgbModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

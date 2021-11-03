@@ -1,0 +1,210 @@
+<div class="card mx-auto" style="width: 50%;border: none;" *ngIf="userDetails">
+    <div class="card-header" style="background-color: white;border:none">
+        <h1> Account Information </h1>
+    </div>
+
+
+    <div class="card-body ">
+        <ul class="list-group ">
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-10">
+                        <h5><b>Name:</b></h5>
+                        {{userDetails.Name}}
+                    </div>
+                    <div class="col-2">
+                        <button type="button" class="btn btn-light" data-bs-toggle="modal"
+                            data-bs-target="#editNameModal" (click)="handleEditModalOpen()">Edit</button>
+
+                    </div>
+                </div>
+            </li>
+
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-10">
+                        <h5><b>Email:</b></h5>
+                        {{userDetails.Email}}
+                    </div>
+                    <div class="col-2">
+                        <button type="button" class="btn btn-light" data-bs-toggle="modal"
+                            data-bs-target="#editEmailModal" (click)="handleEditModalOpen()">Edit</button>
+                    </div>
+                </div>
+            </li>
+
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-10">
+                        <h5><b>Phone No:</b></h5>
+                        {{userDetails.PhoneNo}}
+                    </div>
+                    <div class="col-2">
+                        <button type="button" class="btn btn-light" data-bs-toggle="modal"
+                            data-bs-target="#editPhoneNoModal" (click)="handleEditModalOpen()">Edit</button>
+                    </div>
+                </div>
+            </li>
+
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-10">
+                        <h5><b>Shipping Address:</b></h5>
+                        {{userDetails.ShippingAddress}}
+                    </div>
+                    <div class="col-2">
+                        <button type="button" class="btn btn-light" data-bs-toggle="modal"
+                            data-bs-target="#editShippingAddressModal" (click)="handleEditModalOpen()">Edit</button>
+                    </div>
+                </div>
+            </li>
+            <!-- How to add password-->
+
+            <li class="list-group-item" style="background-color: white;border:none">
+                <a style="text-decoration: none; color: inherit;" routerLink="/userlist">
+                    <button type="button" class="col-2 btn btn-warning">Done</button>
+                </a>
+            </li>
+        </ul>
+
+
+
+        <!--- Modal: name -->
+        <div class="modal fade" id="editNameModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Update User Name</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" *ngIf="duplicateUserData">
+                        <form ngNativeValidate (ngSubmit)='handleNameUpdate()'>
+                            <div class="form-group row mb-3">
+                                <label for="staticEmail" class="col-sm-2 col-form-label">Name</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" placeholder="Enter name" name='fullName'
+                                        [(ngModel)]="duplicateUserData.Name">
+                                </div>
+                            </div>
+                            <div class="alert alert-success" *ngIf='isNameUpdated'>
+                                Updated successfully!
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Modal: name end-->
+
+        <!--- Modal: Email -->
+        <div class="modal fade" id="editEmailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Update Email</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" *ngIf="duplicateUserData">
+                        <form ngNativeValidate (ngSubmit)='handleEmailUpdate()'>
+                            <div class="form-group row mb-3">
+                                <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" placeholder="Enter Email" name='Email'
+                                        [(ngModel)]="duplicateUserData.Email">
+                                </div>
+                            </div>
+                            <div class="alert alert-success" *ngIf='isEmailUpdated'>
+                                Updated successfully!
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Modal end-->
+
+        <!--- Modal: Phone No -->
+        <div class="modal fade" id="editPhoneNoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Update PhoneNo</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" *ngIf="duplicateUserData">
+                        <form ngNativeValidate (ngSubmit)='handlePhoneNoUpdate()'>
+                            <div class="form-group row mb-3">
+                                <label for="staticEmail" class="col-sm-2 col-form-label">PhoneNo</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" placeholder="Enter PhoneNo" name='PhoneNo'
+                                        [(ngModel)]="duplicateUserData.PhoneNo">
+                                </div>
+                            </div>
+                            <div class="alert alert-success" *ngIf='isPhoneNoUpdated'>
+                                Updated successfully!
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Modal end-->
+
+
+        <!--- Modal: Shipping Address -->
+        <div class="modal fade" id="editShippingAddressModal" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Update ShippingAddress</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" *ngIf="duplicateUserData">
+                        <form ngNativeValidate (ngSubmit)='handleShippingAddressUpdate()'>
+                            <div class="form-group row mb-3">
+                                <label for="staticEmail" class="col-sm-2 col-form-label">ShippingAddress</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" placeholder="Enter ShippingAddress"
+                                        name='ShippingAddress' [(ngModel)]="duplicateUserData.ShippingAddress">
+                                </div>
+                            </div>
+                            <div class="alert alert-success" *ngIf='isShippingAddressUpdated'>
+                                Updated successfully!
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Modal end-->
+
+    </div>
+    <div>
+
+    </div>
+
+</div>
