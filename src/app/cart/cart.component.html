@@ -1,2 +1,15 @@
-
 <app-secondarynav></app-secondarynav>
+
+<ng-container *ngIf="true">
+    <div class="container">
+        <div class="card">
+            <h5 class="card-title">My Cart</h5>
+        </div>
+        <div class="center">
+            <!-- <img src="" alt="">  if image needed-->
+            <h4>Your Cart is Empty</h4>
+            <h4>Add Item to your Cart!</h4>
+            <button class="btn btn-primary" [routerLink]="['/']">Shop Now</button>
+        </div>
+    </div>
+</ng-container>
