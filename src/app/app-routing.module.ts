@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './auth/components/login/login.component';
 import { SignupComponent } from './auth/components/signup/signup.component';
 import { CategoryComponent } from './category/category.component';
-import { BookDetailsComponent } from './book/book-details/book-details.component';
+import { BookDetailsComponent } from './book/components/book-details/book-details.component';
 import { CartComponent } from './cart/cart.component';
 import { HomeComponent } from './home/home.component';
 import { OrdersComponent } from './orders/orders.component';
@@ -22,14 +22,15 @@ const routes: Routes = [
   { path: 'cart', component: CartComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
+  { path: 'category/create', component: CreateCategoryComponent },
   { path: 'categories', component: CategoryComponent },
   { path: 'category/:id', component: BookDetailsComponent },
   // { path: 'category', component: BookDetailsComponent },
   { path: 'category', redirectTo: '/category/1', pathMatch: 'full' },
   { path: 'book/create', component: CreateBookComponent },
-  { path: 'category/create', component: CreateCategoryComponent },
   { path: 'coupon', component: CouponComponent },
   { path: 'book/:id', component: BookProductDetailComponent },
+  { path: 'book', redirectTo: '/book/1', pathMatch: 'full' },
   { path: 'user/:id', component: UserDetailsComponent },
   // { path: 'user', component: UserListComponent },
   { path: 'user', redirectTo: '/userlist', pathMatch: 'full' },

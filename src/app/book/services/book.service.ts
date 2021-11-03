@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { Category } from 'src/app/category/model/category.model';
-import { Book } from '../book-details/model/book.model';
+import { Book } from '../components/book-details/model/book.model';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +14,21 @@ export class BookService {
     'https://raw.githubusercontent.com/Nami2012/BookStore-Frontend/FakeApiData/FakeAPIData/';
 
   constructor(private http: HttpClient) {}
-
+  private REST_API_URL_Firebase =
+    'https://bookstore-soti-default-rtdb.firebaseio.com/';
+  getBooksByCategory(cid: string): Observable<any> {
+    return this.http
+      .get(this.REST_API_URL_Firebase + 'booksByCategory/' + cid + '.json')
+      .pipe(
+        map((res: any) => {
+          let books = [];
+          for (let key in res) {
+            books.push({ ...res[key], id: key });
+          }
+          return books;
+        })
+      );
+  }
   getCategories(): Observable<Category[]> {
     return this.http.get(this.REST_API_URL + 'CategoryList.json').pipe(
       map((res: any) => {

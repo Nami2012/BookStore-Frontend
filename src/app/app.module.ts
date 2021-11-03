@@ -15,7 +15,7 @@ import { BookComponent } from './book/book.component';
 import { CreateBookComponent } from './book/components/create-book/create-book.component';
 
 import { CategoryComponent } from './category/category.component';
-import { BookDetailsComponent } from './book/book-details/book-details.component';
+import { BookDetailsComponent } from './book/components/book-details/book-details.component';
 import { HomeComponent } from './home/home.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { OrdersComponent } from './orders/orders.component';

@@ -31,26 +31,31 @@ export class UserService {
   private REST_API_URL =
     'https://mocki.io/v1/4bf52c1d-2975-4f56-af7c-6acd15248f94';
   getUsers(): Observable<UserDetails[]> {
-    return this.http.get(this.REST_API_URL).pipe(
-      map((res: any) => {
-        console.log(res);
-        return res;
-      })
-    );
+    return this.http
+      .get('https://bookstore-soti-default-rtdb.firebaseio.com/User.json')
+      .pipe(
+        map((res: any) => {
+          let users: UserDetails[] = [];
+          for (let key in res) {
+            users.push(res[key]);
+          }
+          return users;
+        })
+      );
   }
 
   //change user ActiveStatus by UId
-  setStatus(userId: number, status: boolean): any {
+  setStatus(userId: number, status: boolean): Observable<any> {
     let API_URL =
       'https://bookstore-soti-default-rtdb.firebaseio.com/User/"' +
       userId +
       '"/ActiveStatus.json';
-    return this.http
-      .put(API_URL, status)
-      .toPromise()
-      .then((res: any) => {
+    console.log(API_URL);
+    return this.http.put(API_URL, status).pipe(
+      map((res: any) => {
         return res;
-      });
+      })
+    );
   }
 
   //updateuser details

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Book } from './model/book.model';
-import { BookService } from './services/book.service';
-import { switchMap } from 'rxjs/operators';
+import { BookService } from '../../services/book.service';
 import {
   faHeart,
   faCartArrowDown,

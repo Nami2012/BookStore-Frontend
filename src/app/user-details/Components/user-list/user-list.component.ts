@@ -28,7 +28,7 @@ export class UserListComponent implements OnInit {
     });
   }
 
-  async toggleActiveStatus(uid: number, status: boolean) {
+  toggleActiveStatus(uid: number, status: boolean) {
     this.userService.setStatus(uid, !status).subscribe(() => {
       this.populateUsers();
     });
