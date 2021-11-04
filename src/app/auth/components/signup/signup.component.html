@@ -1,0 +1,74 @@
+<form class="container" [formGroup]="userSignupForm" (ngSubmit)="signup()">
+    <div class="row mt-5">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <h4>Signup</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+
+        </div>
+        <div class="col-4">
+            <div class="row mt-5">
+                <div class="col-9">
+                    <label for="name" class="form-label">Name</label>
+                    <input formControlName="name" type="text" class="form-control" name="name" id="name"
+                        [ngClass]="{ 'is-invalid': userSignupForm.get('name')?.touched && userSignupForm.get('name')?.invalid }" />
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-9">
+                    <label class="form-label" for="email">
+                        Email
+                    </label>
+                    <input formControlName="email" class="form-control" type="email" name="email" id="email"
+                        [ngClass]="{ 'is-invalid': userSignupForm.get('email')?.touched && userSignupForm.get('email')?.invalid }" />
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-9">
+                    <label for="password" class="form-label">
+                        Password
+                    </label>
+                    <input type="password" formControlName="password" name="password" class="form-control" id="password"
+                        [ngClass]="{ 'is-invalid': userSignupForm.get('password')?.touched && userSignupForm.get('password')?.invalid }" />
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-9"><label for="confirmPassword" class="form-label">
+                        Confirm Password
+                    </label>
+                    <input type="password" formControlName="confirmPassword" class="form-control" name="confirmPassword"
+                        id="confirmPassword"
+                        [ngClass]="{ 'is-invalid': userSignupForm.get('confirmPassword')?.touched && userSignupForm.get('confirmPassword')?.invalid }" />
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-9">
+                    <label for="phoneNumber" class="form-label">Phone number</label>
+                    <input type="tel" formControlName="phoneNumber" name="phoneNumber" id="phoneNumber"
+                        [ngClass]="{ 'is-invalid': userSignupForm.get('phoneNumber')?.touched && userSignupForm.get('phoneNumber')?.invalid }"
+                        class="form-control" />
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-9">
+                    <label for="shippingAddress" class="form-label">Shipping Address</label>
+                    <textarea class="form-control" formControlName="shippingAddress" name="shippingAddress"
+                        [ngClass]="{ 'is-invalid': userSignupForm.get('shippingAddress')?.touched && userSignupForm.get('shippingAddress')?.invalid }"
+                        id="shippingAddress" cols="30" rows="5"></textarea>
+                </div>
+            </div>
+            <div *ngIf="signupStatus" class="alert alert-danger" role="alert">
+                Signup Failed
+            </div>
+            <div class="row mt-2">
+                <div class="col-9">
+                    <button class=" btn btn-primary" type="submit">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>

@@ -1,1 +1,15 @@
-<app-secondarynav></app-secondarynav>
+<ngb-carousel *ngIf="featured" class=" text-center">
+    <ng-template *ngFor="let book of featured" ngbSlide>
+        <a routerLink="/book/{{book.BId}}" style="text-decoration: none; color: inherit;">
+            <div class="picsum-img-wrapper">
+                <img [src]="book.BImageUrl" alt="book.BDescription" width="40%" height="800px">
+            </div>
+            <div class="carousel-caption strokeme">
+                <h3>{{ book.BName }}</h3>
+                <p>{{ book.BDescription }}</p>
+            </div>
+        </a>
+    </ng-template>
+</ngb-carousel>
+
+<app-list-horizontal></app-list-horizontal>

@@ -1,17 +1,17 @@
 <div class="container">
     <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4" *ngFor="let category of categoryList">
-        <div class="card" style="width: 18rem; height:30rem;">
-            <a href="#" style="text-decoration: none;color: black;">
-                <div class="card-body">
-                    <img class="card-img-top" src={{category.CImage}} alt="Card image cap">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4" *ngFor="let category of categoryList">
+            <div class="card" style="width: 18rem; height:30rem;">
+                <a routerLink="/category/{{category.CId}}" style="text-decoration: none;color: black;">
                     <div class="card-body">
-                        <h5 class="card-title">{{category.CName}}</h5>
-                        <p class="card-text">{{category.CDescription}}</p>
+                        <img class="card-img-top" src={{category.CImage}} alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">{{category.CName}}</h5>
+                            <p class="card-text">{{category.CDescription}}</p>
+                        </div>
                     </div>
-                </div>
-            </a>
+                </a>
+            </div>
         </div>
     </div>
-</div>
 </div>
