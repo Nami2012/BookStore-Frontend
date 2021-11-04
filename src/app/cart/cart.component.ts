@@ -16,6 +16,7 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  
   removeFromCart(cartItem:CartItem){
     this.cartService.removeFromCart(cartItem.book.isbn);
     this.setCart();
