@@ -1,6 +1,47 @@
-<app-secondarynav></app-secondarynav>
+<div class="container">
+    <ul>
+        <li *ngFor="let cartItem of cart.items">
+            <div>
+                <!-- [src]="cartItem.book.BImage"  -->
+                <img [alt]="cartItem.book.title">
+            </div>
+            <div>
+                <a routerLink="/book/{{cartItem.book.cid}}">
+                    {{cartItem.book.title}}
+                </a>
+            </div>
+    
+            <div>
+                <select #quantitySelect (change)="changeQuantity(cartItem,
+                quantitySelect.value)">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+            </select>
+            </div>  
+    
+            <div>
+                {{cartItem.price + " INR "}}
+            </div>
+            
+            <div>
+                <button class="remove-button" (click)="removeFromCart(cartItem)">
+                    Remove
+                </button>
+            </div>
+        </li>
+    </ul>
+    
+    <div class="checkout">
+        <div>
+            <div class="Book-count">{{cart.items.length}}</div>
+            <div class="total-price">{{cart.totalPrice}}</div>
+        </div>
+    </div>
+</div>
 
-<ng-container *ngIf="true">
+<ng-container *ngIf="false">
     <div class="container">
         <div class="card">
             <h5 class="card-title">My Cart</h5>

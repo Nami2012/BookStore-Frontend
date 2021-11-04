@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {
   faBarcode,
   faCartArrowDown,
   faHeart,
 } from '@fortawesome/free-solid-svg-icons';
+import { CartService } from 'src/app/cart/services/cart.service';
 import { BookService } from '../../services/book.service';
+import { Book } from '../book-details/model/book.model';
 
 @Component({
   selector: 'app-book-product-detail',
@@ -13,7 +15,7 @@ import { BookService } from '../../services/book.service';
   styleUrls: ['./book-product-detail.component.scss'],
 })
 export class BookProductDetailComponent implements OnInit {
-  book: any;
+  book: any = new Book();
 
   //icons
   faHeart = faHeart;
@@ -22,7 +24,9 @@ export class BookProductDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private bookService: BookService
+    private bookService: BookService, 
+    private cartService: CartService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -32,8 +36,15 @@ export class BookProductDetailComponent implements OnInit {
         this.book = data;
         console.log(this.book);
       });
-    } else {
+    } 
+    else {
       this.book = null;
     }
   }
+
+  addToCart(){
+    this.cartService.addToCart(this.book);
+    this.router.navigateByUrl('/cart');
+  }
+
 }

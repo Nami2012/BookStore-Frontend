@@ -19,7 +19,7 @@ export class CartService {
       this.changeQuantity(book.isbn, cartItem.quantity + 1);
       return;
     }
-    this.cart.items.push(new CartItem(book));
+    this.cart.items.push(new CartItem(book))
   }
 
   removeFromCart(bookId:string): void{
@@ -34,6 +34,6 @@ export class CartService {
   }
 
   getCart():Cart{
-    return this.cart
+    return this.cart;
   }
 }
