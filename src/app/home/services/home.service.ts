@@ -7,18 +7,14 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class HomeService {
-  REST_API_URL = 'https://bookstore-soti-default-rtdb.firebaseio.com/';
+  REST_API_URL = 'https://localhost:44380/api/';
 
   constructor(private http: HttpClient) {}
 
   getFeaturedBooks(): Observable<any> {
-    return this.http.get(this.REST_API_URL + 'featuredBooks.json').pipe(
+    return this.http.get(this.REST_API_URL + 'books/gettopbooks').pipe(
       map((resData: any) => {
-        let books = [];
-        for (let key in resData) {
-          books.push({ ...resData[key] });
-        }
-        return books;
+        return resData;
       })
     );
   }
