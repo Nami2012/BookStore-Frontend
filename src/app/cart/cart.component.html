@@ -1,13 +1,17 @@
-<div class="container">
+<app-notfound [visible]="!cart || cart.items.length ==0"
+notFoundMessage="Your Cart is Empty" 
+resetLinkText="Shop Now">
+</app-notfound>
+
+<div *ngIf="cart && cart.items.length > 0" class="container">
     <ul>
         <li *ngFor="let cartItem of cart.items">
             <div>
-                <!-- [src]="cartItem.book.BImage"  -->
-                <img [alt]="cartItem.book.title">
+                <img [src]="cartItem.book.BImage" [alt]="cartItem.book.title">
             </div>
             <div>
-                <a routerLink="/book/{{cartItem.book.cid}}">
-                    {{cartItem.book.title}}
+                <a routerLink="/book/{{cartItem.book.BId}}">
+                    {{cartItem.book.BTitle}}
                 </a>
             </div>
     
@@ -18,6 +22,7 @@
                     <option>2</option>
                     <option>3</option>
                     <option>4</option>
+                    <option>5</option>
             </select>
             </div>  
     
@@ -30,27 +35,20 @@
                     Remove
                 </button>
             </div>
+
+            <div>
+                {{cartItem | json}}
+            </div>
         </li>
     </ul>
+
     
     <div class="checkout">
         <div>
             <div class="Book-count">{{cart.items.length}}</div>
             <div class="total-price">{{cart.totalPrice}}</div>
+            <button class="btn btn-primary" [routerLink]="['/order/checkout']" (click)="Checkout(cart.items)"> Checkout</button>
         </div>
     </div>
 </div>
 
-<ng-container *ngIf="false">
-    <div class="container">
-        <div class="card">
-            <h5 class="card-title">My Cart</h5>
-        </div>
-        <div class="center">
-            <!-- <img src="" alt="">  if image needed-->
-            <h4>Your Cart is Empty</h4>
-            <h4>Add Item to your Cart!</h4>
-            <button class="btn btn-primary" [routerLink]="['/']">Shop Now</button>
-        </div>
-    </div>
-</ng-container>

@@ -33,6 +33,7 @@ import { ListHorizontalComponent } from './shared/components/list-horizontal/lis
 import { BookProductDetailComponent } from './book/components/book-product-detail/book-product-detail.component';
 import { UserDetailsComponent } from './user-details/Components/user-details-component.component';
 import { UserListComponent } from './user-details/Components/user-list/user-list.component';
+import { NotfoundComponent } from './shared/components/notfound/notfound.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { UserListComponent } from './user-details/Components/user-list/user-list
     DropdownComponent,
     UserDetailsComponent,
     UserListComponent,
+    NotfoundComponent,
   ],
   imports: [
     BrowserModule,

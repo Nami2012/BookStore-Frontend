@@ -1,4 +1,9 @@
+
 <div class="container">
+    <app-notfound [visible]="!book" notFoundMessage="Book Not Found!"
+    resetLinkText="Go to Home">
+
+    </app-notfound>
     <div class="card m-4" *ngIf="book">
 
         <div class="card-header">

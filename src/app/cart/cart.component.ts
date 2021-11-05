@@ -16,22 +16,27 @@ export class CartComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.cart = this.cartService.getCart()
   }
 
   
   removeFromCart(cartItem:CartItem){
-    this.cartService.removeFromCart(cartItem.book.isbn);
+    this.cartService.removeFromCart(cartItem.book.BId);
     this.setCart();
   }
 
   changeQuantity(cartItem: CartItem, quantityStr:string){
     const quantity = parseInt(quantityStr);
-    this.cartService.changeQuantity(cartItem.book.isbn, quantity)
+    this.cartService.changeQuantity(cartItem.book.BId, quantity)
     this.setCart();
   }
 
   setCart(){
     this.cart = this.cartService.getCart();
+  }
+
+  Checkout(items: CartItem[]){
+    
   }
 
 }

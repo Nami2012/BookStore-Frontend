@@ -1,6 +1,4 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { Book } from '../model/book.model';
 import { Cart } from '../model/cart.model';
 import { CartItem } from '../model/cartItem.model';
 
@@ -13,22 +11,24 @@ export class CartService {
 
   constructor() { }
   
-  addToCart(book: Book): void{
-    let cartItem = this.cart.items.find(item => item.book.isbn === book.isbn);
+  addToCart(book: any): void{
+    let cartItem = this.cart.items.find(item => item.book.BId === book.BId);
     if (cartItem){
-      this.changeQuantity(book.isbn, cartItem.quantity + 1);
+      this.changeQuantity(book.BId, cartItem.quantity + 1);
       return;
     }
     this.cart.items.push(new CartItem(book))
+    console.log(this.cart);
   }
 
-  removeFromCart(bookId:string): void{
+  removeFromCart(bookId:number): void{
     this.cart.items =
-    this.cart.items.filter(item => item.book.isbn != bookId);
+    this.cart.items.filter(item => item.book.BId != bookId);
   }
   
-  changeQuantity(bookId: string, quantity:number){
-    let cartItem = this.cart.items.find(item => item.book.isbn === bookId);
+  changeQuantity(bookId: number, quantity:number){
+    let cartItem = this.cart.items.find(item => item.book.BId === bookId);
+    console.log(cartItem);
     if (!cartItem) return;
     cartItem.quantity = quantity;
   }

@@ -5,10 +5,10 @@ export class CartItem{
         this.book = book;
         this.price;
     }
-    book:Book = new Book();
+    book:any;
     quantity: number = 1;
 
     get price():number{
-        return this.book.price * this.quantity;
+        return this.book.BPrice * this.quantity;
     }
 }

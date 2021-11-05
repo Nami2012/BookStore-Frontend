@@ -15,7 +15,7 @@ import { Book } from '../book-details/model/book.model';
   styleUrls: ['./book-product-detail.component.scss'],
 })
 export class BookProductDetailComponent implements OnInit {
-  book: any = new Book();
+  book: any;
 
   //icons
   faHeart = faHeart;
@@ -30,9 +30,9 @@ export class BookProductDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    let userId = this.route.snapshot.paramMap.get('id');
-    if (userId) {
-      this.bookService.getBookById(userId).subscribe((data) => {
+    let BookId = this.route.snapshot.paramMap.get('id');
+    if (BookId) {
+      this.bookService.getBookById(BookId).subscribe((data) => {
         this.book = data;
         console.log(this.book);
       });
@@ -43,8 +43,16 @@ export class BookProductDetailComponent implements OnInit {
   }
 
   addToCart(){
-    this.cartService.addToCart(this.book);
-    this.router.navigateByUrl('/cart');
+    let BookId = this.route.snapshot.paramMap.get('id');
+    if (BookId){
+    this.bookService.getBookById(BookId).subscribe((data) => {
+      this.book = data;
+      console.log(this.book);
+      this.cartService.addToCart(this.book);
+      this.router.navigateByUrl('/cart');
+    
+    });
+  }
   }
 
 }
