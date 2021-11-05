@@ -32,7 +32,7 @@ export class CartComponent implements OnInit {
   }
 
   setCart(){
-    this.cart = this.cartService.getCart();
+    this.cart = this.cartService.getCart();  
   }
 
   Checkout(items: CartItem[]){

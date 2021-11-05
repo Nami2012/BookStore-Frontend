@@ -15,6 +15,7 @@ import { CouponComponent } from './coupon/coupon.component';
 import { BookProductDetailComponent } from './book/components/book-product-detail/book-product-detail.component';
 import { UserDetailsComponent } from './user-details/Components/user-details-component.component';
 import { UserListComponent } from './user-details/Components/user-list/user-list.component';
+import { NotfoundComponent } from './shared/components/notfound/notfound.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -36,7 +37,8 @@ const routes: Routes = [
   // { path: 'user', component: UserListComponent },
   { path: 'user', redirectTo: '/userlist', pathMatch: 'full' },
   { path: 'userlist', component: UserListComponent },
-  {path: 'search/:searchTerm/:categoryValue', component: SearchresultComponent}
+  {path: 'search/:searchTerm/:categoryValue', component: SearchresultComponent},
+  // {path:'**', component: NotfoundComponent}
 ];
 
 @NgModule({

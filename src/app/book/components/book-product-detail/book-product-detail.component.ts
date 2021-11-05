@@ -6,6 +6,7 @@ import {
   faHeart,
 } from '@fortawesome/free-solid-svg-icons';
 import { CartService } from 'src/app/cart/services/cart.service';
+import { WishlistService } from 'src/app/wishlist/services/wishlist.service';
 import { BookService } from '../../services/book.service';
 import { Book } from '../book-details/model/book.model';
 
@@ -26,6 +27,7 @@ export class BookProductDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private bookService: BookService, 
     private cartService: CartService,
+    private wishlistService: WishlistService,
     private router: Router
   ) {}
 
@@ -50,6 +52,19 @@ export class BookProductDetailComponent implements OnInit {
       console.log(this.book);
       this.cartService.addToCart(this.book);
       this.router.navigateByUrl('/cart');
+    
+    });
+  }
+  }
+
+  addToWishlist(){
+    let BookId = this.route.snapshot.paramMap.get('id');
+    if (BookId){
+    this.bookService.getBookById(BookId).subscribe((data) => {
+      this.book = data;
+      console.log(this.book);
+      this.wishlistService.addToWishlist(this.book);
+      this.router.navigateByUrl('/wishlist');
     
     });
   }

@@ -11,7 +11,7 @@ export class CartService {
 
   constructor() { }
   
-  addToCart(book: any): void{
+  addToCart(book: any): void{ 
     let cartItem = this.cart.items.find(item => item.book.BId === book.BId);
     if (cartItem){
       this.changeQuantity(book.BId, cartItem.quantity + 1);
@@ -29,7 +29,7 @@ export class CartService {
   changeQuantity(bookId: number, quantity:number){
     let cartItem = this.cart.items.find(item => item.book.BId === bookId);
     console.log(cartItem);
-    if (!cartItem) return;
+    if (!cartItem) return; 
     cartItem.quantity = quantity;
   }
 
