@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth/services/auth.service';
 import { CouponService } from './services/coupon.service';
 
 @Component({
@@ -14,11 +15,28 @@ export class CouponComponent implements OnInit {
     discount: new FormControl('', Validators.required),
   });
 
+  isAdmin: boolean = false;
+
   showSuccess: boolean = false;
 
-  constructor(private couponService: CouponService, private router: Router) {}
+  // Auth Service is used to check if user is admin
+  // If user is admin, then show add coupon form
+  constructor(
+    private couponService: CouponService,
+    private router: Router,
+    private authService: AuthService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.authService.isAdmin().subscribe(
+      (res: any) => {
+        this.isAdmin = true;
+      },
+      (err) => {
+        this.isAdmin = false;
+      }
+    );
+  }
 
   // Add new coupon to database
   handleAddCoupon() {

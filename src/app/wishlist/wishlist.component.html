@@ -1,3 +1,33 @@
-<h3>
-    Wishlist Works
-</h3>
+<app-notfound [visible]="!wishlist || wishlist.length == 0"
+notFoundMessage="Your Wishlist is Empty" 
+resetLinkText="Go Home">
+</app-notfound>
+
+<div *ngIf="wishlist && wishlist.length > 0" class="container">
+    <ul>
+        <li *ngFor="let book of wishlist">
+            <div>
+                <img [src]="book.BImage" [alt]="book.title">
+            </div>
+            <div>
+                <a routerLink="/book/{{book.BId}}">
+                    {{book.BTitle}}
+                </a>
+            </div>
+            
+            <div>
+                {{book.CName}}
+            </div>
+
+            <div>
+                {{book.BPrice + " INR "}}
+            </div>
+
+            <div>
+                <button class="remove-button" (click)="removeFromWishlist(book)">
+                    Remove
+                </button>
+            </div>
+
+        </li>
+    </ul>

@@ -1,4 +1,9 @@
+
 <div class="container">
+    <app-notfound [visible]="!book" notFoundMessage="Book Not Found!"
+    resetLinkText="Go to Home">
+
+    </app-notfound>
     <div class="card m-4" *ngIf="book">
 
         <div class="card-header">
@@ -42,8 +47,8 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                            <fa-icon [icon]="faCart"></fa-icon> &nbsp;
-                            <fa-icon [icon]="faHeart"></fa-icon>
+                            <fa-icon (click)="addToCart() "[icon]="faCart"></fa-icon> &nbsp;
+                            <fa-icon (click)="addToWishlist()"[icon]="faHeart"></fa-icon>
                         </div>
                     </div>
                 </div>

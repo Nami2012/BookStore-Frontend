@@ -10,12 +10,13 @@ import { map } from 'rxjs/operators';
 export class CategoryService {
   private REST_API_URL =
     'https://raw.githubusercontent.com/Nami2012/BookStore-Frontend/FakeApiData/FakeAPIData/CategoryList.json';
+
+  private REST_API_URL_ASP = 'https://localhost:44380/api/';
   constructor(private http: HttpClient) {}
 
   getCategories(): Observable<Category[]> {
-    return this.http.get(this.REST_API_URL).pipe(
+    return this.http.get(this.REST_API_URL_ASP + 'Categories').pipe(
       map((res: any) => {
-        //write code to sort based on position here.
         return res;
       })
     );
@@ -25,16 +26,10 @@ export class CategoryService {
   // Add Category
   // any is used since create category data doesn't all fields in model
   addCategory(category: any): Observable<any> {
-    return this.http
-      .post(
-        'https://bookstore-soti-default-rtdb.firebaseio.com/' +
-          'categoryList.json',
-        category
-      )
-      .pipe(
-        map((res: any) => {
-          return res;
-        })
-      );
+    return this.http.post(this.REST_API_URL_ASP + 'Categories', category).pipe(
+      map((res: any) => {
+        return res;
+      })
+    );
   }
 }

@@ -16,22 +16,21 @@ export class ListHorizontalComponent implements OnInit {
   constructor(private sharedService: SharedService) {}
 
   ngOnInit(): void {
-    console.log(this.currentCategory);
     this.sharedService.getCategories().subscribe((res: any) => {
       this.categoryList = res;
-      this.categoryList.push({ CId: 0, CName: 'featured' });
-      this.sharedService
-        .getBooksByCategory(this.categoryList[this.currentCategory].CName)
-        .subscribe((res) => {
-          this.bookList = res;
-          console.log(this.bookList);
-        });
+      this.categoryList.push({ CId: null, CName: 'Featured' });
+      this.getBooksByCategory();
     });
   }
 
-  // Navigate to Book Product Page based on BId
-  routeToBook(bid: number) {
-    console.log(bid);
+  // Get books by current category
+  getBooksByCategory() {
+    this.sharedService
+      .getBooksByCategory(this.categoryList[this.currentCategory].CId)
+      .subscribe((res) => {
+        this.bookList = res;
+        console.log(this.bookList);
+      });
   }
 
   // Rerender the top books
@@ -39,11 +38,6 @@ export class ListHorizontalComponent implements OnInit {
     this.currentCategory =
       (this.currentCategory + 1) % this.categoryList.length;
     console.log(this.currentCategory);
-    this.sharedService
-      .getBooksByCategory(this.categoryList[this.currentCategory].CName)
-      .subscribe((res: any) => {
-        this.bookList = res;
-        console.log(this.bookList);
-      });
+    this.getBooksByCategory();
   }
 }
