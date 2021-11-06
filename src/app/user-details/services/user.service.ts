@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { UserDetails } from '../model/user-details.model';
+import { user,UserAccountInfo,UserCredentials, UserDetails } from '../model/user-details.model';
 import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root',
@@ -10,32 +10,29 @@ export class UserService {
   constructor(private http: HttpClient) {}
 
   //getUserById endpoint
-  private GET_USER_BY_ID_REST_API_URL = '';
-  getUserById(id: string): Observable<UserDetails> {
-    let API_URL = this.GET_USER_BY_ID_REST_API_URL + id;
-    return this.http
+  private GET_USER_BY_ID_REST_API_URL = 'https://localhost:44380/api/userdetails';
+
+  getUserById(id: string|any): Observable<any> {
+     return this.http
       .get(
-        'https://bookstore-soti-default-rtdb.firebaseio.com/User/"' +
-          id +
-          '".json'
-      ) //replace api url here
+       this.GET_USER_BY_ID_REST_API_URL ,{params:{id:id}}
+      )
       .pipe(
         map((res: any) => {
-          console.log(res);
+        //  console.log(res);
           return res;
         })
       );
   }
 
   //getallusers endpoint
-  private REST_API_URL =
-    'https://mocki.io/v1/4bf52c1d-2975-4f56-af7c-6acd15248f94';
-  getUsers(): Observable<UserDetails[]> {
+  private REST_API_URL ='https://localhost:44380/api/userlist';
+  getUsers(): Observable<user[]> {
     return this.http
-      .get('https://bookstore-soti-default-rtdb.firebaseio.com/User.json')
+      .get('https://localhost:44380/api/userlist')
       .pipe(
         map((res: any) => {
-          let users: UserDetails[] = [];
+          let users: user[] = [];
           for (let key in res) {
             users.push(res[key]);
           }
@@ -45,32 +42,70 @@ export class UserService {
   }
 
   //change user ActiveStatus by UId
-  setStatus(userId: number, status: boolean): Observable<any> {
+  setStatus(userid: number, status: boolean): Observable<any> {
     let API_URL =
-      'https://bookstore-soti-default-rtdb.firebaseio.com/User/"' +
-      userId +
-      '"/ActiveStatus.json';
+      'https://localhost:44380/api/user/edit/activestatus' 
     console.log(API_URL);
-    return this.http.put(API_URL, status).pipe(
+    return this.http.put(API_URL,{},{params:{id:userid}}).pipe(
       map((res: any) => {
         return res;
       })
     );
   }
 
-  //updateuser details
-  private UPDATE_USER_DETAILS_REST_API_URL = '';
-  updateUser(updateableUserData: UserDetails): any {
-    let API_URL =
-      this.UPDATE_USER_DETAILS_REST_API_URL + updateableUserData.UId;
-    console.log(updateableUserData);
+  populateUserAccountInfo(updateableUserData:UserDetails):UserAccountInfo{
+    let userAccountInfo:UserAccountInfo = new UserAccountInfo();
+    userAccountInfo.UId = updateableUserData.UId;
+    userAccountInfo.Name = updateableUserData.Name;
+    userAccountInfo.PhoneNo = updateableUserData.PhoneNo;
+    userAccountInfo.ShippingAddress = updateableUserData.ShippingAddress;
+    userAccountInfo.ActiveStatus = updateableUserData.ActiveStatus;
+    return userAccountInfo;
+  }
 
-    return this.http
+  populateUserCredentials(updateableUserData:UserDetails):UserCredentials{
+    let userCredentials:UserCredentials = new UserCredentials();
+    userCredentials.UId = updateableUserData.UId;
+    userCredentials.Password = updateableUserData.Password;
+    userCredentials.Username = updateableUserData.Username;
+    return userCredentials;
+  }
+
+  //updateuser_information details
+  private UPDATE_USER_DETAILS_REST_API_URL = 'https://localhost:44380/api/userInfo/edit';
+  private UPDATE_USER_CRED_REST_API_URL = 'https://localhost:44380/api/userCred/edit';
+  updateUser(updateableUserData: UserDetails): any {
+   // let API_URL = this.UPDATE_USER_DETAILS_REST_API_URL;
+    let userAccountInfo:UserAccountInfo = this.populateUserAccountInfo(updateableUserData);
+    let userCredentials:UserCredentials = this.populateUserCredentials(updateableUserData);
+    console.log("Inside service");
+    console.log(updateableUserData);
+    console.log(userAccountInfo);
+    console.log(userCredentials);
+    //update user account info
+    let status= this.http
       .put(
-        'https://bookstore-soti-default-rtdb.firebaseio.com/User/"' +
-          updateableUserData.UId +
-          '".json',
-        updateableUserData
+       this.UPDATE_USER_DETAILS_REST_API_URL,
+       userAccountInfo,{params:{id:updateableUserData.UId}}
+      )
+      .toPromise()
+      .then((res: any) => {
+        console.log(res);
+        return res;
+      })
+      .catch((err: any) => {
+        console.log('Inside Error');
+        console.log(err);
+      })
+      .finally(() => {
+        console.log('it is over');
+      });
+      
+      //update user credentials info
+      return this.http
+      .put(
+        this.UPDATE_USER_CRED_REST_API_URL,
+       userCredentials,{params:{id:updateableUserData.UId}}
       )
       .toPromise()
       .then((res: any) => {
@@ -85,4 +120,40 @@ export class UserService {
         console.log('it is over');
       });
   }
+
+
+  private DELETE_USER_REST_API_URL = 'https://localhost:44380/api/user/delete';
+  deleteUsers(uid:number):any{
+    return this.http.delete(this.DELETE_USER_REST_API_URL,{params:{id:uid}}).pipe(
+      map((res: any) => {
+        return res;
+      })
+    );
+  }
+  //update user credentials
+  //updateuser_information details
+  // private UPDATE_USER_CREDENTIALS_REST_API_URL = 'https://localhost:44380/api/user/edit';
+  // updateUserCred(updateableUserData: UserCredentialDetails): any {
+  //   let API_URL = this.UPDATE_USER_DETAILS_REST_API_URL;
+     
+  //   console.log(updateableUserData);
+
+  //   return this.http
+  //     .put(
+  //      API_URL,
+  //       updateableUserData,{params:{id:updateableUserData.UId}}
+  //     )
+  //     .toPromise()
+  //     .then((res: any) => {
+  //       console.log(res);
+  //       return res;
+  //     })
+  //     .catch((err: any) => {
+  //       console.log('Inside Error');
+  //       console.log(err);
+  //     })
+  //     .finally(() => {
+  //       console.log('it is over');
+  //     });
+  // }
 }
