@@ -8,7 +8,7 @@
         <ul class="list-group mb-3" *ngFor="let user of users">
             <li class="list-group-item">
                 <div class="row">
-                    <div class="col-8">
+                    <div class="col-6">
                         <h5><b>Name:</b></h5>
                         {{user.Name}}
                     </div>
@@ -30,7 +30,10 @@
                         </div>
                     </ng-template>
 
-
+                    <div class="col-2">
+                        
+                            <button type="button" class="btn btn-Danger" (click)="HandleDelete(user.UId)">Delete</button>
+                    </div>
                 </div>
             </li>
 

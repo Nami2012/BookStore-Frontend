@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { UserDetails } from '../model/user-details.model';
+import { user, UserDetails } from '../model/user-details.model';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -10,11 +10,11 @@ import { UserService } from '../services/user.service';
 })
 export class UserDetailsComponent implements OnInit {
   userDetails!: UserDetails;
-  isNameUpdated = false;
-  isEmailUpdated = false;
-  isPhoneNoUpdated = false;
-  isShippingAddressUpdated = false;
-  duplicateUserData: any;
+  isEditing = false;
+  buttonText = "Edit";
+  duplicateUserData!: UserDetails;
+  isUpdated = false;
+
   constructor(
     private userService: UserService,
     private route: ActivatedRoute
@@ -25,59 +25,31 @@ export class UserDetailsComponent implements OnInit {
   }
 
   populateUserDetails() {
-    let userId = this.route.snapshot.paramMap.get('id') || '1';
+    //let userId = this.route.snapshot.paramMap.get('id') ;
+    let userId = 1;
     this.userService.getUserById(userId).subscribe((res: any) => {
-      console.log(res);
-      this.userDetails = res;
-    });
+      this.userDetails = res[0]; //change access method
+      this.userDetails.UId=userId;
+      console.log(this.userDetails);
+      this.duplicateUserData = this.userDetails ;
+    }); 
   }
 
-  handleEditModalOpen(): void {
-    this.duplicateUserData = { ...this.userDetails };
+
+  handleEditButton():void{
+    if(this.isEditing == true){
+      this.buttonText = "Edit";
+      this.isEditing = false;
+    }else{
+     
+      this.buttonText = "Go Back";
+      this.isEditing = true;
+    }
   }
 
-  // Modal Functions -- Reformat if possible
-  async handleNameUpdate() {
-    let status = await this.userService.updateUser(this.duplicateUserData);
-    if (status && status.Name) {
-      this.isNameUpdated = true;
-    }
+   updateUser(){
+    console.log(this.duplicateUserData);
+    this.userService.updateUser(this.duplicateUserData);
     this.populateUserDetails();
-    setTimeout(() => {
-      this.isNameUpdated = false;
-    }, 5000);
   }
-
-  async handleEmailUpdate() {
-    let status = await this.userService.updateUser(this.duplicateUserData);
-    if (status && status.Email) {
-      this.isEmailUpdated = true;
-    }
-    this.populateUserDetails();
-    setTimeout(() => {
-      this.isEmailUpdated = false;
-    }, 5000);
-  }
-  async handlePhoneNoUpdate() {
-    let status = await this.userService.updateUser(this.duplicateUserData);
-    if (status && status.PhoneNo) {
-      this.isPhoneNoUpdated = true;
-    }
-    this.populateUserDetails();
-    setTimeout(() => {
-      this.isPhoneNoUpdated = false;
-    }, 5000);
-  }
-
-  async handleShippingAddressUpdate() {
-    let status = await this.userService.updateUser(this.duplicateUserData);
-    if (status && status.ShippingAddress) {
-      this.isShippingAddressUpdated = true;
-    }
-    this.populateUserDetails();
-    setTimeout(() => {
-      this.isShippingAddressUpdated = false;
-    }, 5000);
-  }
-  // end of modal handles //
 }
