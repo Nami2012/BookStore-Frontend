@@ -24,7 +24,6 @@ export class CreateCategoryComponent implements OnInit {
     this.categoryService
       .addCategory(this.addCategoryForm.value)
       .subscribe((res) => {
-        console.log(res);
         if (res) {
           this.addCategoryForm.reset();
           this.router.navigate(['/category']);

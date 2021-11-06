@@ -11,7 +11,7 @@ import { UserService } from '../services/user.service';
 export class UserDetailsComponent implements OnInit {
   userDetails!: UserDetails;
   isEditing = false;
-  buttonText = "Edit";
+  buttonText = 'Edit';
   duplicateUserData!: UserDetails;
   isUpdated = false;
 
@@ -29,26 +29,22 @@ export class UserDetailsComponent implements OnInit {
     let userId = 1;
     this.userService.getUserById(userId).subscribe((res: any) => {
       this.userDetails = res[0]; //change access method
-      this.userDetails.UId=userId;
-      console.log(this.userDetails);
-      this.duplicateUserData = this.userDetails ;
-    }); 
+      this.userDetails.UId = userId;
+      this.duplicateUserData = this.userDetails;
+    });
   }
 
-
-  handleEditButton():void{
-    if(this.isEditing == true){
-      this.buttonText = "Edit";
+  handleEditButton(): void {
+    if (this.isEditing == true) {
+      this.buttonText = 'Edit';
       this.isEditing = false;
-    }else{
-     
-      this.buttonText = "Go Back";
+    } else {
+      this.buttonText = 'Go Back';
       this.isEditing = true;
     }
   }
 
-   updateUser(){
-    console.log(this.duplicateUserData);
+  updateUser() {
     this.userService.updateUser(this.duplicateUserData);
     this.populateUserDetails();
   }

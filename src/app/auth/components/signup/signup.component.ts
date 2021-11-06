@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import {UserService} from '../../../user-details/services/user.service';
+import { UserService } from '../../../user-details/services/user.service';
 import { UserDetails } from 'src/app/user-details/model/user-details.model';
 
 @Component({
@@ -13,8 +13,12 @@ import { UserDetails } from 'src/app/user-details/model/user-details.model';
 export class SignupComponent implements OnInit {
   userSignupForm!: FormGroup;
   signupStatus!: boolean;
-  
-  constructor(private authService: AuthService,private userService:UserService, private router: Router) {}
+
+  constructor(
+    private authService: AuthService,
+    private userService: UserService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.userSignupForm = new FormGroup({
@@ -34,21 +38,20 @@ export class SignupComponent implements OnInit {
   }
 
   //refactor code here
-  populate(userSignupForm:FormGroup):UserDetails{
-    let userdetails:UserDetails = new UserDetails();
+  populate(userSignupForm: FormGroup): UserDetails {
+    let userdetails: UserDetails = new UserDetails();
     userdetails.Name = userSignupForm.controls['name'].value;
     userdetails.Username = userSignupForm.controls['email'].value;
     userdetails.PhoneNo = userSignupForm.controls['phoneNumber'].value;
-    userdetails.ShippingAddress = userSignupForm.controls['shippingAddress'].value;
+    userdetails.ShippingAddress =
+      userSignupForm.controls['shippingAddress'].value;
     userdetails.Password = userSignupForm.controls['password'].value;
-    userdetails.ActiveStatus = true;  //automtically setup this value too
+    userdetails.ActiveStatus = true; //automtically setup this value too
     return userdetails;
   }
 
-
   signup(): void {
-    let userdetails:UserDetails = this.populate(this.userSignupForm);
-    console.log(userdetails);
+    let userdetails: UserDetails = this.populate(this.userSignupForm);
     this.userService.registerUser(userdetails);
   }
 }

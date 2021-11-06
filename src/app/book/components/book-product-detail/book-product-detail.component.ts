@@ -36,7 +36,6 @@ export class BookProductDetailComponent implements OnInit {
     if (bookId) {
       this.bookService.getBookById(bookId).subscribe((data) => {
         this.book = data;
-        console.log(this.book);
       });
     } else {
       this.book = null;
@@ -48,7 +47,6 @@ export class BookProductDetailComponent implements OnInit {
     if (BookId) {
       this.bookService.getBookById(BookId).subscribe((data) => {
         this.book = data;
-        console.log(this.book);
         this.cartService.addToCart(this.book);
         this.router.navigateByUrl('/cart');
       });
@@ -60,7 +58,6 @@ export class BookProductDetailComponent implements OnInit {
     if (BookId) {
       this.bookService.getBookById(BookId).subscribe((data) => {
         this.book = data;
-        console.log(this.book);
         this.wishlistService.addToWishlist(this.book);
         this.router.navigateByUrl('/wishlist');
       });

@@ -25,13 +25,11 @@ export class LoginComponent implements OnInit {
   onLogin(): void {
     this.authService.login(this.userLoginForm.value).subscribe(
       (res: any) => {
-        console.log('res inside onLogin()');
         if (res && res.access_token) {
           this.router.navigate(['/']);
         }
       },
       (err) => {
-        console.log(err);
         this.loginStatus = true;
         setTimeout(() => {
           this.loginStatus = false;

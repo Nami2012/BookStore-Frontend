@@ -29,7 +29,6 @@ export class ListHorizontalComponent implements OnInit {
       .getBooksByCategory(this.categoryList[this.currentCategory].CId)
       .subscribe((res) => {
         this.bookList = res;
-        console.log(this.bookList);
       });
   }
 
@@ -37,7 +36,6 @@ export class ListHorizontalComponent implements OnInit {
   switchCategory() {
     this.currentCategory =
       (this.currentCategory + 1) % this.categoryList.length;
-    console.log(this.currentCategory);
     this.getBooksByCategory();
   }
 }

@@ -47,7 +47,6 @@ export class BookDetailsComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
-    console.log('Inside Destroy');
     this.bookSubscription.unsubscribe;
     if (this.bookList && this.bookList.length > 0) this.bookList.length = 0;
   }

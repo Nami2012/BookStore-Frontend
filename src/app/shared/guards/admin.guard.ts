@@ -29,15 +29,11 @@ export class AdminGuard implements CanActivate {
     return new Promise((resolve, reject) => {
       this.authService.isAdmin().subscribe(
         (res: any) => {
-          console.log('Inside resolve true');
-          console.log(res);
           if (res.toString() === 'isAdmin') {
-            console.log('Inside resolve true');
             resolve(true);
           }
         },
         (err) => {
-          console.log('Inside resolve false');
           this.router.navigate(['login']);
           resolve(false);
         }

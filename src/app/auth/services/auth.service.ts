@@ -21,7 +21,6 @@ export class AuthService {
     body.set('username', userCredentials.email);
     body.set('password', userCredentials.password);
     body.set('grant_type', 'password');
-    console.log(body.toString());
     return this.http
       .post<any>(`${this.REST_API_URL}token`, body.toString(), options)
       .pipe(
@@ -47,7 +46,6 @@ export class AuthService {
   isAdmin() {
     return this.http.get(`${this.REST_API_URL}api/isAdmin`).pipe(
       map((res) => {
-        console.log(res);
         return res;
       })
     );

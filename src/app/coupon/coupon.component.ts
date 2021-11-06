@@ -11,13 +11,15 @@ import { CouponService } from './services/coupon.service';
 })
 export class CouponComponent implements OnInit {
   addCouponForm: FormGroup = new FormGroup({
-    couponCode: new FormControl('', Validators.required),
-    discount: new FormControl('', Validators.required),
+    CouponId: new FormControl('', Validators.required),
+    Discount: new FormControl('', Validators.required),
   });
 
   isAdmin: boolean = false;
 
   showSuccess: boolean = false;
+
+  coupons!: any[];
 
   // Auth Service is used to check if user is admin
   // If user is admin, then show add coupon form
@@ -36,6 +38,18 @@ export class CouponComponent implements OnInit {
         this.isAdmin = false;
       }
     );
+    this.populateCoupons();
+  }
+
+  populateCoupons() {
+    this.couponService.getCoupons().subscribe(
+      (res: any) => {
+        this.coupons = res;
+      },
+      (err: any) => {
+        console.log(err);
+      }
+    );
   }
 
   // Add new coupon to database
@@ -44,10 +58,10 @@ export class CouponComponent implements OnInit {
       .addCoupon(this.addCouponForm.value)
       .subscribe((res: any) => {
         if (res) {
-          console.log(res);
           document.getElementById('btn-close-modal')?.click();
           this.addCouponForm.reset();
           this.showSuccess = true;
+          this.populateCoupons();
           setTimeout(() => {
             this.showSuccess = false;
           }, 3000);

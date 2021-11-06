@@ -23,7 +23,6 @@ export class UserListComponent implements OnInit {
 
   populateUsers() {
     this.userService.getUsers().subscribe((res: user[]) => {
-      console.log(this.users);
       this.users = res;
     });
   }
@@ -34,8 +33,8 @@ export class UserListComponent implements OnInit {
     });
   }
 
-  HandleDelete(uid:number){
-    this.userService.deleteUsers(uid).subscribe(()=>{
+  HandleDelete(uid: number) {
+    this.userService.deleteUsers(uid).subscribe(() => {
       this.populateUsers();
     });
   }

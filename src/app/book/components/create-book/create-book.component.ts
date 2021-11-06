@@ -52,7 +52,6 @@ export class CreateBookComponent implements OnInit {
   handleAddBook(): void {
     this.bookService.addBook(this.addBookForm.value).subscribe((res: any) => {
       if (res) {
-        console.log(res);
         this.router.navigate(['/']);
       }
     });

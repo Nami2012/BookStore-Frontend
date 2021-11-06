@@ -42,9 +42,6 @@ export class BookService {
       0,
       1
     ).toDateString();
-    console.log(new Date(1999, 0, 1));
-    console.log(bookDetails.byear);
-    console.log(bookDetails);
     return this.http.post(this.REST_API_URL_ASP + 'Books', bookDetails).pipe(
       map((res: any) => {
         return res;

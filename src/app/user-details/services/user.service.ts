@@ -1,25 +1,28 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { user, UserAccountInfo, UserCredentials, UserDetails } from '../model/user-details.model';
+import {
+  user,
+  UserAccountInfo,
+  UserCredentials,
+  UserDetails,
+} from '../model/user-details.model';
 import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   //getUserById endpoint
-  private GET_USER_BY_ID_REST_API_URL = 'https://localhost:44380/api/userdetails';
+  private GET_USER_BY_ID_REST_API_URL =
+    'https://localhost:44380/api/userdetails';
 
   getUserById(id: string | any): Observable<any> {
     return this.http
-      .get(
-        this.GET_USER_BY_ID_REST_API_URL, { params: { id: id } }
-      )
+      .get(this.GET_USER_BY_ID_REST_API_URL, { params: { id: id } })
       .pipe(
         map((res: any) => {
-          //  console.log(res);
           return res;
         })
       );
@@ -28,24 +31,20 @@ export class UserService {
   //getallusers endpoint
   private REST_API_URL = 'https://localhost:44380/api/userlist';
   getUsers(): Observable<user[]> {
-    return this.http
-      .get('https://localhost:44380/api/userlist')
-      .pipe(
-        map((res: any) => {
-          let users: user[] = [];
-          for (let key in res) {
-            users.push(res[key]);
-          }
-          return users;
-        })
-      );
+    return this.http.get('https://localhost:44380/api/userlist').pipe(
+      map((res: any) => {
+        let users: user[] = [];
+        for (let key in res) {
+          users.push(res[key]);
+        }
+        return users;
+      })
+    );
   }
 
   //change user ActiveStatus by UId
   setStatus(userid: number, status: boolean): Observable<any> {
-    let API_URL =
-      'https://localhost:44380/api/user/edit/activestatus'
-    console.log(API_URL);
+    let API_URL = 'https://localhost:44380/api/user/edit/activestatus';
     return this.http.put(API_URL, {}, { params: { id: userid } }).pipe(
       map((res: any) => {
         return res;
@@ -71,107 +70,81 @@ export class UserService {
   }
 
   //updateuser_information details
-  private UPDATE_USER_DETAILS_REST_API_URL = 'https://localhost:44380/api/register/user/info';
-  private UPDATE_USER_CRED_REST_API_URL = 'https://localhost:44380/api/register/user/cred';
+  private UPDATE_USER_DETAILS_REST_API_URL =
+    'https://localhost:44380/api/register/user/info';
+  private UPDATE_USER_CRED_REST_API_URL =
+    'https://localhost:44380/api/register/user/cred';
   updateUser(updateableUserData: UserDetails): any {
     // let API_URL = this.UPDATE_USER_DETAILS_REST_API_URL;
-    let userAccountInfo: UserAccountInfo = this.populateUserAccountInfo(updateableUserData);
-    let userCredentials: UserCredentials = this.populateUserCredentials(updateableUserData);
-    console.log("Inside service");
-    console.log(updateableUserData);
-    console.log(userAccountInfo);
-    console.log(userCredentials);
+    let userAccountInfo: UserAccountInfo =
+      this.populateUserAccountInfo(updateableUserData);
+    let userCredentials: UserCredentials =
+      this.populateUserCredentials(updateableUserData);
     //update user account info
     let status = this.http
-      .put(
-        this.UPDATE_USER_DETAILS_REST_API_URL,
-        userAccountInfo, { params: { id: updateableUserData.UId } }
-      )
+      .put(this.UPDATE_USER_DETAILS_REST_API_URL, userAccountInfo, {
+        params: { id: updateableUserData.UId },
+      })
       .toPromise()
       .then((res: any) => {
-        console.log(res);
         return res;
-      })
-      .catch((err: any) => {
-        console.log('Inside Error');
-        console.log(err);
-      })
-      .finally(() => {
-        console.log('it is over');
       });
-
     //update user credentials info
     return this.http
-      .put(
-        this.UPDATE_USER_CRED_REST_API_URL,
-        userCredentials, { params: { id: updateableUserData.UId } }
-      )
+      .put(this.UPDATE_USER_CRED_REST_API_URL, userCredentials, {
+        params: { id: updateableUserData.UId },
+      })
       .toPromise()
       .then((res: any) => {
-        console.log(res);
         return res;
       })
       .catch((err: any) => {
-        console.log('Inside Error');
         console.log(err);
-      })
-      .finally(() => {
-        console.log('it is over');
       });
   }
-
 
   private DELETE_USER_REST_API_URL = 'https://localhost:44380/api/user/delete';
   deleteUsers(uid: number): any {
-    return this.http.delete(this.DELETE_USER_REST_API_URL, { params: { id: uid } }).pipe(
-      map((res: any) => {
-        return res;
-      })
-    );
+    return this.http
+      .delete(this.DELETE_USER_REST_API_URL, { params: { id: uid } })
+      .pipe(
+        map((res: any) => {
+          return res;
+        })
+      );
   }
 
-  
-
   //Register new user
-  private UPDATE_USER_INFO_REGISTER_REST_API_URL = 'https://localhost:44380/api/register/user/Info';
-  private UPDATE_USER_CRED_REGISTER_REST_API_URL = 'https://localhost:44380/api/register/user/cred';
-  
+  private UPDATE_USER_INFO_REGISTER_REST_API_URL =
+    'https://localhost:44380/api/register/user/Info';
+  private UPDATE_USER_CRED_REGISTER_REST_API_URL =
+    'https://localhost:44380/api/register/user/cred';
+
   registerUser(newUserData: UserDetails): any {
-    let userAccountInfo: UserAccountInfo = this.populateUserAccountInfo(newUserData);
-    let userCredentials: UserCredentials = this.populateUserCredentials(newUserData);
-    console.log(userAccountInfo);
-    console.log(userCredentials);
-    console.log("Inside register service");
+    let userAccountInfo: UserAccountInfo =
+      this.populateUserAccountInfo(newUserData);
+    let userCredentials: UserCredentials =
+      this.populateUserCredentials(newUserData);
     let userid: number = 0;
 
     //register credentials
     return this.http
-      .post(
-        this.UPDATE_USER_CRED_REGISTER_REST_API_URL,
-        userCredentials)
+      .post(this.UPDATE_USER_CRED_REGISTER_REST_API_URL, userCredentials)
       .toPromise()
       .then((res: any) => {
         userid = res;
-        console.log("Inside update credentials");
-        this.http.post(
-            this.UPDATE_USER_INFO_REGISTER_REST_API_URL,
-            userAccountInfo, { params: { id: userid } }
-          )
+        this.http
+          .post(this.UPDATE_USER_INFO_REGISTER_REST_API_URL, userAccountInfo, {
+            params: { id: userid },
+          })
           .toPromise()
           .then((res: any) => {
-             console.log("Inside update account_info");
             return res;
           });
-         return userid;
+        return userid;
       })
       .catch((err: any) => {
-        console.log('Inside Error');
         console.log(err);
-      })
-      .finally(() => {
-        console.log('it is over');
       });
-
-
   }
 }
