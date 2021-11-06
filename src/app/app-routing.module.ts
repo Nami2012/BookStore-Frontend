@@ -7,6 +7,7 @@ import { BookDetailsComponent } from './book/components/book-details/book-detail
 import { CartComponent } from './cart/cart.component';
 import { HomeComponent } from './home/home.component';
 import { OrdersComponent } from './orders/orders.component';
+import { SearchresultComponent } from './shared/components/search/searchresult/searchresult.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { CreateBookComponent } from './book/components/create-book/create-book.component';
 import { CreateCategoryComponent } from './category/components/create-category/create-category.component';
@@ -17,6 +18,7 @@ import { UserListComponent } from './user-details/Components/user-list/user-list
 import { AuthGuard } from './shared/guards/auth.guard';
 import { AdminGuard } from './shared/guards/admin.guard';
 import { LogoutComponent } from './auth/logout/logout.component';
+import { NotfoundComponent } from './shared/components/notfound/notfound.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -47,6 +49,11 @@ const routes: Routes = [
   { path: 'user', redirectTo: '/userlist', pathMatch: 'full' },
   { path: 'userlist', component: UserListComponent },
   { path: 'logout', component: LogoutComponent },
+  {
+    path: 'search/:searchTerm/:categoryValue',
+    component: SearchresultComponent,
+  },
+  // {path:'**', component: NotfoundComponent}
 ];
 
 @NgModule({
