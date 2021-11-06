@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Category } from 'src/app/category/model/category.model';
+import { CategoryService } from 'src/app/category/services/category.service';
 import { BookService } from '../../services/book.service';
 
 @Component({
@@ -14,22 +15,27 @@ export class CreateBookComponent implements OnInit {
 
   addBookForm: FormGroup = new FormGroup({
     cid: new FormControl('', Validators.required),
-    title: new FormControl('', Validators.required),
-    isbn: new FormControl('', Validators.required),
-    year: new FormControl('', [
+    btitle: new FormControl('', Validators.required),
+    bisbn: new FormControl('', Validators.required),
+    byear: new FormControl('', [
       Validators.required,
       Validators.min(1500),
       Validators.max(2500),
     ]),
-    price: new FormControl('', [
+    bauthor: new FormControl('', Validators.required),
+    bprice: new FormControl('', [
       Validators.required,
       Validators.min(0),
       Validators.max(10000),
     ]),
-    description: new FormControl(''),
+    bdescription: new FormControl(''),
   });
 
-  constructor(private bookService: BookService, private router: Router) {}
+  constructor(
+    private bookService: BookService,
+    private router: Router,
+    private categoryService: CategoryService
+  ) {}
 
   ngOnInit(): void {
     this.getCategories();
@@ -37,7 +43,7 @@ export class CreateBookComponent implements OnInit {
 
   // Get categories from book service
   getCategories(): void {
-    this.bookService.getCategories().subscribe((res) => {
+    this.categoryService.getCategories().subscribe((res) => {
       this.categories = res;
     });
   }

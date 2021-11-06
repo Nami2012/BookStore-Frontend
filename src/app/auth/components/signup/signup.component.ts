@@ -31,7 +31,9 @@ export class SignupComponent implements OnInit {
     });
   }
 
+  // Revisit
   signup(): void {
+    console.log(this.userSignupForm.value);
     this.authService.login(this.userSignupForm.value).subscribe((res: any) => {
       if (res && res.token) {
         localStorage.setItem('token', res.token);

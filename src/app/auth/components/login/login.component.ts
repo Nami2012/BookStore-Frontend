@@ -18,23 +18,25 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.userLoginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [
-        Validators.required,
-        Validators.minLength(8),
-        Validators.maxLength(16),
-      ]),
+      password: new FormControl('', [Validators.required]),
     });
   }
 
   onLogin(): void {
-    this.authService.login(this.userLoginForm.value).subscribe((res: any) => {
-      console.log(res['token']);
-      if (res && res.token) {
-        localStorage.setItem('token', res.token);
-        this.router.navigate(['/']);
-      } else {
+    this.authService.login(this.userLoginForm.value).subscribe(
+      (res: any) => {
+        console.log('res inside onLogin()');
+        if (res && res.access_token) {
+          this.router.navigate(['/']);
+        }
+      },
+      (err) => {
+        console.log(err);
         this.loginStatus = true;
+        setTimeout(() => {
+          this.loginStatus = false;
+        }, 7000);
       }
-    });
+    );
   }
 }

@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class SharedService {
   REST_API_URL = 'https://bookstore-soti-default-rtdb.firebaseio.com/';
+  REST_API_URL_ASP = 'https://localhost:44380/api/';
 
   constructor(private http: HttpClient) {}
 
@@ -24,31 +25,17 @@ export class SharedService {
   }
 
   getCategories(): Observable<any> {
-    return this.http.get(this.REST_API_URL + 'categoryList.json').pipe(
+    return this.http.get(this.REST_API_URL_ASP + 'Categories').pipe(
       map((resData: any) => {
-        let categories = [];
-        for (let key in resData) {
-          if (resData[key]) {
-            categories.push({ ...resData[key] });
-          }
-        }
-        return categories;
+        return resData;
       })
     );
   }
-  getBooksByCategory(category: string): Observable<any> {
-    let apiUrl = this.REST_API_URL + 'topList/' + category + '.json';
+  getBooksByCategory(cid: number | null): Observable<any> {
+    let apiUrl = this.REST_API_URL_ASP + 'Books/GetTopBooks/' + cid;
     return this.http.get(apiUrl).pipe(
       map((resData: any) => {
-        for (let key in resData) {
-          resData = resData[key];
-        }
-        let books = [];
-        for (let key in resData) {
-          books.push({ ...resData[key] });
-        }
-
-        return books;
+        return resData;
       })
     );
   }

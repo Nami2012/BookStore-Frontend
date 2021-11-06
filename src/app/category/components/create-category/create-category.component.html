@@ -12,19 +12,19 @@
                 <form class="needs-validation" [formGroup]="addCategoryForm" (ngSubmit)="handleAddCategory()">
                     <div class="row g-3">
                         <div class="col-sm-12">
-                            <label for="name" class="form-label">Name</label>
-                            <input type="text" class="form-control" formControlName="name" id="name"
+                            <label for="cname" class="form-label">Name</label>
+                            <input type="text" class="form-control" formControlName="cname" id="cname"
                                 placeholder="Category Name" required
-                                [ngClass]="{ 'is-invalid': addCategoryForm.get('name')?.touched && addCategoryForm.get('name')?.invalid }">
+                                [ngClass]="{ 'is-invalid': addCategoryForm.get('cname')?.touched && addCategoryForm.get('cname')?.invalid }">
                             <div class="invalid-feedback">
                                 Valid Name is required.
                             </div>
                         </div>
                         <div class="col-12">
-                            <label for="description">Description</label>
-                            <textarea class="form-control" placeholder="Enter Category Description" id="description"
-                                formControlName="description"
-                                [ngClass]="{ 'is-invalid': addCategoryForm.get('description')?.touched && addCategoryForm.get('description')?.invalid }">
+                            <label for="cdescription">Description</label>
+                            <textarea class="form-control" placeholder="Enter Category Description" id="cdescription"
+                                formControlName="cdescription"
+                                [ngClass]="{ 'is-invalid': addCategoryForm.get('cdescription')?.touched && addCategoryForm.get('cdescription')?.invalid }">
                             </textarea>
                         </div>
                     </div>

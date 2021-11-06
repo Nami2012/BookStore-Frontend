@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -28,6 +28,8 @@ import { ListHorizontalComponent } from './shared/components/list-horizontal/lis
 import { BookProductDetailComponent } from './book/components/book-product-detail/book-product-detail.component';
 import { UserDetailsComponent } from './user-details/Components/user-details-component.component';
 import { UserListComponent } from './user-details/Components/user-list/user-list.component';
+import { AuthInterceptor } from './auth/interceptors/auth.interceptor';
+import { LogoutComponent } from './auth/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +57,7 @@ import { UserListComponent } from './user-details/Components/user-list/user-list
     SecondarynavComponent,
     UserDetailsComponent,
     UserListComponent,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,7 +68,13 @@ import { UserListComponent } from './user-details/Components/user-list/user-list
     NgbModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
