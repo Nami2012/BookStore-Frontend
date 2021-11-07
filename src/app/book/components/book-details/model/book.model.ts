@@ -20,6 +20,7 @@ export class Book implements IBook {
   BTitle: string = '';
   BISBN: string = '';
   BYEAR: string = '';
+  BAuthor: string = '';
   BPrice: number = 0;
   BDescription: string = '';
   BImage: string = '';

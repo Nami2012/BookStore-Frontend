@@ -40,11 +40,17 @@
             <a class="nav-link" routerLink="/userlist" routerLinkActive="active">Users (Admin)</a>
           </li>
           <app-menu>
-            <li class="nav-item">
+            <li class="nav-item" loggedOut>
               <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" loggedOut>
               <a class="nav-link" routerLink="/signup" routerLinkActive="active">Sign Up</a>
+            </li>
+            <!-- <li class="nav-item">
+              <a class="nav-link" routerLink="/profile" routerLinkActive="active">Profile</a>
+            </li> -->
+            <li class="nav-item" loggedIn>
+              <a class="nav-link" routerLink="/logout" routerLinkActive="active">Logout</a>
             </li>
           </app-menu>
         </ul>

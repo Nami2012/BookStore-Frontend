@@ -2,10 +2,10 @@
     <ng-template *ngFor="let book of featured" ngbSlide>
         <a routerLink="/book/{{book.BId}}" style="text-decoration: none; color: inherit;">
             <div class="picsum-img-wrapper">
-                <img [src]="book.BImageUrl" alt="book.BDescription" width="40%" height="800px">
+                <img [src]="book.BImage" alt="book.BDescription" width="40%" height="800px">
             </div>
             <div class="carousel-caption strokeme">
-                <h3>{{ book.BName }}</h3>
+                <h3>{{ book.BTitle }}</h3>
                 <p>{{ book.BDescription }}</p>
             </div>
         </a>

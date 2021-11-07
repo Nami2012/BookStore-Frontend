@@ -25,49 +25,42 @@ export class BookProductDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private bookService: BookService, 
+    private bookService: BookService,
     private cartService: CartService,
     private wishlistService: WishlistService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
-    let BookId = this.route.snapshot.paramMap.get('id');
-    if (BookId) {
-      this.bookService.getBookById(BookId).subscribe((data) => {
+    let bookId = this.route.snapshot.paramMap.get('id');
+    if (bookId) {
+      this.bookService.getBookById(bookId).subscribe((data) => {
         this.book = data;
-        console.log(this.book);
       });
-    } 
-    else {
+    } else {
       this.book = null;
     }
   }
 
-  addToCart(){
+  addToCart() {
     let BookId = this.route.snapshot.paramMap.get('id');
-    if (BookId){
-    this.bookService.getBookById(BookId).subscribe((data) => {
-      this.book = data;
-      console.log(this.book);
-      this.cartService.addToCart(this.book);
-      this.router.navigateByUrl('/cart');
-    
-    });
-  }
+    if (BookId) {
+      this.bookService.getBookById(BookId).subscribe((data) => {
+        this.book = data;
+        this.cartService.addToCart(this.book);
+        this.router.navigateByUrl('/cart');
+      });
+    }
   }
 
-  addToWishlist(){
+  addToWishlist() {
     let BookId = this.route.snapshot.paramMap.get('id');
-    if (BookId){
-    this.bookService.getBookById(BookId).subscribe((data) => {
-      this.book = data;
-      console.log(this.book);
-      this.wishlistService.addToWishlist(this.book);
-      this.router.navigateByUrl('/wishlist');
-    
-    });
+    if (BookId) {
+      this.bookService.getBookById(BookId).subscribe((data) => {
+        this.book = data;
+        this.wishlistService.addToWishlist(this.book);
+        this.router.navigateByUrl('/wishlist');
+      });
+    }
   }
-  }
-
 }

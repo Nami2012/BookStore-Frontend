@@ -16,18 +16,14 @@ export class BookService {
   constructor(private http: HttpClient) {}
   private REST_API_URL_Firebase =
     'https://bookstore-soti-default-rtdb.firebaseio.com/';
+
+  REST_API_URL_ASP = 'https://localhost:44380/api/';
   getBooksByCategory(cid: string): Observable<any> {
-    return this.http
-      .get(this.REST_API_URL_Firebase + 'booksByCategory/' + cid + '.json')
-      .pipe(
-        map((res: any) => {
-          let books = [];
-          for (let key in res) {
-            books.push({ ...res[key], id: key });
-          }
-          return books;
-        })
-      );
+    return this.http.get(this.REST_API_URL_ASP + 'BooksByCategory/' + cid).pipe(
+      map((res: any) => {
+        return res;
+      })
+    );
   }
   getCategories(): Observable<Category[]> {
     return this.http.get(this.REST_API_URL + 'CategoryList.json').pipe(
@@ -37,31 +33,27 @@ export class BookService {
     );
   }
 
-  addBook(bookDetails: Book): Observable<any> {
-    return this.http
-      .post(
-        'https://bookstore-soti-default-rtdb.firebaseio.com/' + 'BookList.json',
-        bookDetails
-      )
-      .pipe(
-        map((res: any) => {
-          return res;
-        })
-      );
+  addBook(bookDetails: any): Observable<any> {
+    // type of BYEAR is string;
+    // But in the database it is Date;
+    // So we need to convert it to Date
+    bookDetails.BYEAR = new Date(
+      parseInt(bookDetails.byear),
+      0,
+      1
+    ).toDateString();
+    return this.http.post(this.REST_API_URL_ASP + 'Books', bookDetails).pipe(
+      map((res: any) => {
+        return res;
+      })
+    );
   }
 
   getBookById(bookId: string): Observable<Book> {
-    return this.http
-      .get(
-        'https://bookstore-soti-default-rtdb.firebaseio.com/' +
-          'books/' +
-          bookId +
-          '.json'
-      )
-      .pipe(
-        map((res: any) => {
-          return res;
-        })
-      );
+    return this.http.get(this.REST_API_URL_ASP + 'Books/' + bookId).pipe(
+      map((res: any) => {
+        return res;
+      })
+    );
   }
 }

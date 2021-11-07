@@ -1,26 +1,36 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Book } from 'src/app/book/components/book-details/model/book.model';
+import { map } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class WishlistService {
-
   wishlist: any[] = [];
-  constructor() { }
+  constructor(private http: HttpClient) {}
 
-  addToWishlist(book: any){
-    let wishlistItem = this.wishlist.find(item => item.BId === book.BId);
+  REST_API_URL = 'https://localhost:44380/api/';
+
+  addToWishlist(book: any) {
+    let wishlistItem = this.wishlist.find((item) => item.BId === book.BId);
     if (wishlistItem) return;
-    this.wishlist.push(book)
+    this.wishlist.push(book);
+    this.http.post(this.REST_API_URL + 'wishlist/', book.BId).subscribe();
   }
 
-  removeFromWishlist(bookId:number): void{
-    this.wishlist =
-    this.wishlist.filter(item => item.BId != bookId);
+  removeFromWishlist(bookId: number) {
+    return this.http.delete(this.REST_API_URL + 'wishlist/' + bookId).pipe(
+      map((res: any) => {
+        return res;
+      })
+    );
   }
 
-  getWishlist():any[]{
-    return this.wishlist;
+  getWishlist() {
+    return this.http.get(this.REST_API_URL + 'wishlist/').pipe(
+      map((res: any) => {
+        return res;
+      })
+    );
   }
 }

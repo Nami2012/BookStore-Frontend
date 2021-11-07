@@ -1,6 +1,4 @@
-<app-notfound [visible]="!cart || cart.items.length ==0"
-notFoundMessage="Your Cart is Empty" 
-resetLinkText="Shop Now">
+<app-notfound [visible]="!cart || cart.items.length ==0" notFoundMessage="Your Cart is Empty" resetLinkText="Shop Now">
 </app-notfound>
 
 <div *ngIf="cart && cart.items.length > 0" class="container">
@@ -14,7 +12,7 @@ resetLinkText="Shop Now">
                     {{cartItem.book.BTitle}}
                 </a>
             </div>
-    
+
             <div>
                 <select #quantitySelect (change)="changeQuantity(cartItem,
                 quantitySelect.value)">
@@ -23,26 +21,22 @@ resetLinkText="Shop Now">
                     <option>3</option>
                     <option>4</option>
                     <option>5</option>
-            </select>
-            </div>  
-    
+                </select>
+            </div>
+
             <div>
                 {{cartItem.price + " INR "}}
             </div>
-            
+
             <div>
                 <button class="remove-button" (click)="removeFromCart(cartItem)">
                     Remove
                 </button>
             </div>
-
-            <div>
-                {{cartItem | json}}
-            </div>
         </li>
     </ul>
 
-    
+
     <div class="checkout">
         <div>
             <div class="Book-count">{{cart.items.length}}</div>
@@ -51,4 +45,3 @@ resetLinkText="Shop Now">
         </div>
     </div>
 </div>
-

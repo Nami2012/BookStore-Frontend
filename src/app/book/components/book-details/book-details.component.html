@@ -1,10 +1,4 @@
 <div class="container">
-    <div class="alert alert-primary" role="alert">
-        Only category/1, category/2 and category/4 are available.
-    </div>
-    <div class="alert alert-primary" role="alert">
-        Only book/1 and book/2 are available.
-    </div>
     <div class="card m-4" *ngFor="let book of bookList">
         <a routerLink="/book/{{book.BId}}" style="text-decoration: none; color: inherit; list-style: inherit;">
 
@@ -34,7 +28,7 @@
 
                             </div>
                             <div class="col-4" style="padding-left: 0px;  padding-right: 0px;">
-                                <fa-icon [icon]="faISBN"></fa-icon>
+                                <fa-icon class="fa-3x" [icon]="faISBN"></fa-icon>
 
                                 <p>{{book.BISBN}}</p>
                             </div>
@@ -43,8 +37,8 @@
                         </div>
                     </div>
                     <div class="col-2" style="padding-top: 6rem;  padding-bottom: 3rem;">
-                        <fa-icon [icon]="faCart"></fa-icon>
-                        <fa-icon [icon]="faHeart"></fa-icon>
+                        <fa-icon class="fa-2x" [icon]="faCart"></fa-icon>
+                        <fa-icon class="fa-2x" [icon]="faHeart"></fa-icon>
                     </div>
                 </div>
             </div>

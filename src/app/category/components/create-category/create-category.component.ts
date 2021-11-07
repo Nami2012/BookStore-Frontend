@@ -10,8 +10,8 @@ import { CategoryService } from '../../services/category.service';
 })
 export class CreateCategoryComponent implements OnInit {
   addCategoryForm: FormGroup = new FormGroup({
-    name: new FormControl('', Validators.required),
-    description: new FormControl('', Validators.required),
+    cname: new FormControl('', Validators.required),
+    cdescription: new FormControl('', Validators.required),
   });
 
   constructor(
@@ -24,7 +24,6 @@ export class CreateCategoryComponent implements OnInit {
     this.categoryService
       .addCategory(this.addCategoryForm.value)
       .subscribe((res) => {
-        console.log(res);
         if (res) {
           this.addCategoryForm.reset();
           this.router.navigate(['/category']);

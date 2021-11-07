@@ -17,6 +17,10 @@ export class SecondarynavComponent implements OnInit {
   constructor(private categoryService: CategoryService) {}
 
   ngOnInit(): void {
+    this.getCategories();
+  }
+
+  getCategories() {
     this.categorySubscription = this.categoryService
       .getCategories()
       .subscribe((res: any[]) => {

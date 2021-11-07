@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { UserDetails } from '../../model/user-details.model';
+import { user, UserDetails } from '../../model/user-details.model';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -9,21 +9,20 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./user-list.component.scss'],
 })
 export class UserListComponent implements OnInit {
-  users: UserDetails[] = [];
+  users: user[] = [];
   userSubscription!: Subscription;
   constructor(private userService: UserService) {}
 
   ngOnInit(): void {
     this.userSubscription = this.userService
       .getUsers()
-      .subscribe((res: UserDetails[]) => {
+      .subscribe((res: user[]) => {
         this.users = res;
       });
   }
 
   populateUsers() {
-    this.userService.getUsers().subscribe((res: UserDetails[]) => {
-      console.log(this.users);
+    this.userService.getUsers().subscribe((res: user[]) => {
       this.users = res;
     });
   }
@@ -34,6 +33,11 @@ export class UserListComponent implements OnInit {
     });
   }
 
+  HandleDelete(uid: number) {
+    this.userService.deleteUsers(uid).subscribe(() => {
+      this.populateUsers();
+    });
+  }
   ngOnDestroy(): void {
     this.userSubscription.unsubscribe;
     if (this.users && this.users.length > 0) this.users.length = 0;

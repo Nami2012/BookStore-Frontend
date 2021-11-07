@@ -15,22 +15,33 @@ import { CouponComponent } from './coupon/coupon.component';
 import { BookProductDetailComponent } from './book/components/book-product-detail/book-product-detail.component';
 import { UserDetailsComponent } from './user-details/Components/user-details-component.component';
 import { UserListComponent } from './user-details/Components/user-list/user-list.component';
+import { AuthGuard } from './shared/guards/auth.guard';
+import { AdminGuard } from './shared/guards/admin.guard';
+import { LogoutComponent } from './auth/logout/logout.component';
 import { NotfoundComponent } from './shared/components/notfound/notfound.component';
 import { CheckoutComponent } from './orders/components/checkout/checkout.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'wishlist', component: WishlistComponent },
-  { path: 'orders', component: CheckoutComponent }, // change back to orderscomponent
-  { path: 'cart', component: CartComponent },
+  { path: 'wishlist', component: WishlistComponent, canActivate: [AuthGuard] },
+  { path: 'orders', component: OrdersComponent, canActivate: [AuthGuard] },
+  { path: 'cart', component: CartComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
-  { path: 'category/create', component: CreateCategoryComponent },
+  {
+    path: 'category/create',
+    component: CreateCategoryComponent,
+    canActivate: [AdminGuard],
+  },
   { path: 'categories', component: CategoryComponent },
   { path: 'category/:id', component: BookDetailsComponent },
   // { path: 'category', component: BookDetailsComponent },
   { path: 'category', redirectTo: '/category/1', pathMatch: 'full' },
-  { path: 'book/create', component: CreateBookComponent },
+  {
+    path: 'book/create',
+    component: CreateBookComponent,
+    canActivate: [AdminGuard],
+  },
   { path: 'coupon', component: CouponComponent },
   { path: 'book/:id', component: BookProductDetailComponent },
   { path: 'book', redirectTo: '/book/1', pathMatch: 'full' },
@@ -38,7 +49,11 @@ const routes: Routes = [
   // { path: 'user', component: UserListComponent },
   { path: 'user', redirectTo: '/userlist', pathMatch: 'full' },
   { path: 'userlist', component: UserListComponent },
-  {path: 'search/:searchTerm/:categoryValue', component: SearchresultComponent},
+  { path: 'logout', component: LogoutComponent },
+  {
+    path: 'search/:searchTerm/:categoryValue',
+    component: SearchresultComponent,
+  },
   // {path:'**', component: NotfoundComponent}
   {path:'orders/checkout', component: CheckoutComponent}
 ];
