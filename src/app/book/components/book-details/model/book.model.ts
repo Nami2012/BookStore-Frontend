@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 interface IBook {
-  BId: string;
+  BId: number;
   CName: string;
   BTitle: string;
   BISBN: string;
@@ -15,7 +15,8 @@ interface IBook {
   providedIn: 'root',
 })
 export class Book implements IBook {
-  BId: string = '';
+  BId: number = 0;
+  CId: number = 0;
   CName: string = '';
   BTitle: string = '';
   BISBN: string = '';
@@ -25,3 +26,4 @@ export class Book implements IBook {
   BDescription: string = '';
   BImage: string = '';
 }
+

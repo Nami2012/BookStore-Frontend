@@ -5,10 +5,12 @@ import {
   faCartArrowDown,
   faHeart,
 } from '@fortawesome/free-solid-svg-icons';
+import { Subscription } from 'rxjs';
 import { CartService } from 'src/app/cart/services/cart.service';
 import { WishlistService } from 'src/app/wishlist/services/wishlist.service';
 import { BookService } from '../../services/book.service';
 import { Book } from '../book-details/model/book.model';
+
 
 @Component({
   selector: 'app-book-product-detail',
@@ -16,8 +18,8 @@ import { Book } from '../book-details/model/book.model';
   styleUrls: ['./book-product-detail.component.scss'],
 })
 export class BookProductDetailComponent implements OnInit {
-  book: any;
-
+  book!: Book;
+  cartSubscription!:Subscription;
   //icons
   faHeart = faHeart;
   faCart = faCartArrowDown;
@@ -38,21 +40,18 @@ export class BookProductDetailComponent implements OnInit {
         this.book = data;
         console.log(this.book);
       });
-    } else {
-      this.book = null;
     }
+    // } else {
+    //   this.book = null;
+    // }
   }
 
-  addToCart() {
-    let BookId = this.route.snapshot.paramMap.get('id');
-    if (BookId) {
-      this.bookService.getBookById(BookId).subscribe((data) => {
-        this.book = data;
-        console.log(this.book);
-        this.cartService.addToCart(this.book);
-        this.router.navigateByUrl('/cart');
-      });
-    }
+  addToCart(Bid:number) {
+    this.cartSubscription = this.cartService.addToCart(Bid).
+        subscribe((res:any[])=>{
+             console.log(res);
+         });
+      this.router.navigateByUrl('/cart');
   }
 
   addToWishlist() {
