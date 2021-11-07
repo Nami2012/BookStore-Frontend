@@ -53,6 +53,8 @@ const routes: Routes = [
     path: 'search/:searchTerm/:categoryValue',
     component: SearchresultComponent,
   },
+  { path: 'search/:searchTerm', component: SearchresultComponent },
+  { path: 'search', component: SearchresultComponent },
   // {path:'**', component: NotfoundComponent}
 ];
 

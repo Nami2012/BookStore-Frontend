@@ -1,4 +1,91 @@
-<app-notfound [visible]="!books || books.length == 0"
-resetLinkText="Go Back">
+<div class="container mt-3">
+    <div class="h3 lead bold">
+        Search By :
+    </div>
+    <form class="container" [formGroup]="searchForm" (submit)="handleSearch()">
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="searchOption" value="Title"
+                formControlName="searchOption">
+            <label class="form-check-label" for="inlineRadio1">Title</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="searchOption" value="ISBN"
+                formControlName="searchOption">
+            <label class="form-check-label" for="inlineRadio2">ISBN</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="searchOption" value="Author"
+                formControlName="searchOption">
+            <label class="form-check-label" for="inlineRadio2">Author</label>
+        </div>
+        <div class="container mt-3 p-3 d-flex input-group">
+            <span class="input-group-text" id="basic-addon1">
+                <select class="form-select" id="category" formControlName="cid">
+                    <option *ngFor="let category of categories" value="{{category.CId}}">{{category.CName}}
+                    </option>
+                </select>
+            </span>
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                formControlName="searchTerm"
+                [ngClass]="{ 'is-invalid': searchForm.get('searchTerm')?.touched && searchForm.get('searchTerm')?.invalid }">
+            <div class="invalid-feedback">
+                <div>Search Term is required</div>
+            </div>
+            <button class="btn btn-outline-success" type="submit" [disabled]="searchForm.invalid">Search</button>
+        </div>
+    </form>
+
+</div>
+<app-notfound [visible]="!books || books.length == 0" resetLinkText="Go Back">
 
 </app-notfound>
+<div class="container my-5" *ngIf="books">
+    <div class="text-center mb-5">
+        <!-- <span class="text-secondary text-uppercase">Pricing</span> -->
+        <h1 class="text-capitalize font-weight-bold">Search Result</h1>
+        <!-- <span class="headline">Plans</span> -->
+    </div>
+    <a style="text-decoration: none; color: inherit;" routerLink="/book/{{book.BId}}"
+        class="my-5 py-4 px-5 bg-light d-sm-flex align-items-center justify-content-between" *ngFor="let book of books">
+        <div class="text-center">
+            <img style="max-height: 100px;" src="{{book.BImage}}" />
+        </div>
+        <div class="text-center text-uppercase">
+            <div class="h3">
+                {{ book.BTitle }}
+            </div>
+        </div>
+        <div class="text-center text-uppercase text-secondary">
+            <div class="h3">
+                {{ book.CName }}
+            </div>
+        </div>
+        <div class="text-center">
+            <!-- <a href="#" class="btn text-white px-5 py-3 main-btn">Get Started</a> -->
+            <div class="h4">
+                ₹ {{ book.BPrice }}
+            </div>
+        </div>
+    </a>
+    <!-- <div class="my-5 py-4 px-5 bg-light d-sm-flex align-items-center justify-content-between">
+        <div class="text-center">
+            <span>Pro</span>
+            <h1 class="my-2 font-weight-bold">$49.5</h1>
+            <small class="text-uppercase text-secondary">Month</small>
+        </div>
+        <div class="text-center text-uppercase text-secondary">
+            <small class="d-block">10 Domain</small>
+            <small class="d-block my-3">100GB Bandwidth</small>
+            <small class="d-block">24/7 Support</small>
+        </div>
+        <div class="text-center text-uppercase text-secondary">
+            <small class="d-block">10 Domain</small>
+            <small class="d-block my-3">100GB Bandwidth</small>
+            <small class="d-block">24/7 Support</small>
+        </div>
+        <div class="text-center">
+            <a href="#" class="btn text-white px-5 py-3 main-btn">Get Started</a>
+        </div>
+    </div> -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>

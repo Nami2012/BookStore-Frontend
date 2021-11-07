@@ -1,8 +1,8 @@
 <div class="dropdown">
-    <select [(ngModel)] = "selectedValue" (change)="handleChange()">
+    <select [(ngModel)]="selectedValue" (change)="handleChange()">
         <option value="">All</option>
-        <option *ngFor="let category of categoryList" [value]="category.CName">
-            {{category.CName}} 
+        <option *ngFor="let category of categoryList" [value]="category.CId">
+            {{category.CName}}
         </option>
     </select>
 </div>
