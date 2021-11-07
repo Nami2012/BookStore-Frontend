@@ -19,7 +19,9 @@ export class AuthService {
     };
     const body = new URLSearchParams();
     body.set('username', userCredentials.email);
+    console.log(userCredentials.email);
     body.set('password', userCredentials.password);
+    console.log(userCredentials.password);
     body.set('grant_type', 'password');
     return this.http
       .post<any>(`${this.REST_API_URL}token`, body.toString(), options)
