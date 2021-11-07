@@ -19,6 +19,7 @@ import { AuthGuard } from './shared/guards/auth.guard';
 import { AdminGuard } from './shared/guards/admin.guard';
 import { LogoutComponent } from './auth/logout/logout.component';
 import { NotfoundComponent } from './shared/components/notfound/notfound.component';
+import { CheckoutComponent } from './orders/components/checkout/checkout.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -56,6 +57,7 @@ const routes: Routes = [
   { path: 'search/:searchTerm', component: SearchresultComponent },
   { path: 'search', component: SearchresultComponent },
   // {path:'**', component: NotfoundComponent}
+  {path:'orders/checkout', component: CheckoutComponent}
 ];
 
 @NgModule({

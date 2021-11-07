@@ -35,6 +35,8 @@ import { UserListComponent } from './user-details/Components/user-list/user-list
 import { AuthInterceptor } from './auth/interceptors/auth.interceptor';
 import { LogoutComponent } from './auth/logout/logout.component';
 import { NotfoundComponent } from './shared/components/notfound/notfound.component';
+import { CheckoutComponent } from './orders/components/checkout/checkout.component';
+
 
 @NgModule({
   declarations: [
@@ -68,6 +70,7 @@ import { NotfoundComponent } from './shared/components/notfound/notfound.compone
     UserListComponent,
     LogoutComponent,
     NotfoundComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,

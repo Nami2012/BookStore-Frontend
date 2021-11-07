@@ -35,8 +35,8 @@ export class CartComponent implements OnInit {
     this.cart = this.cartService.getCart();  
   }
 
-  Checkout(items: CartItem[]){
-    
+  Checkout(){
+    this.cartService.checkout();
   }
 
 }

@@ -29,7 +29,11 @@ export class CartService {
     cartItem.quantity = quantity;
   }
 
-  getCart(): Cart {
+  checkout(){
     return this.cart;
+  }
+
+  getCart():Cart{
+    return this.cart; 
   }
 }
