@@ -52,7 +52,7 @@
         <div>
             <div class="Book-count">{{totalBookCount}}</div>
             <div class="total-price">{{totalPrice}}</div>
-            <button class="btn btn-primary" [routerLink]="['/order/checkout']" (click)="Checkout(cart.items)">
+            <button class="btn btn-primary" [routerLink]="['/order/checkout']" (click)="handleCheckout()">
                 Checkout</button>
         </div>
     </div>

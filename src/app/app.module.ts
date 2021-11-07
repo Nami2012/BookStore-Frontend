@@ -36,6 +36,7 @@ import { AuthInterceptor } from './auth/interceptors/auth.interceptor';
 import { LogoutComponent } from './auth/logout/logout.component';
 import { NotfoundComponent } from './shared/components/notfound/notfound.component';
 import { CheckoutComponent } from './orders/components/checkout/checkout.component';
+import { OrderPostComponent } from './orders/components/order-post/order-post.component';
 
 
 
@@ -71,7 +72,8 @@ import { CheckoutComponent } from './orders/components/checkout/checkout.compone
     UserListComponent,
     LogoutComponent,
     NotfoundComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    OrderPostComponent
   ],
   imports: [
     BrowserModule,

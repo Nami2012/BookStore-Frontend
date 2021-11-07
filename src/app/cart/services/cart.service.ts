@@ -77,4 +77,13 @@ export class CartService {
       })
     );
   }
+
+  REST_API_URL = 'https://localhost:44380/api/PlaceOrder/';
+  placeOrder(): Observable<any> {
+    return this.http.post(this.REST_API_URL, null).pipe(
+      map((res: any) => {
+        return res;
+      })
+    );
+  }
 }

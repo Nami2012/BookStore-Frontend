@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Cart } from './model/cart.model';
 import { CartItem } from './model/cartItem.model';
@@ -16,7 +17,7 @@ export class CartComponent implements OnInit {
   count: number = 0;
   totalPrice: any = 0;
   totalBookCount: any = 0;
-  constructor(private cartService: CartService) {
+  constructor(private cartService: CartService, private router: Router) {
     this.setCart();
   }
 
@@ -74,5 +75,10 @@ export class CartComponent implements OnInit {
     // this.cart = this.cartService.getCart();
   }
 
-  Checkout(items: CartItem[]) {}
+  handleCheckout() {
+    this.cartService.placeOrder().subscribe((res: any) => {
+      console.log(res);
+      this.router.navigate(['/orders/checkout/' + res]);
+    });
+  }
 }
