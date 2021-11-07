@@ -24,7 +24,7 @@ export class CategoryComponent implements OnInit {
   ngOnDestroy(): void {
     this.categorySubscription.unsubscribe();
     if (this.categoryList && this.categoryList.length > 0) {
-      this.categoryList.length = 0;
+      this.categoryList.length = 0; 
     }
   }
 }

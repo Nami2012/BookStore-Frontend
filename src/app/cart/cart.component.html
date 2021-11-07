@@ -47,7 +47,7 @@ resetLinkText="Shop Now">
         <div>
             <div class="Book-count">{{cart.items.length}}</div>
             <div class="total-price">{{cart.totalPrice}}</div>
-            <button class="btn btn-primary" [routerLink]="['/order/checkout']" (click)="Checkout(cart.items)"> Checkout</button>
+            <button class="btn btn-primary" [routerLink]="['/order/checkout']" (click)="Checkout()"> Checkout</button>
         </div>
     </div>
 </div>

@@ -34,6 +34,8 @@ import { BookProductDetailComponent } from './book/components/book-product-detai
 import { UserDetailsComponent } from './user-details/Components/user-details-component.component';
 import { UserListComponent } from './user-details/Components/user-list/user-list.component';
 import { NotfoundComponent } from './shared/components/notfound/notfound.component';
+import { CheckoutComponent } from './orders/components/checkout/checkout.component';
+
 
 @NgModule({
   declarations: [
@@ -66,6 +68,7 @@ import { NotfoundComponent } from './shared/components/notfound/notfound.compone
     UserDetailsComponent,
     UserListComponent,
     NotfoundComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,

@@ -16,7 +16,7 @@ export class CategoryService {
     return this.http.get(this.REST_API_URL).pipe(
       map((res: any) => {
         //write code to sort based on position here.
-        return res;
+        return res; 
       })
     );
   }

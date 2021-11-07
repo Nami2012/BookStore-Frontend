@@ -16,11 +16,12 @@ import { BookProductDetailComponent } from './book/components/book-product-detai
 import { UserDetailsComponent } from './user-details/Components/user-details-component.component';
 import { UserListComponent } from './user-details/Components/user-list/user-list.component';
 import { NotfoundComponent } from './shared/components/notfound/notfound.component';
+import { CheckoutComponent } from './orders/components/checkout/checkout.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'wishlist', component: WishlistComponent },
-  { path: 'orders', component: OrdersComponent },
+  { path: 'orders', component: CheckoutComponent }, // change back to orderscomponent
   { path: 'cart', component: CartComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
@@ -39,6 +40,7 @@ const routes: Routes = [
   { path: 'userlist', component: UserListComponent },
   {path: 'search/:searchTerm/:categoryValue', component: SearchresultComponent},
   // {path:'**', component: NotfoundComponent}
+  {path:'orders/checkout', component: CheckoutComponent}
 ];
 
 @NgModule({

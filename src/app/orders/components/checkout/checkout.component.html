@@ -1,0 +1,37 @@
+<div class="container">
+    <ul>
+        <li *ngFor="let cartItem of cart.items">
+            <div>
+                <img [src]="cartItem.book.BImage" [alt]="cartItem.book.title">
+            </div>
+            <div>
+                <a routerLink="/book/{{cartItem.book.BId}}">
+                    {{cartItem.book.BTitle}}
+                </a>
+            </div>
+    
+            <div>
+                {{cartItem.price + " INR "}}
+            </div>
+            
+            <div>
+                {{cartItem | json}}
+            </div>
+        </li>
+    </ul>
+    
+    
+    <div class="checkout">
+        <div>
+            <!-- discount here -->
+            <select [(ngModel)] = "discount" (change)="handleChange()">
+                <option *ngFor="let coupon of couponList" [value]="coupon.Discount">
+                    {{coupon.CouponId}} 
+                </option>
+            </select>
+            <div class="Book-count">{{cart.items.length}}</div>
+            <div class="total-price">{{cart.totalPrice - (cart.totalPrice * discount / 100)}}</div> 
+            <button class="btn btn-primary" [routerLink]="['/order/orderpost']" (click)="ConfirmOrder()"> Confirm </button>
+        </div>
+    </div>
+</div>
