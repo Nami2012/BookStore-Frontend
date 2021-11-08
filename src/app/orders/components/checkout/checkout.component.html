@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
     <ul>
         <li *ngFor="let cartItem of cart.items">
             <div>
@@ -23,7 +23,7 @@
     
     <div class="checkout">
         <div>
-            <!-- discount here -->
+             discount here
             <select [(ngModel)] = "discount" (change)="handleChange()">
                 <option *ngFor="let coupon of couponList" [value]="coupon.Discount">
                     {{coupon.CouponId}} 
@@ -34,4 +34,7 @@
             <button class="btn btn-primary" [routerLink]="['/order/orderpost']" (click)="ConfirmOrder()"> Confirm </button>
         </div>
     </div>
-</div>
+</div> -->
+
+<button class="btn btn-primary" (click)="ConfirmOrder()"> Confirm </button>
+<button class="btn btn-danger" (click)="cancelOrder()"> Cancel </button>

@@ -20,11 +20,17 @@ import { AdminGuard } from './shared/guards/admin.guard';
 import { LogoutComponent } from './auth/logout/logout.component';
 import { NotfoundComponent } from './shared/components/notfound/notfound.component';
 import { CheckoutComponent } from './orders/components/checkout/checkout.component';
+import { OrderPostComponent } from './orders/components/order-post/order-post.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'wishlist', component: WishlistComponent, canActivate: [AuthGuard] },
   { path: 'orders', component: OrdersComponent, canActivate: [AuthGuard] },
+  {
+    path: 'order/:orderId',
+    component: OrderPostComponent,
+    canActivate: [AuthGuard],
+  },
   { path: 'cart', component: CartComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
@@ -54,8 +60,10 @@ const routes: Routes = [
     path: 'search/:searchTerm/:categoryValue',
     component: SearchresultComponent,
   },
+  { path: 'search/:searchTerm', component: SearchresultComponent },
+  { path: 'search', component: SearchresultComponent },
+  { path: 'orders/checkout/:orderid', component: CheckoutComponent },
   // {path:'**', component: NotfoundComponent}
-  {path:'orders/checkout', component: CheckoutComponent}
 ];
 
 @NgModule({
