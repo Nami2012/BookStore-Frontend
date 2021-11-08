@@ -36,6 +36,7 @@ import { AuthInterceptor } from './auth/interceptors/auth.interceptor';
 import { LogoutComponent } from './auth/logout/logout.component';
 import { NotfoundComponent } from './shared/components/notfound/notfound.component';
 import { CheckoutComponent } from './orders/components/checkout/checkout.component';
+import { ImguploadComponent } from './category/components/imgupload/imgupload.component';
 
 
 @NgModule({
@@ -70,7 +71,8 @@ import { CheckoutComponent } from './orders/components/checkout/checkout.compone
     UserListComponent,
     LogoutComponent,
     NotfoundComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    ImguploadComponent
   ],
   imports: [
     BrowserModule,
