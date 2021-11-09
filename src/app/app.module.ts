@@ -36,6 +36,7 @@ import { AuthInterceptor } from './auth/interceptors/auth.interceptor';
 import { LogoutComponent } from './auth/logout/logout.component';
 import { NotfoundComponent } from './shared/components/notfound/notfound.component';
 import { CheckoutComponent } from './orders/components/checkout/checkout.component';
+import { ImguploadComponent } from './category/components/imgupload/imgupload.component';
 import { OrderPostComponent } from './orders/components/order-post/order-post.component';
 
 
@@ -73,6 +74,7 @@ import { OrderPostComponent } from './orders/components/order-post/order-post.co
     LogoutComponent,
     NotfoundComponent,
     CheckoutComponent,
+    ImguploadComponent,
     OrderPostComponent
   ],
   imports: [
