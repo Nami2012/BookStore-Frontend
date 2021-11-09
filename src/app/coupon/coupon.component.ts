@@ -32,6 +32,7 @@ export class CouponComponent implements OnInit {
   ngOnInit(): void {
     this.authService.isAdmin().subscribe(
       (res: any) => {
+        console.log(res);
         this.isAdmin = true;
       },
       (err) => {

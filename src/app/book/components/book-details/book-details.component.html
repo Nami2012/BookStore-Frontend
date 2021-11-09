@@ -41,6 +41,13 @@
                         <fa-icon class="fa-2x" [icon]="faHeart"></fa-icon>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col">
+                        <button *ngIf="isAdmin" type="button" class="btn btn-primary">Deactivate</button>
+                        <button *ngIf="isAdmin" type="button" class="btn btn-primary">Delete</button>
+                    </div>
+
+                </div>
             </div>
         </a>
     </div>

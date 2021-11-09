@@ -13,9 +13,9 @@ export class CartService {
 
   constructor(private http: HttpClient) {}
 
-  private ADD_TO_CART_REST_API_URL = 'https://localhost:44380/api/Carts/';
+  private REST_API_URL = 'https://localhost:44380/api/';
   addToCart(Bid: number): Observable<any> {
-    return this.http.post(this.ADD_TO_CART_REST_API_URL, Bid).pipe(
+    return this.http.post(this.REST_API_URL+'Carts/', Bid).pipe(
       map((res: any) => {
         console.log('hey');
         return res;
@@ -30,9 +30,8 @@ export class CartService {
     // console.log(this.cart);
   }
 
-  private REMOVE_FROM_CART_URL = 'https://localhost:44380/api/Carts/';
   removeFromCart(BId: number): Observable<any> {
-    return this.http.delete(this.REMOVE_FROM_CART_URL + BId).pipe(
+    return this.http.delete(this.REST_API_URL+'Carts/'+ BId).pipe(
       map((res: any) => {
         return res;
       })
@@ -51,15 +50,13 @@ export class CartService {
   //   }));
   // }
 
-  private DECREMENT_CART_QUANTITY_REST_API_URL =
-    'https://localhost:44380/api/Carts';
   changeQuantity(Bid: number, count: number) {
     // let cartItem = this.cart.items.find(item => item.book.BId === bookId);
     // console.log(cartItem);
     // if (!cartItem) return;
     // cartItem.quantity = quantity;
     return this.http
-      .put(this.DECREMENT_CART_QUANTITY_REST_API_URL, null, {
+      .put(this.REST_API_URL+'Carts', null, {
         params: { Bid: Bid, count: count },
       })
       .pipe(
@@ -69,19 +66,25 @@ export class CartService {
       );
   }
 
-  private GET_CART_REST_API_URL = 'https://localhost:44380/api/Carts/';
   getCart(): Observable<any[]> {
-    return this.http.get(this.GET_CART_REST_API_URL).pipe(
+    return this.http.get(this.REST_API_URL+'Carts/').pipe(
       map((res: any) => {
         return res;
       })
     );
   }
 
-  REST_API_URL = 'https://localhost:44380/api/PlaceOrder/';
   placeOrder(): Observable<any> {
-    return this.http.post(this.REST_API_URL, null).pipe(
+    return this.http.post(this.REST_API_URL+'PlaceOrder/', null).pipe(
       map((res: any) => {
+        return res;
+      })
+    );
+  }
+  
+  isPresentInCart(Bid:number){
+    return this.http.get(this.REST_API_URL+'carts/isincart/'+Bid).pipe(
+      map((res:any)=>{
         return res;
       })
     );

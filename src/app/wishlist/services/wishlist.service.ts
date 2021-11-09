@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -21,6 +22,14 @@ export class WishlistService {
   removeFromWishlist(bookId: number) {
     return this.http.delete(this.REST_API_URL + 'wishlist/' + bookId).pipe(
       map((res: any) => {
+        return res;
+      })
+    );
+  }
+
+  isPresentInWishlist(Bid:number){
+    return this.http.get(this.REST_API_URL+'carts/isinwishlist/'+Bid).pipe(
+      map((res:any)=>{
         return res;
       })
     );

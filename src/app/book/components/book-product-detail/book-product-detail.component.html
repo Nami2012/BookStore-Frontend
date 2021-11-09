@@ -45,8 +45,20 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                            <fa-icon (click)="addToCart(book.BId) " [icon]="faCart"></fa-icon> &nbsp;
-                            <fa-icon (click)="addToWishlist()" [icon]="faHeart"></fa-icon>
+                            <ng-template [ngIf]="isPresentInCart" [ngIfElse]="NotInCart">
+                                <fa-icon [icon]="faCart"></fa-icon>
+                            </ng-template>
+                            <ng-template #NotInCart>
+                                <fa-icon  (click)="addToCart(book.BId) " [icon]="faCartEmpty"></fa-icon> &nbsp;
+                            </ng-template>
+                            <ng-template [ngIf]="isPresentInWishlist" [ngIfElse]="NotInWishlist">
+                                <fa-icon    [icon]="fasHeart"></fa-icon>
+                            </ng-template>
+                            <ng-template #NotInWishlist>
+                                <fa-icon    (click)="addToWishlist()" [icon]="farHeart"></fa-icon>
+                            </ng-template>
+                            
+                           
                         </div>
                         <div class="col">
 
@@ -54,6 +66,13 @@
 
                     </div>
                 </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <button *ngIf="isAdmin" type="button" class="btn btn-primary">Deactivate</button>
+                    <button *ngIf="isAdmin" type="button" class="btn btn-primary">Delete</button>
+                </div>
+
             </div>
         </div>
     </div>

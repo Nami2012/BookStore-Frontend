@@ -8,6 +8,9 @@
                         <div class="card-body">
                             <h5 class="card-title">{{category.CName}}</h5>
                             <p class="card-text">{{category.CDescription}}</p>
+
+                            <button *ngIf="isAdmin" type="button" class="btn btn-primary">Deactivate</button>
+                            <button *ngIf="isAdmin" type="button" class="btn btn-primary">Delete</button>
                         </div>
                     </div>
                 </a>

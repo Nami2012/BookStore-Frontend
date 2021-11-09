@@ -24,6 +24,7 @@ export class Book implements IBook {
   BYEAR: string = '';
   BAuthor: string = '';
   BPrice: number = 0;
+  BPosition:number =0;
   BDescription: string = '';
   BImage: string = '';
 }

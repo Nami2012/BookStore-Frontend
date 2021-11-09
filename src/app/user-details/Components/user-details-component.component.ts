@@ -25,12 +25,11 @@ export class UserDetailsComponent implements OnInit {
   }
 
   populateUserDetails() {
-    //let userId = this.route.snapshot.paramMap.get('id') ;
-    let userId = 1;
+    let userId = this.route.snapshot.paramMap.get('id') ;
     this.userService.getUserById(userId).subscribe((res: any) => {
       this.userDetails = res[0]; //change access method
-      this.userDetails.UId = userId;
       this.duplicateUserData = this.userDetails;
+
     });
   }
 
@@ -46,6 +45,7 @@ export class UserDetailsComponent implements OnInit {
 
   updateUser() {
     this.userService.updateUser(this.duplicateUserData);
+    this.handleEditButton();
     this.populateUserDetails();
   }
 }

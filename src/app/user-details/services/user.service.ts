@@ -64,22 +64,27 @@ export class UserService {
 
   populateUserCredentials(updateableUserData: UserDetails): UserCredentials {
     let userCredentials: UserCredentials = new UserCredentials();
+    userCredentials.UId = updateableUserData.UId;
     userCredentials.Password = updateableUserData.Password;
     userCredentials.Username = updateableUserData.Username;
     return userCredentials;
   }
-
+  
   //updateuser_information details
   private UPDATE_USER_DETAILS_REST_API_URL =
-    'https://localhost:44380/api/register/user/info';
+    'https://localhost:44380/api/userInfo/edit';
   private UPDATE_USER_CRED_REST_API_URL =
-    'https://localhost:44380/api/register/user/cred';
+    'https://localhost:44380/api/userCred/edit';
   updateUser(updateableUserData: UserDetails): any {
+    console.log(updateableUserData);
+
     // let API_URL = this.UPDATE_USER_DETAILS_REST_API_URL;
     let userAccountInfo: UserAccountInfo =
       this.populateUserAccountInfo(updateableUserData);
     let userCredentials: UserCredentials =
       this.populateUserCredentials(updateableUserData);
+      // console.log(userAccountInfo);
+      // console.log(userCredentials);
     //update user account info
     let status = this.http
       .put(this.UPDATE_USER_DETAILS_REST_API_URL, userAccountInfo, {

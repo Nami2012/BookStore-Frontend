@@ -21,9 +21,13 @@ import { LogoutComponent } from './auth/logout/logout.component';
 import { NotfoundComponent } from './shared/components/notfound/notfound.component';
 import { CheckoutComponent } from './orders/components/checkout/checkout.component';
 import { OrderPostComponent } from './orders/components/order-post/order-post.component';
+import { EditBookComponent } from './book/components/edit-book/edit-book.component';
+import { EditCategoryComponent } from './category/components/edit-category/edit-category.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  {path:'book/edit/:id',component:EditBookComponent},
+  {path:'category/edit/:id',component:EditCategoryComponent},
   { path: 'wishlist', component: WishlistComponent, canActivate: [AuthGuard] },
   { path: 'orders', component: OrdersComponent, canActivate: [AuthGuard] },
   {
@@ -62,7 +66,8 @@ const routes: Routes = [
   },
   { path: 'search/:searchTerm', component: SearchresultComponent },
   { path: 'search', component: SearchresultComponent },
-  { path: 'orders/checkout/:orderid', component: CheckoutComponent },
+  { path: 'orders/checkout/:orderid', component: CheckoutComponent }
+  
   // {path:'**', component: NotfoundComponent}
 ];
 
