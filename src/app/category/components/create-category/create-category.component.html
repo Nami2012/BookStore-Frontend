@@ -20,6 +20,11 @@
                                 Valid Name is required.
                             </div>
                         </div>
+                        <div class="col-sm-12">
+                            <label for="cimage" class="form-label">Image</label>
+
+                            <input class="form-control" id="cimage" type="file" (change)="onFileSelected($event)">
+                        </div>
                         <div class="col-12">
                             <label for="cdescription">Description</label>
                             <textarea class="form-control" placeholder="Enter Category Description" id="cdescription"
