@@ -9,9 +9,11 @@ import { CheckoutService } from './components/checkout/services/checkout.service
 export class OrdersComponent implements OnInit {
   constructor(private checkoutService: CheckoutService) {}
 
+  orders!: any;
+
   ngOnInit(): void {
     this.checkoutService.getAllOrders().subscribe((res: any) => {
-      console.log(res);
+      this.orders = res;
     });
   }
 }

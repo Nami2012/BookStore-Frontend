@@ -1,3 +1,20 @@
-<h3>
-    Orders Works
-</h3>
+<div class="container">
+    <ul *ngIf="orders">
+        <a class="h4    " routerLink="/order/{{order.OrderId}}" style="text-decoration: none; color: inherit;"
+            *ngFor="let order of orders">
+            <div>
+                <p class="lead">Order# <span class="h4">
+                        {{order.OrderId}}
+                    </span></p>
+
+            </div>
+            <p class="h4">
+                <small class="text-muted">Total : </small>
+                <span class="h5">
+                    {{"₹" + order.Amount }}
+                </span>
+            </p>
+
+        </a>
+    </ul>
+</div>

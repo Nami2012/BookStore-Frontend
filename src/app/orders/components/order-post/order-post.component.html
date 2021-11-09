@@ -1,1 +1,26 @@
-<p>order-post works!</p>
+<div class="container">
+    <ul>
+        <li *ngFor="let book of cart">
+
+            <div>
+                <img [src]="book.BImage" [alt]="book.BTitle">
+            </div>
+            <div class="h4">
+                <a routerLink="/book/{{book.BId}}" style="text-decoration: none; color: inherit;">
+                    {{book.BTitle}}
+                </a>
+            </div>
+
+            <div class="h5">
+                {{book.BPrice + " INR "}} x {{book.count}}
+            </div>
+        </li>
+    </ul>
+
+
+    <div class="checkout">
+        <div>
+            <p class="total-price"><span class="h5">₹ {{totalPrice}}</span></p>
+        </div>
+    </div>
+</div>

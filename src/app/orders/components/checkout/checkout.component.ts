@@ -15,10 +15,16 @@ export class CheckoutComponent implements OnInit {
   cart: any[] = [];
   order!: any;
   orderId!: any;
+
   discount: number = 0;
+
+  totalPrice: number = 0;
+  discountedPrice!: number;
+
+  striked!: string;
+
   constructor(
     private checkoutService: CheckoutService,
-    private cartService: CartService,
     private route: ActivatedRoute,
     private router: Router
   ) {}
@@ -28,29 +34,40 @@ export class CheckoutComponent implements OnInit {
       .getCoupons()
       .subscribe((res: any[]) => {
         this.couponList = res;
+        console.log('Coupons', this.couponList);
       });
     // this.cart = this.cartService.checkout();
-    console.log(this.couponList);
 
     this.orderId = this.route.snapshot.paramMap.get('orderid');
     console.log('Order Id', this.orderId);
     this.checkoutService.getOrderDetails(this.orderId).subscribe((res: any) => {
+      console.log('Order', res);
       this.order = res[0];
       for (let i = 0; i < this.order.OrderItems.length; i++) {
         console.log(this.order.OrderItems[i].Book);
-        this.cart.push(this.order.OrderItems[i].Book);
+        this.totalPrice +=
+          this.order.OrderItems[i].Book.BPrice * this.order.OrderItems[i].COUNT;
+        this.cart.push({
+          ...this.order.OrderItems[i].Book,
+          count: this.order.OrderItems[i].COUNT,
+        });
       }
       console.log('Cart', this.cart);
+      console.log('Total Price', this.totalPrice);
     });
   }
 
   handleChange() {
-    return this.discount;
+    this.discountedPrice =
+      this.totalPrice -
+      (this.couponList[this.discount].Discount / 100) * this.totalPrice;
+    this.striked = 'text-decoration-line-through';
+    console.log(this.discount);
   }
 
   ConfirmOrder() {
     this.checkoutService
-      .confirmOrder(this.orderId, null)
+      .confirmOrder(this.orderId, this.couponList[this.discount].CouponId)
       .subscribe((res: any) => {
         console.log(res);
         this.router.navigate(['/order/' + this.orderId]);

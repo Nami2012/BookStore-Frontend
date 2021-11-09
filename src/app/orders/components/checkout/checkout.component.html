@@ -1,40 +1,39 @@
-<!-- <div class="container">
+<div class="container">
     <ul>
-        <li *ngFor="let cartItem of cart.items">
+        <li *ngFor="let book of cart">
+
             <div>
-                <img [src]="cartItem.book.BImage" [alt]="cartItem.book.title">
+                <img [src]="book.BImage" [alt]="book.BTitle">
             </div>
-            <div>
-                <a routerLink="/book/{{cartItem.book.BId}}">
-                    {{cartItem.book.BTitle}}
+            <div class="h4">
+                <a routerLink="/book/{{book.BId}}" style="text-decoration: none; color: inherit;">
+                    {{book.BTitle}}
                 </a>
             </div>
-    
-            <div>
-                {{cartItem.price + " INR "}}
-            </div>
-            
-            <div>
-                {{cartItem | json}}
+
+            <div class="h5">
+                {{book.BPrice + " INR "}} x {{book.count}}
             </div>
         </li>
     </ul>
-    
-    
+
+
     <div class="checkout">
         <div>
-             discount here
-            <select [(ngModel)] = "discount" (change)="handleChange()">
-                <option *ngFor="let coupon of couponList" [value]="coupon.Discount">
-                    {{coupon.CouponId}} 
+            Availabe Coupons :
+            <select [(ngModel)]="discount" (change)="handleChange()">
+                <option value="0" selected>None</option>
+                <option *ngFor="let coupon of couponList; let i = index" [value]="i" [id]="coupon.CouponId">
+                    {{coupon.CouponId}}
                 </option>
             </select>
-            <div class="Book-count">{{cart.items.length}}</div>
-            <div class="total-price">{{cart.totalPrice - (cart.totalPrice * discount / 100)}}</div> 
-            <button class="btn btn-primary" [routerLink]="['/order/orderpost']" (click)="ConfirmOrder()"> Confirm </button>
+            <p class="total-price"><span class="h5 {{striked}}">₹ {{totalPrice}}</span></p>
+            <p class="discounted-price" *ngIf="discountedPrice"><span class="h5">₹ {{discountedPrice}}</span></p>
+            <div class="container">
+                <button class="btn btn-primary m-2" (click)="ConfirmOrder()"> Confirm </button>
+                <button class="btn btn-danger m-2" (click)="cancelOrder()"> Cancel </button>
+            </div>
+
         </div>
     </div>
-</div> -->
-
-<button class="btn btn-primary" (click)="ConfirmOrder()"> Confirm </button>
-<button class="btn btn-danger" (click)="cancelOrder()"> Cancel </button>
+</div>
