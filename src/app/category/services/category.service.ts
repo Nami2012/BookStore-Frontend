@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Category } from '../model/category.model';
 import { map } from 'rxjs/operators';
@@ -31,5 +31,23 @@ export class CategoryService {
         return res;
       })
     );
+  }
+  // Upload Image
+  uploadImage(image: FormData): Observable<string> {
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+
+    const httpOptions = {
+      headers: headers,
+    };
+
+    return this.http
+      .post<string>(this.REST_API_URL_ASP + 'uploadImage', image, httpOptions)
+      .pipe(
+        map((res) => {
+          console.log(res);
+          return res;
+        })
+      );
   }
 }

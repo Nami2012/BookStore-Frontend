@@ -38,8 +38,6 @@ import { NotfoundComponent } from './shared/components/notfound/notfound.compone
 import { CheckoutComponent } from './orders/components/checkout/checkout.component';
 import { OrderPostComponent } from './orders/components/order-post/order-post.component';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,

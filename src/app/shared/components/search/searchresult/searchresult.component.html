@@ -21,7 +21,8 @@
         <div class="container mt-3 p-3 d-flex input-group">
             <span class="input-group-text" id="basic-addon1">
                 <select class="form-select" id="category" formControlName="cid">
-                    <option *ngFor="let category of categories" value="{{category.CId}}">{{category.CName}}
+                    <option class="form-control" *ngFor="let category of categories" value="{{category.CId}}">
+                        {{category.CName}}
                     </option>
                 </select>
             </span>
