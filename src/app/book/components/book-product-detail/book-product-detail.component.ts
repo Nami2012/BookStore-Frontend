@@ -50,7 +50,7 @@ export class BookProductDetailComponent implements OnInit {
         if(res){
           this.isAdmin = true;
         }else{
-          this.isAdmin = true;
+          this.isAdmin = false;
         }
       });
     this.populateBooks();
@@ -98,6 +98,7 @@ populateBooks(){
       this.populateBooks();
     });
   }
+  
   removeFromWishlist(BId:number):void{
     this.wishlistService.removeFromWishlist(BId).subscribe((res:any)=>{
       this.populateBooks();

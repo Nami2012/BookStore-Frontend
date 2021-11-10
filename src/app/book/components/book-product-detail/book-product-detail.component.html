@@ -18,13 +18,19 @@
             </div>
             <div class="row">
                 <div class="col-3">
-                    <p class="card-text">Year: {{book.BYEAR}}</p>
+                    <p class="card-text">Year: {{book.BYEAR | slice:0:4}}</p>
                 </div>
-                <div class="col-4" style="padding-left: 0px;  padding-right: 0px;">
-                    <fa-icon class="fa-3x" [icon]="faISBN"></fa-icon>
-
+                <div class="col-6">
+                    <p class="card-text">Author: {{book.BAuthor}}</p>
+                </div>
+                
+            </div>
+            <div class="row">
+                <div class="col-6" style="display: inline;">
+                    <fa-icon class="fa-2x" [icon]="faISBN"></fa-icon>
                     <p>{{book.BISBN}}</p>
                 </div>
+            
             </div>
         <!-- </a> -->
         </div>

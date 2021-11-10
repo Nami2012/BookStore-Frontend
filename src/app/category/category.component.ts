@@ -20,9 +20,10 @@ export class CategoryComponent implements OnInit {
     this.authService.isAdmin().subscribe(
       (res: any) => {
         if(res){
+         
           this.isAdmin = true;
         }else{
-          this.isAdmin = true;
+          this.isAdmin = false;
         }
       });
       this.populateCategory();
