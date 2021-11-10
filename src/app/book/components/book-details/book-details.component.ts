@@ -22,6 +22,8 @@ export class BookDetailsComponent implements OnInit {
 
   cid: string = '1';
 
+  BOOK_IMAGE_API = 'https://localhost:44380/api/image/book/';
+
   bookList: Book[] = [];
   bookSubscription!: Subscription;
 

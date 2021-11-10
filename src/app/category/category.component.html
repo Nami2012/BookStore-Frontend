@@ -4,7 +4,7 @@
             <div class="card" style="width: 18rem; height:30rem;">
                 <a routerLink="/category/{{category.CId}}" style="text-decoration: none;color: black;">
                     <div class="card-body">
-                        <img class="card-img-top" src={{category.CImage}} alt="Card image cap">
+                        <img class="card-img-top" src="{{API_URL}}{{ category.CId }}" alt="{{ category.CName }}">
                         <div class="card-body">
                             <h5 class="card-title">{{category.CName}}</h5>
                             <p class="card-text">{{category.CDescription}}</p>

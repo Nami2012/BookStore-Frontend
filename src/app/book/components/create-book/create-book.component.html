@@ -32,7 +32,11 @@
                                 Valid Title is required.
                             </div>
                         </div>
+                        <div class="col-sm-12">
+                            <label for="cimage" class="form-label">Book Image</label>
 
+                            <input class="form-control" id="cimage" type="file" (change)="onFileSelected($event)">
+                        </div>
                         <div class="col-sm-12">
                             <label for="bauthor" class="form-label">Author</label>
                             <input type="text" class="form-control" formControlName="bauthor" id="btitle" placeholder=""

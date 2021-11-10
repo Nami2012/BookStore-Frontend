@@ -24,6 +24,8 @@ export class BookProductDetailComponent implements OnInit {
   faCart = faCartArrowDown;
   faISBN = faBarcode;
 
+  BOOK_IMAGE_API = 'https://localhost:44380/api/image/book/';
+
   constructor(
     private route: ActivatedRoute,
     private bookService: BookService,

@@ -9,6 +9,8 @@ import { CategoryService } from './services/category.service';
   styleUrls: ['./category.component.scss'],
 })
 export class CategoryComponent implements OnInit {
+  API_URL = 'https://localhost:44380/api/image/category/';
+
   categoryList: Category[] = [];
   categorySubscription!: Subscription;
   constructor(private categoryService: CategoryService) {}
@@ -24,7 +26,7 @@ export class CategoryComponent implements OnInit {
   ngOnDestroy(): void {
     this.categorySubscription.unsubscribe();
     if (this.categoryList && this.categoryList.length > 0) {
-      this.categoryList.length = 0; 
+      this.categoryList.length = 0;
     }
   }
 }

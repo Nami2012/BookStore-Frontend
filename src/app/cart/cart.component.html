@@ -1,8 +1,9 @@
-<!-- <app-notfound [visible]="!cart || cart.items.length ==0" notFoundMessage="Your Cart is Empty" resetLinkText="Shop Now">
-</app-notfound> -->
+<app-notfound [visible]="cartItemsList.length <= 0" notFoundMessage="Your Cart is Empty" resetLinkText="Shop Now"
+    resetLinkRoute="/categories">
+</app-notfound>
 
 <!-- <div *ngIf="cart && cart.items.length > 0" class="container"> -->
-<div *ngIf="cartItemsList" class="container">
+<div *ngIf="cartItemsList.length > 0" class="container">
     <ul>
         <li *ngFor="let cartItem of cartItemsList">
 

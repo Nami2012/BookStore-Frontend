@@ -31,12 +31,11 @@ export class CartComponent implements OnInit {
       this.totalPrice = 0;
       this.totalBookCount = 0;
       console.log('Cart', res);
-
       for (let [i, val] of this.cartItemsList.entries()) {
         this.totalPrice +=
           this.cartItemsList[i]['Book']['BPrice'] *
           this.cartItemsList[i]['Count'];
-        this.totalBookCount += this.cartItemsList[i]['Count'];
+        this.totalBookCount += 1;
         //console.log(this.cartItemsList[i]["Book"]["BPrice"]);
       }
     });
