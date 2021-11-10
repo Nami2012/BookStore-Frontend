@@ -37,6 +37,8 @@ import { LogoutComponent } from './auth/logout/logout.component';
 import { NotfoundComponent } from './shared/components/notfound/notfound.component';
 import { CheckoutComponent } from './orders/components/checkout/checkout.component';
 import { OrderPostComponent } from './orders/components/order-post/order-post.component';
+import { EditCategoryComponent } from './category/components/edit-category/edit-category.component';
+import { EditBookComponent } from './book/components/edit-book/edit-book.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +73,10 @@ import { OrderPostComponent } from './orders/components/order-post/order-post.co
     LogoutComponent,
     NotfoundComponent,
     CheckoutComponent,
-    OrderPostComponent
+    OrderPostComponent,
+    EditCategoryComponent,
+    EditBookComponent,
+    
   ],
   imports: [
     BrowserModule,

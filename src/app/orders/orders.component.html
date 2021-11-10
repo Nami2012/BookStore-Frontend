@@ -1,5 +1,9 @@
+<app-notfound [visible]="orders.length <= 0" notFoundMessage="Your Order List is Empty" resetLinkText="Shop Now"
+    resetLinkRoute="/categories">
+</app-notfound>
+
 <div class="container">
-    <ul *ngIf="orders">
+    <ul *ngIf="orders.length > 0">
         <a class="h4    " routerLink="/order/{{order.OrderId}}" style="text-decoration: none; color: inherit;"
             *ngFor="let order of orders">
             <div>

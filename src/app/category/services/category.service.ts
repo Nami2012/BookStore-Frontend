@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Category } from '../model/category.model';
+import { AdminCategory, Category } from '../model/category.model';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -22,6 +22,13 @@ export class CategoryService {
     );
   }
 
+  getCategoryById(categoryid: string | null): Observable<AdminCategory[]> {
+    return this.http.get(this.REST_API_URL_ASP + 'category/' + categoryid).pipe(
+      map((res: any) => {
+        return res;
+      })
+    );
+  }
   // Post Category Data to REST API
   // Add Category
   // any is used since create category data doesn't all fields in model
@@ -46,6 +53,39 @@ export class CategoryService {
       .pipe(
         map((res) => {
           console.log(res);
+          return res;
+        })
+      );
+  }
+
+  updateCategory(category: AdminCategory): Observable<AdminCategory> {
+    return this.http
+      .put(this.REST_API_URL_ASP + 'Category/edit', category)
+      .pipe(
+        map((res: any) => {
+          console.log(res);
+          return res;
+        })
+      );
+  }
+
+  updateActiveStatusCategory(bid: number): Observable<any> {
+    return this.http
+      .put(this.REST_API_URL_ASP + 'Category/Edit/ActiveStatus/' + bid, null)
+      .pipe(
+        map((res: any) => {
+          return res;
+        })
+      );
+  }
+
+  deleteCategory(bid: number): Observable<any> {
+    return this.http
+      .delete(this.REST_API_URL_ASP + 'category/delete', {
+        params: { bid: bid },
+      })
+      .pipe(
+        map((res: any) => {
           return res;
         })
       );

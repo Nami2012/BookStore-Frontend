@@ -1,7 +1,10 @@
-<div class="container">
-    <app-notfound [visible]="!book" notFoundMessage="Book Not Found!" resetLinkText="Go to Home">
+<app-notfound [visible]="!book" notFoundMessage="Book Not Found!" resetLinkText="Go to Home">
 
-    </app-notfound>
+</app-notfound>
+
+
+<div class="container">
+   
     <div class="card m-4" *ngIf="book">
 
         <div class="card-header">
@@ -11,7 +14,8 @@
 
         <div class="card-body">
             <div class="row">
-                <div class="col-4"><img class="card-img-top" src={{book.BImage}} alt="{{book.BTitle}}"></div>
+                <div class="col-4"><img class="card-img-top" src="{{BOOK_IMAGE_API}}{{book.BId}}" alt="{{book.BTitle}}">
+                </div>
                 <div class="col-6">
                     <div class="row">
                         <div class="col">
@@ -45,8 +49,20 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                            <fa-icon (click)="addToCart(book.BId) " [icon]="faCart"></fa-icon> &nbsp;
-                            <fa-icon (click)="addToWishlist()" [icon]="faHeart"></fa-icon>
+                            <ng-template [ngIf]="isPresentInCart" [ngIfElse]="NotInCart">
+                                <fa-icon [icon]="faCart"></fa-icon>
+                            </ng-template>
+                            <ng-template #NotInCart>
+                                <fa-icon  (click)="addToCart(book.BId) " [icon]="faCartEmpty"></fa-icon> &nbsp;
+                            </ng-template>
+                            <ng-template [ngIf]="isPresentInWishlist" [ngIfElse]="NotInWishlist">
+                                <fa-icon    [icon]="fasHeart"></fa-icon>
+                            </ng-template>
+                            <ng-template #NotInWishlist>
+                                <fa-icon    (click)="addToWishlist()" [icon]="farHeart"></fa-icon>
+                            </ng-template>
+                            
+                           
                         </div>
                         <div class="col">
 
@@ -54,6 +70,27 @@
 
                     </div>
                 </div>
+            </div>
+            <div class="row">
+                <div *ngIf="isAdmin">
+                    <ng-template [ngIf]="book.BStatus" [ngIfElse]="elseBlock">
+                        <div class="col-2">
+                            <button type="button" class="btn btn-primary"
+                                (click)="toggleActiveStatus(book.BId)">Deactivate</button>
+                        </div>
+                    </ng-template>
+                    <ng-template #elseBlock>
+                        <div class="col-2">
+                            <button type="button" class="btn btn-danger"
+                                (click)="toggleActiveStatus(book.BId)">Activate</button>
+                        </div>
+                    </ng-template>
+                    <a style="text-decoration: none; color: inherit;"
+                    routerLink="/book/edit/{{book.BId}}">
+                    <button type="button" class="btn btn-primary">Edit</button>
+                </a>
+                </div>
+               
             </div>
         </div>
     </div>

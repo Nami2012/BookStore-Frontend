@@ -27,7 +27,15 @@ export class WishlistService {
     );
   }
 
-  getWishlist(): Observable<any> {
+  isPresentInWishlist(Bid: number) {
+    return this.http.get(this.REST_API_URL + 'carts/isinwishlist/' + Bid).pipe(
+      map((res: any) => {
+        return res;
+      })
+    );
+  }
+
+  getWishlist() {
     return this.http.get(this.REST_API_URL + 'wishlist/').pipe(
       map((res: any) => {
         return res;

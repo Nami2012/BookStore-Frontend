@@ -49,11 +49,35 @@ export class BookService {
     );
   }
 
-  getBookById(bookId: string): Observable<Book> {
+  getBookById(bookId: string|number|null): Observable<Book> {
     return this.http.get(this.REST_API_URL_ASP + 'Books/' + bookId).pipe(
       map((res: any) => {
         return res;
       })
     );
+  }
+
+ 
+  updateBook(book:Book):Observable<Book>{
+    return this.http.put(this.REST_API_URL_ASP+'book/edit',book).pipe(
+      map((res:any)=>{
+        return res;
+      })
+    );
+  }
+
+  updateActiveStatus(bid:number):Observable<any>{
+    return this.http.put(this.REST_API_URL_ASP+'Book/edit/ActiveStatus/'+bid,null).pipe(
+      map((res:any)=>{
+        console.log(res);
+        return res;
+      })
+    );
+  }
+
+  deleteBook(bid:number):Observable<any>{
+    return this.http.delete(this.REST_API_URL_ASP+'book/delete',{params:{bid:bid}}).pipe(map((res:any)=>{
+      return res;
+    }));
   }
 }

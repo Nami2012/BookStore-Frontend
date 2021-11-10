@@ -18,3 +18,12 @@ export class Category implements ICategory {
   CImage: string = '';
   CPosition: number = 0;
 }
+ 
+export class AdminCategory implements ICategory{
+  CId: number = 0;
+  CName: string = '';
+  CDescription: string = '';
+  CImage: string = '';
+  CStatus:boolean = false;
+  CPosition: number = 0;
+}
