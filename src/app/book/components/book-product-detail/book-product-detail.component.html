@@ -1,9 +1,85 @@
 <app-notfound [visible]="!book" notFoundMessage="Book Not Found!" resetLinkText="Go to Home">
 
 </app-notfound>
+<div class="card-body">
+    <div class="row">
+        <div class="col-4"><img class="card-img-top" src={{book.BImage}} alt="Card image cap"></div>
+        <div class="col-6">
+            <!-- <a routerLink="/book/{{book.BId}}" style="text-decoration: none; color: inherit; list-style: inherit;display:inline"> -->
+            <div class="row">
+                <div class="col">
+                    <h5 class="card-title">{{book.BTitle}}</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <p class="card-text">{{book.BDescription}}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <p class="card-text">Year: {{book.BYEAR}}</p>
+                </div>
+                <div class="col-4" style="padding-left: 0px;  padding-right: 0px;">
+                    <fa-icon class="fa-3x" [icon]="faISBN"></fa-icon>
 
+                    <p>{{book.BISBN}}</p>
+                </div>
+            </div>
+        <!-- </a> -->
+        </div>
+       
+        <div class="col-2" style="padding-top: 6rem;  padding-bottom: 3rem;">
+            <!-- <fa-icon class="fa-2x" [icon]="faCart"></fa-icon>
+            <fa-icon class="fa-2x" [icon]="faHeart"></fa-icon> -->
+           
+            <ng-template [ngIf]="isPresentInCart" [ngIfElse]="NotInCart">
+                <a style="text-decoration: none; color: inherit;"
+                routerLink="/cart">
+                <fa-icon class="fa-2x" [icon]="faCart"></fa-icon>
+                </a>
+            </ng-template>
+            <ng-template #NotInCart>
+                <fa-icon  class="fa-2x" (click)="addToCart(book.BId) " [icon]="faCartEmpty"></fa-icon> &nbsp;
+            </ng-template>
+            <ng-template [ngIf]="isPresentInWishlist" [ngIfElse]="NotInWishlist">
+                
+                <fa-icon  class="fa-2x"  (click)="removeFromWishlist(book.BId)" [icon]="fasHeart"></fa-icon>
+                
+            </ng-template>
+            <ng-template #NotInWishlist>
+                <fa-icon  class="fa-2x"  (click)="addToWishlist(book.BId)" [icon]="farHeart"></fa-icon>
+            </ng-template>
+            
+        </div>
+    </div>
+    <div class="row">
+        <div *ngIf="isAdmin">
+            <ng-template [ngIf]="book.BStatus" [ngIfElse]="elseBlock">
+                <div class="col-2">
+                    <button type="button" class="btn btn-primary"
+                        (click)="toggleActiveStatus(book.BId)">Deactivate</button>
+                </div>
+            </ng-template>
+            <ng-template #elseBlock>
+                <div class="col-2">
+                    <button type="button" class="btn btn-danger"
+                        (click)="toggleActiveStatus(book.BId)">Activate</button>
+                </div>
+            </ng-template>
+            <a style="text-decoration: none; color: inherit;"
+            routerLink="/book/edit/{{book.BId}}">
+            <button type="button" class="btn btn-primary">Edit</button>
+        </a>
+        <!-- <div class="col">
+            <button *ngIf="isAdmin" type="button" class="btn btn-primary">Deactivate</button>
+            <button *ngIf="isAdmin" type="button" class="btn btn-primary">Delete</button>
+        </div> -->
 
-<div class="container">
+    </div>
+</div>
+
+<!-- <div class="container">
    
     <div class="card m-4" *ngIf="book">
 
@@ -93,4 +169,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->

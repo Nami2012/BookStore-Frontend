@@ -60,8 +60,8 @@ export class BookProductDetailComponent implements OnInit {
   }
 populateBooks(){
   let bookId = this.route.snapshot.paramMap.get('id');
-    if (bookId) {
-      this.bookService.getBookById(bookId).subscribe((data) => {
+    if (this.bookid) {
+      this.bookService.getBookById(this.bookid).subscribe((data) => {
         this.book = data;
         this.cartService.isPresentInCart(this.book.BId).subscribe((res:boolean)=>{
           this.isPresentInCart = res;
@@ -81,19 +81,25 @@ populateBooks(){
     this.router.navigateByUrl('/cart');
   }
 
-  addToWishlist() {
-    let BookId = this.route.snapshot.paramMap.get('id');
-    if (BookId) {
-      this.bookService.getBookById(BookId).subscribe((data) => {
-        this.book = data;
-        this.wishlistService.addToWishlist(this.book);
-        this.router.navigateByUrl('/wishlist');
-      });
-    }
+  addToWishlist(Bid:number):void {
+      //  this.bookService.getBookById(Bid).subscribe((data) => {
+      //    this.book = data;
+        this.wishlistService.addToWishlist(Bid).subscribe((res:any)=>{
+
+        });
+        // this.router.navigateByUrl('/wishlist');
+        this.populateBooks();
+      //  });
+    
   }
 
   toggleActiveStatus(BId:number):void{
     this.bookService.updateActiveStatus(BId).subscribe((res:any)=>{
+      this.populateBooks();
+    });
+  }
+  removeFromWishlist(BId:number):void{
+    this.wishlistService.removeFromWishlist(BId).subscribe((res:any)=>{
       this.populateBooks();
     });
   }
