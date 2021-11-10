@@ -33,7 +33,7 @@ export class CartService {
   private REMOVE_FROM_CART_URL = 'https://localhost:44380/api/Carts/';
   removeFromCart(BId: number): Observable<any> {
     return this.http.delete(this.REMOVE_FROM_CART_URL + BId).pipe(
-      map((res: any) => {
+      map((res: any) => { 
         return res;
       })
     );

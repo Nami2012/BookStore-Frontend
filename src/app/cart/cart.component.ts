@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Cart } from './model/cart.model';
@@ -17,11 +17,12 @@ export class CartComponent implements OnInit {
   count: number = 0;
   totalPrice: any = 0;
   totalBookCount: any = 0;
+
   constructor(private cartService: CartService, private router: Router) {
     this.setCart();
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
     this.loadBooks();
   }
 
@@ -36,7 +37,7 @@ export class CartComponent implements OnInit {
         this.totalPrice +=
           this.cartItemsList[i]['Book']['BPrice'] *
           this.cartItemsList[i]['Count'];
-        this.totalBookCount += this.cartItemsList[i]['Count'];
+        this.totalBookCount += 1;
         //console.log(this.cartItemsList[i]["Book"]["BPrice"]);
       }
     });
