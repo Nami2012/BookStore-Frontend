@@ -1,7 +1,7 @@
 <app-notfound [visible]="!book" notFoundMessage="Book Not Found!" resetLinkText="Go to Home">
 
 </app-notfound>
-<div class="card-body">
+<div class="card-body" *ngIf="!parambookId">
     <div class="row">
         <div class="col-4"><img class="card-img-top" src={{book.BImage}} alt="Card image cap"></div>
         <div class="col-6">
@@ -85,7 +85,7 @@
     </div>
 </div>
 
-<!-- <div class="container">
+<div class="container">
    
     <div class="card m-4" *ngIf="book">
 
@@ -94,7 +94,7 @@
         </div>
 
 
-        <div class="card-body">
+        <div class="card-body" *ngIf="parambookId">
             <div class="row">
                 <div class="col-4"><img class="card-img-top" src={{book.BImage}} alt="{{book.BTitle}}"></div>
                 <div class="col-6">
@@ -140,7 +140,7 @@
                                 <fa-icon    [icon]="fasHeart"></fa-icon>
                             </ng-template>
                             <ng-template #NotInWishlist>
-                                <fa-icon    (click)="addToWishlist()" [icon]="farHeart"></fa-icon>
+                                <fa-icon    (click)="addToWishlist(book.BId)" [icon]="farHeart"></fa-icon>
                             </ng-template>
                             
                            
@@ -175,4 +175,4 @@
             </div>
         </div>
     </div>
-</div> -->
+</div>

@@ -51,11 +51,6 @@ export class BookDetailsComponent implements OnInit {
           this.bookList = res;
         });
     });
-    this.bookSubscription = this.bookService
-      .getBooksByCategory(this.cid)
-      .subscribe((res: Book[]) => {
-        this.bookList = res;
-      });
   }
 
   ngOnDestroy(): void {
