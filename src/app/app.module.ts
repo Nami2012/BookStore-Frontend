@@ -39,6 +39,7 @@ import { CheckoutComponent } from './orders/components/checkout/checkout.compone
 import { OrderPostComponent } from './orders/components/order-post/order-post.component';
 import { EditCategoryComponent } from './category/components/edit-category/edit-category.component';
 import { EditBookComponent } from './book/components/edit-book/edit-book.component';
+import { AddressComponent } from './user-details/Components/address/address.component';
 
 @NgModule({
   declarations: [
@@ -76,6 +77,7 @@ import { EditBookComponent } from './book/components/edit-book/edit-book.compone
     OrderPostComponent,
     EditCategoryComponent,
     EditBookComponent,
+    AddressComponent,
     
   ],
   imports: [

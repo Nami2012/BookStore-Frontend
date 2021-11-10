@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ShippingAddress } from '../model/address.model';
 import { user, UserDetails } from '../model/user-details.model';
+import { AddressService } from '../services/address.service';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -14,10 +16,13 @@ export class UserDetailsComponent implements OnInit {
   buttonText = 'Edit';
   duplicateUserData!: UserDetails;
   isUpdated = false;
-
+  shippingAddresses:ShippingAddress[]=[];
+  duplicateShippingAddress!:ShippingAddress;
+  
   constructor(
     private userService: UserService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private addressService:AddressService
   ) {}
 
   ngOnInit(): void {
@@ -30,6 +35,11 @@ export class UserDetailsComponent implements OnInit {
       this.userDetails = res[0]; //change access method
       this.duplicateUserData = this.userDetails;
       console.log(this.duplicateUserData);
+      this.addressService.getAllShippingAddressesByUser()
+      .subscribe((res:any)=>{
+        this.shippingAddresses = res;
+        console.log(this.shippingAddresses);
+      });
     });
   }
 
