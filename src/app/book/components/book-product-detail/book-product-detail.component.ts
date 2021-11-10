@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import {
   faBarcode,
@@ -19,6 +19,9 @@ import { AuthService } from 'src/app/auth/services/auth.service';
   styleUrls: ['./book-product-detail.component.scss'],
 })
 export class BookProductDetailComponent implements OnInit {
+  @Input() 
+  bookid:number=0;
+  
   book!: Book;
   cartSubscription!: Subscription;
   //icons
@@ -30,6 +33,7 @@ export class BookProductDetailComponent implements OnInit {
   isAdmin: boolean = false;
   isPresentInCart:boolean = false;
   isPresentInWishlist:boolean = false;
+  
   constructor(
     private route: ActivatedRoute,
     private bookService: BookService,
@@ -40,16 +44,22 @@ export class BookProductDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    
     this.authService.isAdmin().subscribe(
       (res: any) => {
-        console.log(res);
-        this.isAdmin = true;
-      },
-      (err) => {
-        this.isAdmin = false;
-      }
-    );
-    let bookId = this.route.snapshot.paramMap.get('id');
+        if(res){
+          this.isAdmin = true;
+        }else{
+          this.isAdmin = true;
+        }
+      });
+    this.populateBooks();
+    // } else {
+    //   this.book = null;
+    // }
+  }
+populateBooks(){
+  let bookId = this.route.snapshot.paramMap.get('id');
     if (bookId) {
       this.bookService.getBookById(bookId).subscribe((data) => {
         this.book = data;
@@ -61,11 +71,7 @@ export class BookProductDetailComponent implements OnInit {
         });
       });
     }
-    // } else {
-    //   this.book = null;
-    // }
-  }
-
+}
   addToCart(Bid: number) {
     this.cartSubscription = this.cartService
       .addToCart(Bid)
@@ -84,5 +90,11 @@ export class BookProductDetailComponent implements OnInit {
         this.router.navigateByUrl('/wishlist');
       });
     }
+  }
+
+  toggleActiveStatus(BId:number):void{
+    this.bookService.updateActiveStatus(BId).subscribe((res:any)=>{
+      this.populateBooks();
+    });
   }
 }

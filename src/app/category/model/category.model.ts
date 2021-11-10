@@ -16,7 +16,7 @@ export class Category implements ICategory {
   CName: string = '';
   CDescription: string = '';
   CImage: string = '';
-    CPosition: number = 0;
+  CPosition: number = 0;
 }
  
 export class AdminCategory implements ICategory{

@@ -1,19 +1,56 @@
 <div class="container">
     <div class="row">
+        <div class="col-md-9"></div>
+        <div class="col m-3">
+            <a routerLink="/category/create" style="text-decoration: none;color: black;">
+            <button *ngIf="isAdmin" type="button" class="btn btn-primary">
+                 New 
+                <!-- Little plus icon -->
+                <!-- <svg class="svg-circleplus" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="45" fill="none" stroke-width="7.5"></circle>
+                    <line x1="32.5" y1="50" x2="67.5" y2="50" stroke-width="5"></line>
+                    <line x1="50" y1="32.5" x2="50" y2="67.5" stroke-width="5"></line>
+                </svg> -->
+            </button>
+        </a>
+        </div>
+    </div>
+
+    <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 mt-3" *ngFor="let category of categoryList">
             <div class="card" style="width: 18rem; height:30rem;">
-                <a routerLink="/category/{{category.CId}}" style="text-decoration: none;color: black;">
-                    <div class="card-body">
-                        <img class="card-img-top" src={{category.CImage}} alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">{{category.CName}}</h5>
-                            <p class="card-text">{{category.CDescription}}</p>
 
-                            <button *ngIf="isAdmin" type="button" class="btn btn-primary">Deactivate</button>
-                            <button *ngIf="isAdmin" type="button" class="btn btn-primary">Delete</button>
+                <div class="card-body">
+                    <a routerLink="/category/{{category.CId}}" style="text-decoration: none;color: black;">
+                        <img class="card-img-top" src={{category.CImage}} alt="Card image cap">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">{{category.CName}}</h5>
+                        <p class="card-text">{{category.CDescription}}</p>
+
+                        <div *ngIf="isAdmin">
+                            <ng-template [ngIf]="category.CStatus" [ngIfElse]="elseBlock">
+                                <div class="col-2">
+                                    <button type="button" class="btn btn-primary"
+                                        (click)="toggleActiveStatus(category.CId)">Deactivate</button>
+                                </div>
+                            </ng-template>
+                            <ng-template #elseBlock>
+                                <div class="col-2">
+                                    <button type="button" class="btn btn-danger"
+                                        (click)="toggleActiveStatus(category.CId)">Activate</button>
+                                </div>
+                            </ng-template>
+                            <a style="text-decoration: none; color: inherit;"
+                            routerLink="/category/edit/{{category.CId}}">
+                            <button type="button" class="btn btn-primary">Edit</button>
+                        </a>
                         </div>
+
+                        
                     </div>
-                </a>
+                </div>
+
             </div>
         </div>
     </div>

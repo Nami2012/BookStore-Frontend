@@ -9,14 +9,19 @@
 
             <ng-template [ngIf]="isEditing" [ngIfElse]="isShowing">
                 <!-- CId dropdown-->
-                <!-- <li class="list-group-item">
+                <li class="list-group-item">
                     <div class="row">
                         <div class="col-10">
-                            <h5><b>Category Name:</b></h5>
-                            <input type="text" class="form-control" [(ngModel)]="duplicateBookData.CId">
+                            <div class="dropdown">
+                                <select [(ngModel)]="duplicateBookData.CId">
+                                    <option *ngFor="let category of categoryList" [ngValue]="category.CId">
+                                        {{category.CName}}
+                                    </option>
+                                </select>
+                            </div>
                         </div>
                     </div>
-                </li> -->
+                </li>
 
                 <!-- BTitle Textbox -->
                 <li class="list-group-item">
@@ -115,15 +120,16 @@
 
             <ng-template #isShowing>
                 <!-- Category Name -->
-             <li class="list-group-item">
+                <li class="list-group-item">
                     <div class="row">
                         <div class="col-10">
                             <h5><b>Category Name:</b></h5>
-                            <p>CNAME</p> <!--get cname too from db-->
+                            <p>{{bookDetails.CId}}</p>
+                            <!--get cname too from db-->
                         </div>
 
                     </div>
-                </li> 
+                </li>
 
                 <!---Book Title -->
                 <li class="list-group-item">
@@ -216,9 +222,10 @@
             </ng-template>
             <li class="list-group-item" style="background-color: white;border:none">
                 <button type="button" class="btn btn-light" (click)="handleEditButton()">{{buttonText}}</button>
-                 <button type="button" class="col-2 btn btn-primary" (click)="updateBook()">Save</button>
-                 
-                <a style="text-decoration: none; color: inherit;" routerLink="/book/{{bookDetails.BId}}"> <!-- book id pass-->
+                <button type="button" class="col-2 btn btn-primary" (click)="updateBook()">Save</button>
+
+                <a style="text-decoration: none; color: inherit;" routerLink="/book/{{bookDetails.BId}}">
+                    <!-- book id pass-->
                     <button type="button" class="col-2 btn btn-warning">Done</button>
                 </a>
             </li>

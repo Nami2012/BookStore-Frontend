@@ -27,4 +27,5 @@ export class Book implements IBook {
   BPosition:number =0;
   BDescription: string = '';
   BImage: string = '';
+  BStatus:boolean = true;
 }
