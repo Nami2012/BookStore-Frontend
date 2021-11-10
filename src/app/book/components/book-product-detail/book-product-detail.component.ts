@@ -21,7 +21,7 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 export class BookProductDetailComponent implements OnInit {
   @Input()
   bookid: number = 0;
-
+  parambookId: any;
   book!: Book;
   cartSubscription!: Subscription;
   //icons
@@ -55,13 +55,25 @@ export class BookProductDetailComponent implements OnInit {
       }
     });
     this.populateBooks();
-    // } else {
-    //   this.book = null;
-    // }
   }
   populateBooks() {
+    this.parambookId = this.route.snapshot.paramMap.get('id');
     if (this.bookid) {
       this.bookService.getBookById(this.bookid).subscribe((data) => {
+        this.book = data;
+        this.cartService
+          .isPresentInCart(this.book.BId)
+          .subscribe((res: boolean) => {
+            this.isPresentInCart = res;
+          });
+        this.wishlistService
+          .isPresentInWishlist(this.book.BId)
+          .subscribe((res: boolean) => {
+            this.isPresentInWishlist = res;
+          });
+      });
+    } else if (this.parambookId) {
+      this.bookService.getBookById(this.parambookId).subscribe((data) => {
         this.book = data;
         this.cartService
           .isPresentInCart(this.book.BId)

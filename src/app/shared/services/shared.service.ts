@@ -16,7 +16,7 @@ export class SharedService {
     this.isLoggedIn
   );
 
-  private latestLoggInStatus: Observable<boolean> =
+  private latestLoggedInStatus: Observable<boolean> =
     this.isLoggedInBehaviorSubject.asObservable();
 
   constructor(private http: HttpClient) {}
@@ -40,7 +40,7 @@ export class SharedService {
       })
     );
   }
-  
+
   getBooksByCategory(cid: number | null): Observable<any> {
     let apiUrl = this.REST_API_URL_ASP + 'Books/GetTopBooks/' + cid;
     return this.http.get(apiUrl).pipe(
@@ -50,7 +50,7 @@ export class SharedService {
     );
   }
 
-  getCartQuantity(){
-    
+  getCartQuantity(): number {
+    return 5;
   }
 }
