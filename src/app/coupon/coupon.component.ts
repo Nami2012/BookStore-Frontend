@@ -35,7 +35,7 @@ export class CouponComponent implements OnInit {
         if(res){
           this.isAdmin = true;
         }else{
-          this.isAdmin = true;
+          this.isAdmin = false;
         }
       });
     this.populateCoupons();

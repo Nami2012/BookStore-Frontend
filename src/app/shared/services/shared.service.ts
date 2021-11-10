@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -9,6 +9,15 @@ import { Observable } from 'rxjs';
 export class SharedService {
   REST_API_URL = 'https://bookstore-soti-default-rtdb.firebaseio.com/';
   REST_API_URL_ASP = 'https://localhost:44380/api/';
+
+  private isLoggedIn = false;
+
+  private isLoggedInBehaviorSubject = new BehaviorSubject<boolean>(
+    this.isLoggedIn
+  );
+
+  private latestLoggInStatus: Observable<boolean> =
+    this.isLoggedInBehaviorSubject.asObservable();
 
   constructor(private http: HttpClient) {}
 

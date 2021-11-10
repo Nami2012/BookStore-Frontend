@@ -12,11 +12,13 @@ export class WishlistService {
 
   REST_API_URL = 'https://localhost:44380/api/';
 
-  addToWishlist(book: any) {
-    let wishlistItem = this.wishlist.find((item) => item.BId === book.BId);
-    if (wishlistItem) return;
-    this.wishlist.push(book);
-    this.http.post(this.REST_API_URL + 'wishlist/', book.BId).subscribe();
+  addToWishlist(BId: number) {
+    // let wishlistItem = this.wishlist.find((item) => item.BId === book.BId);
+    // if (wishlistItem) return;
+    // this.wishlist.push(book);
+    return this.http.post(this.REST_API_URL + 'wishlist/', BId).pipe(map((res:any)=>{
+      return res;
+    }));
   }
 
   removeFromWishlist(bookId: number) {

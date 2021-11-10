@@ -38,13 +38,13 @@ export class BookDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.authService.isAdmin().subscribe(
       (res: any) => {
-        console.log(res);
-        this.isAdmin = true;
-      },
-      (err) => {
-        this.isAdmin = false;
-      }
-    );
+        if(res){
+         
+          this.isAdmin = true;
+        }else{
+          this.isAdmin = false;
+        }
+      });
     this.route.params.subscribe((val) => {
       this.cid = val.id || '1';
       this.bookSubscription = this.bookService
