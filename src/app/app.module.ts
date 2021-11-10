@@ -71,7 +71,7 @@ import { OrderPostComponent } from './orders/components/order-post/order-post.co
     LogoutComponent,
     NotfoundComponent,
     CheckoutComponent,
-    OrderPostComponent,
+    OrderPostComponent
   ],
   imports: [
     BrowserModule,
