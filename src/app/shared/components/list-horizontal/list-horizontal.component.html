@@ -7,7 +7,7 @@
         </a>
         <div class="row text-center g-4">
             <div class="col-md-6 col-lg-3" *ngFor="let book of bookList">
-                <a routerLink="book/{{book.BId}}" style="text-decoration: none; color: inherit;">
+                <a routerLink="category/{{book.CId}}" style="text-decoration: none; color: inherit;">
                     <div class="card bg-white text-dark">
                         <div class="card-body text-center">
                             <img src="{{ book.BImage }}" alt="" class="mb-3 img-fluid" />

@@ -32,32 +32,26 @@ export class BookDetailsComponent implements OnInit {
   constructor(
     private bookService: BookService,
     private route: ActivatedRoute,
-    private authService:AuthService
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
-    this.authService.isAdmin().subscribe(
-      (res: any) => {
-        if(res){
-         
-          this.isAdmin = true;
-        }else{
-          this.isAdmin = false;
-        }
-      });
+    this.authService.isAdmin().subscribe((res: any) => {
+      if (res) {
+        this.isAdmin = true;
+      } else {
+        this.isAdmin = false;
+      }
+    });
     this.route.params.subscribe((val) => {
       this.cid = val.id || '1';
       this.bookSubscription = this.bookService
         .getBooksByCategory(this.cid)
         .subscribe((res: Book[]) => {
+          console.log(res);
           this.bookList = res;
         });
     });
-    this.bookSubscription = this.bookService
-      .getBooksByCategory(this.cid)
-      .subscribe((res: Book[]) => {
-        this.bookList = res;
-      });
   }
 
   ngOnDestroy(): void {

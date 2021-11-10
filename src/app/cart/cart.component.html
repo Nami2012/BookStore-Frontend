@@ -12,7 +12,7 @@
                 <img src="" [alt]="cartItem.Book.BTitle">
             </div>
             <div>
-                <a routerLink="/book/{{cartItem.Book.BId}}">
+                <a style="text-decoration: none; color: inherit;" routerLink="/category/{{cartItem.Book.CId}}">
                     {{cartItem.Book.BTitle}}
                 </a>
             </div>
@@ -51,7 +51,7 @@
 
     <div class="checkout">
         <div>
-            <div class="Book-count">{{totalBookCount}}</div>
+            <div class="Book-count">No. of books : {{totalBookCount}}</div>
             <div class="total-price">{{totalPrice}}</div>
             <button class="btn btn-primary" [routerLink]="['/order/checkout']" (click)="handleCheckout()">
                 Checkout</button>

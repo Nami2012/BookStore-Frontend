@@ -26,8 +26,13 @@ import { EditCategoryComponent } from './category/components/edit-category/edit-
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  {path:'book/edit/:id',component:EditBookComponent},
-  {path:'category/edit/:id',component:EditCategoryComponent},
+  {
+    path: 'book/create',
+    component: CreateBookComponent,
+    canActivate: [AdminGuard],
+  },
+  { path: 'book/edit/:id', component: EditBookComponent },
+  { path: 'category/edit/:id', component: EditCategoryComponent },
   { path: 'wishlist', component: WishlistComponent, canActivate: [AuthGuard] },
   { path: 'orders', component: OrdersComponent, canActivate: [AuthGuard] },
   {
@@ -43,15 +48,12 @@ const routes: Routes = [
     component: CreateCategoryComponent,
     canActivate: [AdminGuard],
   },
+
   { path: 'categories', component: CategoryComponent },
   { path: 'category/:id', component: BookDetailsComponent },
   // { path: 'category', component: BookDetailsComponent },
   { path: 'category', redirectTo: '/category/1', pathMatch: 'full' },
-  {
-    path: 'book/create',
-    component: CreateBookComponent,
-    canActivate: [AdminGuard],
-  },
+
   { path: 'coupon', component: CouponComponent },
   { path: 'book/:id', component: BookProductDetailComponent },
   { path: 'book', redirectTo: '/book/1', pathMatch: 'full' },
@@ -66,8 +68,8 @@ const routes: Routes = [
   },
   { path: 'search/:searchTerm', component: SearchresultComponent },
   { path: 'search', component: SearchresultComponent },
-  { path: 'orders/checkout/:orderid', component: CheckoutComponent }
-  
+  { path: 'orders/checkout/:orderid', component: CheckoutComponent },
+
   // {path:'**', component: NotfoundComponent}
 ];
 

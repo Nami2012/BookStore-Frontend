@@ -1,20 +1,19 @@
-<app-notfound [visible]="!wishlist || wishlist.length == 0"
-notFoundMessage="Your Wishlist is Empty" 
-resetLinkText="Go Home">
+<app-notfound [visible]="!wishlist || wishlist.length == 0" notFoundMessage="Your Wishlist is Empty"
+    resetLinkText="Go Home">
 </app-notfound>
 
 <div *ngIf="wishlist && wishlist.length > 0" class="container">
     <ul>
-        <li *ngFor="let book of wishlist">
+        <a style="text-decoration: none; color: inherit;" routerLink="/category/{{book.CId}}"
+            *ngFor="let book of wishlist">
             <div>
                 <img [src]="book.BImage" [alt]="book.title">
             </div>
             <div>
-                <a routerLink="/book/{{book.BId}}">
-                    {{book.BTitle}}
-                </a>
+
+                {{book.BTitle}}
             </div>
-            
+
             <div>
                 {{book.CName}}
             </div>
@@ -29,5 +28,5 @@ resetLinkText="Go Home">
                 </button>
             </div>
 
-        </li>
+        </a>
     </ul>

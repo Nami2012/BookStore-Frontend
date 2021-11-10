@@ -46,7 +46,7 @@
         <h1 class="text-capitalize font-weight-bold">Search Result</h1>
         <!-- <span class="headline">Plans</span> -->
     </div>
-    <a style="text-decoration: none; color: inherit;" routerLink="/book/{{book.BId}}"
+    <a style="text-decoration: none; color: inherit;" routerLink="/category{{book.CId}}"
         class="my-5 py-4 px-5 bg-light d-sm-flex align-items-center justify-content-between" *ngFor="let book of books">
         <div class="text-center">
             <img style="max-height: 100px;" src="{{book.BImage}}" />

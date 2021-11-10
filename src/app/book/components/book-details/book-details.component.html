@@ -3,8 +3,8 @@
 </app-notfound>
 
 <div class="container" *ngIf="bookList.length > 0">
-    <a routerLink="/book/create" style="text-decoration: none;color: black;">
-        <button *ngIf="isAdmin" type="button" class="btn btn-primary">
+    <a *ngIf="isAdmin" routerLink="/book/create" style="text-decoration: none;color: black;">
+        <button type="button" class="btn btn-primary">
             New
             <!-- Little plus icon -->
             <!-- <svg class="svg-circleplus" viewBox="0 0 100 100">
@@ -22,3 +22,4 @@
             <app-book-product-detail [bookid]=book.BId></app-book-product-detail>
         </div>
     </div>
+</div>

@@ -23,32 +23,31 @@
 
 
                     <img class="card-img-top" src="{{API_URL}}{{ category.CId }}" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">{{category.CName}}</h5>
-                        <p class="card-text">{{category.CDescription}}</p>
-
-                        <div *ngIf="isAdmin">
-                            <ng-template [ngIf]="category.CStatus" [ngIfElse]="elseBlock">
-                                <div class="col-2">
-                                    <button type="button" class="btn btn-primary"
-                                        (click)="toggleActiveStatus(category.CId)">Deactivate</button>
-                                </div>
-                            </ng-template>
-                            <ng-template #elseBlock>
-                                <div class="col-2">
-                                    <button type="button" class="btn btn-danger"
-                                        (click)="toggleActiveStatus(category.CId)">Activate</button>
-                                </div>
-                            </ng-template>
-                            <a style="text-decoration: none; color: inherit;"
-                                routerLink="/category/edit/{{category.CId}}">
-                                <button type="button" class="btn btn-primary">Edit</button>
-                            </a>
-                        </div>
-
-
-                    </div>
                 </a>
+                <div class="card-body">
+                    <h5 class="card-title">{{category.CName}}</h5>
+                    <p class="card-text">{{category.CDescription}}</p>
+
+                    <div *ngIf="isAdmin">
+                        <ng-template [ngIf]="category.CStatus" [ngIfElse]="elseBlock">
+                            <div class="col-2">
+                                <button type="button" class="btn btn-primary"
+                                    (click)="toggleActiveStatus(category.CId)">Deactivate</button>
+                            </div>
+                        </ng-template>
+                        <ng-template #elseBlock>
+                            <div class="col-2">
+                                <button type="button" class="btn btn-danger"
+                                    (click)="toggleActiveStatus(category.CId)">Activate</button>
+                            </div>
+                        </ng-template>
+                        <a style="text-decoration: none; color: inherit;" routerLink="/category/edit/{{category.CId}}">
+                            <button type="button" class="btn btn-primary">Edit</button>
+                        </a>
+                    </div>
+
+
+                </div>
 
             </div>
         </div>

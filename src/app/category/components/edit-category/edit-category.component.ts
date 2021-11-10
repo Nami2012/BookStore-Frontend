@@ -49,7 +49,11 @@ export class EditCategoryComponent implements OnInit {
 
   onUpload(): Observable<any> {
     console.log(this.selectedFile.name);
-    this.filedata.append(this.selectedFile, this.selectedFile.name);
+    this.filedata.append(
+      'ImageToUpload',
+      this.selectedFile,
+      this.selectedFile.name
+    );
     return this.categoryService.uploadImage(this.filedata).pipe(
       map((res: any) => {
         return res;

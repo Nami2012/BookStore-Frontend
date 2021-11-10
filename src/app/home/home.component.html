@@ -1,6 +1,6 @@
 <ngb-carousel *ngIf="featured" class=" text-center">
     <ng-template *ngFor="let book of featured" ngbSlide>
-        <a routerLink="/book/{{book.BId}}" style="text-decoration: none; color: inherit;">
+        <a routerLink="/category/{{book.CId}}" style="text-decoration: none; color: inherit;">
             <div class="picsum-img-wrapper">
                 <img [src]="book.BImage" alt="book.BDescription" width="40%" height="800px">
             </div>
@@ -13,4 +13,3 @@
 </ngb-carousel>
 
 <app-list-horizontal></app-list-horizontal>
-

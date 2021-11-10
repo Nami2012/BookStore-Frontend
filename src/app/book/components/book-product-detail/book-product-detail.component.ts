@@ -60,7 +60,6 @@ export class BookProductDetailComponent implements OnInit {
     // }
   }
   populateBooks() {
-    let bookId = this.route.snapshot.paramMap.get('id');
     if (this.bookid) {
       this.bookService.getBookById(this.bookid).subscribe((data) => {
         this.book = data;
@@ -89,9 +88,14 @@ export class BookProductDetailComponent implements OnInit {
   addToWishlist(Bid: number): void {
     //  this.bookService.getBookById(Bid).subscribe((data) => {
     //    this.book = data;
-    this.wishlistService.addToWishlist(Bid).subscribe((res: any) => {});
+    if (this.authService.isLoggedIn()) {
+      this.wishlistService.addToWishlist(Bid).subscribe((res: any) => {
+        this.populateBooks();
+      });
+    } else {
+      this.router.navigateByUrl('/login');
+    }
     // this.router.navigateByUrl('/wishlist');
-    this.populateBooks();
     //  });
   }
 

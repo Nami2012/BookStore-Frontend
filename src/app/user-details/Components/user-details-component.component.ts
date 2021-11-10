@@ -25,11 +25,11 @@ export class UserDetailsComponent implements OnInit {
   }
 
   populateUserDetails() {
-    let userId = this.route.snapshot.paramMap.get('id') ;
+    let userId = this.route.snapshot.paramMap.get('id');
     this.userService.getUserById(userId).subscribe((res: any) => {
       this.userDetails = res[0]; //change access method
       this.duplicateUserData = this.userDetails;
-
+      console.log(this.duplicateUserData);
     });
   }
 
