@@ -43,6 +43,17 @@
                     </div>
                 </li>
 
+                <!-- BImage Update -->
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-10">
+                            <h5><b>Book Image:</b></h5>
+                            <input class="form-control" id="cimage" type="file" (change)="onFileSelected($event)"
+                                value="{{duplicateBookData.BImage}}">
+                        </div>
+                    </div>
+                </li>
+
                 <!-- BISBN TextBox -->
                 <li class="list-group-item">
                     <div class="row">

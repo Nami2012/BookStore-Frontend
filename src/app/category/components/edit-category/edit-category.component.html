@@ -7,7 +7,7 @@
     <div class="card-body ">
         <ul class="list-group ">
             <!--- CName -->
-             <ng-template [ngIf]="isEditing" [ngIfElse]="isShowing">
+            <ng-template [ngIf]="isEditing" [ngIfElse]="isShowing">
                 <li class="list-group-item">
                     <div class="row">
                         <div class="col-10">
@@ -17,12 +17,25 @@
                     </div>
                 </li>
 
+                <!-- CImage -->
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-10">
+                            <h5><b>Category Image:</b></h5>
+                            <input class="form-control" id="cimage" type="file" (change)="onFileSelected($event)"
+                                value="{{duplicateCategoryData.CImage}}">
+                        </div>
+                    </div>
+                </li>
+
+
                 <!--- CDescription -->
                 <li class="list-group-item">
                     <div class="row">
                         <div class="col-10">
-                            <h5><b>Phone No:</b></h5>
-                            <textarea  class="form-control" cols="30" rows="5" [(ngModel)]="duplicateCategoryData.CDescription">
+                            <h5><b>Category Description:</b></h5>
+                            <textarea class="form-control" cols="30" rows="5"
+                                [(ngModel)]="duplicateCategoryData.CDescription">
                                 </textarea>
                         </div>
                     </div>
@@ -39,12 +52,12 @@
                 </li> -->
 
                 <!--CStatus-->
-                
+
                 <!--- CPosition -->
-             <li class="list-group-item">
+                <li class="list-group-item">
                     <div class="row">
                         <div class="col-10">
-                            <h5><b>Email (also your username):</b></h5>
+                            <h5><b>Category Position:</b></h5>
                             <input type="text" class="form-control" [(ngModel)]="duplicateCategoryData.CPosition">
                         </div>
                     </div>
@@ -52,9 +65,9 @@
 
             </ng-template>
 
-           <ng-template #isShowing> 
+            <ng-template #isShowing>
                 <!-- CName -->
-                 <li class="list-group-item">
+                <li class="list-group-item">
                     <div class="row">
                         <div class="col-10">
                             <h5><b>Category Name:</b></h5>
@@ -106,8 +119,8 @@
             </ng-template>
             <li class="list-group-item" style="background-color: white;border:none">
                 <button type="button" class="btn btn-light" (click)="handleEditButton()">{{buttonText}}</button>
-                 <button type="button" class="col-2 btn btn-primary" (click)="updateCategory()">Save</button>
-                 
+                <button type="button" class="col-2 btn btn-primary" (click)="updateCategory()">Save</button>
+
                 <a style="text-decoration: none; color: inherit;" routerLink="/categories">
                     <button type="button" class="col-2 btn btn-warning">Done</button>
                 </a>
@@ -119,4 +132,4 @@
 
 
     </div>
- </div> 
+</div>
