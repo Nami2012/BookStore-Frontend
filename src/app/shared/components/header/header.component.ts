@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-header',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  faShoppingCart = faShoppingCart;
+  totalBookCount: number = 0;
+  constructor() { } //inject shared Service and return from getCategory function to update totalBookCount
 
   ngOnInit(): void {
+    
   }
 
 }

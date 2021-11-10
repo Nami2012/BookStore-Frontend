@@ -1,0 +1,36 @@
+div{
+    display: flex;
+    justify-content: center;
+    //margin-top: 1rem;
+    //margin-bottom: 1.5rem;
+}
+
+div input{
+    border-radius: 0 0 0 0; // tl, tr, br, bl
+    border: none;
+    height: 3rem;
+    width: 50rem;
+    background-color: white;
+    padding: 1.2rem;
+    font-size: 1rem;
+    font-weight: 500;
+    outline: none;
+}
+
+div button{
+    border-radius: 0 0.3rem 0.3rem 0; // tl, tr, br, bl
+    color: black;
+    height: 3rem;
+    width: 5rem;
+    font-size: 1rem;
+    border: none;
+    background-color: goldenrod; // change colour if required
+    //color: white;
+    //opacity: 1; // if opacity required only
+    outline: none;
+}
+
+div button:hover{
+    opacity: 1;
+    cursor: pointer;
+}
