@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Book } from './model/book.model';
 import { BookService } from '../../services/book.service';
+import { AuthService } from '../../../auth/services/auth.service';
+
 import {
   faHeart,
   faCartArrowDown,
@@ -19,7 +21,7 @@ export class BookDetailsComponent implements OnInit {
   faHeart = faHeart;
   faCart = faCartArrowDown;
   faISBN = faBarcode;
-
+  isAdmin: boolean = false;
   cid: string = '1';
 
   BOOK_IMAGE_API = 'https://localhost:44380/api/image/book/';
@@ -29,10 +31,20 @@ export class BookDetailsComponent implements OnInit {
 
   constructor(
     private bookService: BookService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private authService:AuthService
   ) {}
 
   ngOnInit(): void {
+    this.authService.isAdmin().subscribe(
+      (res: any) => {
+        console.log(res);
+        this.isAdmin = true;
+      },
+      (err) => {
+        this.isAdmin = false;
+      }
+    );
     this.route.params.subscribe((val) => {
       this.cid = val.id || '1';
       this.bookSubscription = this.bookService

@@ -1,0 +1,241 @@
+<div class="card mx-auto" style="width: 50%;border: none;" *ngIf="bookDetails">
+    <div class="card-header" style="background-color: white;border:none">
+        <h1> Account Information </h1>
+    </div>
+
+
+    <div class="card-body ">
+        <ul class="list-group ">
+
+            <ng-template [ngIf]="isEditing" [ngIfElse]="isShowing">
+                <!-- CId dropdown-->
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-10">
+                            <div class="dropdown">
+                                <select [(ngModel)]="duplicateBookData.CId">
+                                    <option *ngFor="let category of categoryList" [ngValue]="category.CId">
+                                        {{category.CName}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- BTitle Textbox -->
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-10">
+                            <h5><b>Book Title:</b></h5>
+                            <input type="text" class="form-control" [(ngModel)]="duplicateBookData.BTitle">
+                        </div>
+                    </div>
+                </li>
+
+                <!-- BAuthor Textbox -->
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-10">
+                            <h5><b>Book Author:</b></h5>
+                            <input type="text" class="form-control" [(ngModel)]="duplicateBookData.BAuthor">
+                        </div>
+                    </div>
+                </li>
+
+                <!-- BISBN TextBox -->
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-10">
+                            <h5><b>ISBN </b></h5>
+                            <input type="text" class="form-control" [(ngModel)]="duplicateBookData.BISBN">
+                        </div>
+                    </div>
+                </li>
+
+                <!-- BYear Textbox -->
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-10">
+                            <h5><b>Published Year</b></h5>
+                            <input type="text" class="form-control" [(ngModel)]="duplicateBookData.BYEAR">
+                        </div>
+
+                    </div>
+                </li>
+
+                <!-- BPrice Textbox -->
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-10">
+                            <h5><b>Book Price:</b></h5>
+                            <input type="text" class="form-control" [(ngModel)]="duplicateBookData.BPrice">
+                        </div>
+
+                    </div>
+                </li>
+
+                <!-- BDescription Textbox -->
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-10">
+                            <h5><b>Book Description:</b></h5>
+                            <input type="text" class="form-control" [(ngModel)]="duplicateBookData.BDescription">
+                        </div>
+
+                    </div>
+                </li>
+
+                <!-- BPosition Textbox -->
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-10">
+                            <h5><b>Password:</b></h5>
+                            <input type="text" class="form-control" [(ngModel)]="duplicateBookData.BPosition">
+                        </div>
+
+                    </div>
+                </li>
+                <!-- - BStatus Textbox -->
+                <!-- <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-10">
+                            <h5><b>Password:</b></h5>
+                            <input type="text" class="form-control" [(ngModel)]="duplicateBookData.BStatus">
+                        </div>
+
+                    </div>
+                </li> -->
+                <!-- - BImage Textbox -->
+                <!-- <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-10">
+                            <h5><b>Password:</b></h5>
+                            <input type="text" class="form-control" [(ngModel)]="duplicateBookData.BImage">
+                        </div>
+
+                    </div>
+                </li> -->
+            </ng-template>
+
+            <ng-template #isShowing>
+                <!-- Category Name -->
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-10">
+                            <h5><b>Category Name:</b></h5>
+                            <p>{{bookDetails.CId}}</p>
+                            <!--get cname too from db-->
+                        </div>
+
+                    </div>
+                </li>
+
+                <!---Book Title -->
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-10">
+                            <h5><b>Book Title:</b></h5>
+                            <p>{{bookDetails.BTitle}}</p>
+                        </div>
+                    </div>
+                </li>
+
+                <!---BAuthor -->
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-10">
+                            <h5><b>Author:</b></h5>
+                            <p>{{bookDetails.BAuthor}} </p>
+                        </div>
+                    </div>
+                </li>
+
+                <!--- BISBN -->
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-10">
+                            <h5><b>ISBN</b></h5>
+                            <p>{{bookDetails.BISBN}} </p>
+                        </div>
+                    </div>
+                </li>
+
+                <!--- BYear -->
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-10">
+                            <h5><b>Published Year:</b></h5>
+                            <p>{{bookDetails.BYEAR}}</p>
+                        </div>
+                    </div>
+                </li>
+
+                <!--- BPrice -->
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-10">
+                            <h5><b>Price:</b></h5>
+                            <p>{{bookDetails.BPrice}}</p>
+                        </div>
+                    </div>
+                </li>
+
+                <!--- BDescription -->
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-10">
+                            <h5><b>Description:</b></h5>
+                            <p>{{bookDetails.BDescription}}</p>
+                        </div>
+                    </div>
+                </li>
+                <!--- BPosition -->
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-10">
+                            <h5><b>Position:</b></h5>
+                            <p>{{bookDetails.BPosition}}</p>
+                        </div>
+                    </div>
+                </li>
+                <!--- BStatus -->
+                <!-- <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-10">
+                            <h5><b>BStatus:</b></h5>
+                            <p>{{bookDetails.BStatus}}</p>
+                        </div>
+                    </div>
+                </li> -->
+                <!--- BImage -->
+                <!-- <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-10">
+                            <h5><b>BImage:</b></h5>
+                            <p>{{bookDetails.BImage}}</p>
+                        </div>
+                    </div>
+                </li> -->
+
+
+            </ng-template>
+            <li class="list-group-item" style="background-color: white;border:none">
+                <button type="button" class="btn btn-light" (click)="handleEditButton()">{{buttonText}}</button>
+                <button type="button" class="col-2 btn btn-primary" (click)="updateBook()">Save</button>
+
+                <a style="text-decoration: none; color: inherit;" routerLink="/book/{{bookDetails.BId}}">
+                    <!-- book id pass-->
+                    <button type="button" class="col-2 btn btn-warning">Done</button>
+                </a>
+            </li>
+        </ul>
+
+
+
+
+
+    </div>
+
+
+</div>

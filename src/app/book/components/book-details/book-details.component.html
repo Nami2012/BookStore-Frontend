@@ -5,8 +5,8 @@
 <div class="container" *ngIf="bookList.length > 0">
     <div class="card m-4" *ngFor="let book of bookList">
         <a routerLink="/book/{{book.BId}}" style="text-decoration: none; color: inherit; list-style: inherit;">
-
-            <div class="card-header">
+            <!-- <app-book-product-detail [bookid]=book.BId></app-book-product-detail> -->
+            <div class="card-header"> 
                 {{book.CName}}
             </div>
 
@@ -46,7 +46,14 @@
                         <fa-icon class="fa-2x" [icon]="faHeart"></fa-icon>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col">
+                        <button *ngIf="isAdmin" type="button" class="btn btn-primary">Deactivate</button>
+                        <button *ngIf="isAdmin" type="button" class="btn btn-primary">Delete</button>
+                    </div>
+
+                </div>
             </div>
         </a>
     </div>
-</div>
+</div> 
