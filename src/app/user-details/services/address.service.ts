@@ -53,9 +53,17 @@ export class AddressService {
   }
 
   //update shipping address
-  updateShippingAddress(shippingAddress: ShippingAddress): any {
+  updateShippingAddress(shippingAddress: ShippingAddress, uid: any): any {
+    console.log('Update', shippingAddress, uid);
     return this.http
-      .put(this.REST_API_URL + 'ShippingAddresses', shippingAddress)
+      .put(
+        this.REST_API_URL +
+          'ShippingAddresses/' +
+          shippingAddress.ShId +
+          '/' +
+          uid,
+        shippingAddress
+      )
       .pipe(
         map((res: any) => {
           return res;

@@ -26,47 +26,25 @@ export class AddressComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.ShId);
-    if (this.ShId) this.populateAddress(this.ShId);
+    // if (this.ShId) this.populateAddress(this.ShId);
   }
-  populateAddress(SHid: number) {
-    this.authService.isAdmin().subscribe((res) => {
-      if (res) {
-        console.log('admin');
-        console.log('admin');
-        this.addressService
-          .getShippingAddressByUserId(this.UId)
-          .subscribe((res: any) => {
-            this.shippingAddress = res;
-            console.log(this.shippingAddress);
-          });
-      } else {
-        console.log('not admin');
-        this.addressService
-          .getAllShippingAddressesByUser()
-          .subscribe((res: any) => {
-            this.shippingAddress = res;
-            console.log(this.shippingAddress);
-          });
-      }
-    });
 
-    this.addressService.getShippingAddressById(SHid).subscribe((res: any) => {
-      this.shippingAddress = res;
-      console.log(this.shippingAddress);
-    });
-  }
   handleEditModalOpen() {
-    this.duplicateShippingAddressData = this.address;
+    this.duplicateShippingAddressData = { ...this.address };
   }
 
-  async handleAddressUpdate() {
-    console.log('Address Upldate', this.duplicateShippingAddressData);
-    let status = await this.addressService.updateShippingAddress(
-      this.duplicateShippingAddressData
-    );
-    console.log(status);
-    if (status && status.SHid) {
-      this.isUpdated = true;
-    }
+  handleAddressUpdate() {
+    console.log('Address Update', this.duplicateShippingAddressData);
+    this.addressService
+      .updateShippingAddress(
+        this.duplicateShippingAddressData,
+        this.duplicateShippingAddressData.UId
+      )
+      .subscribe((res: any) => {
+        console.log('Address Update', res);
+        if (res) {
+          this.isUpdated = true;
+        }
+      });
   }
 }

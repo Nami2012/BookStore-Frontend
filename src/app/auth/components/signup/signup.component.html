@@ -80,14 +80,6 @@
                         [ngClass]="{ 'is-invalid': userSignupForm.get('pincode')?.touched && userSignupForm.get('pincode')?.invalid }" />
                 </div>
             </div>
-            <div class="row mt-2">
-                <div class="col-9">
-                    <label for="shippingAddress" class="form-label">Shipping Address</label>
-                    <textarea class="form-control" formControlName="shippingAddress" name="shippingAddress"
-                        [ngClass]="{ 'is-invalid': userSignupForm.get('shippingAddress')?.touched && userSignupForm.get('shippingAddress')?.invalid }"
-                        id="shippingAddress" cols="30" rows="5"></textarea>
-                </div>
-            </div>
             <div *ngIf="signupStatus" class="alert alert-danger" role="alert">
                 Signup Failed
             </div>

@@ -22,10 +22,10 @@ export class CartComponent implements OnInit {
     this.setCart();
   }
 
-  ngOnInit(): void { 
+  ngOnInit(): void {
     this.loadBooks();
   }
-
+  BOOK_IMAGE_API = 'https://localhost:44380/api/image/book/';
   loadBooks() {
     this.cartService.getCart().subscribe((res: any) => {
       this.cartItemsList = res;
