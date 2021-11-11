@@ -126,7 +126,8 @@ export class UserService {
   private UPDATE_USER_CRED_REGISTER_REST_API_URL =
     'https://localhost:44380/api/register/user/cred';
 
-  private REGISTER_ADDRESS_URL = '';
+  private REGISTER_ADDRESS_URL =
+    'https://localhost:44380/api/ShippingAddresses';
 
   registerUser(newUserData: UserDetails, userAddress: UserAddressDetails): any {
     let userAccountInfo: UserAccountInfo =
@@ -141,21 +142,28 @@ export class UserService {
       .toPromise()
       .then((res: any) => {
         userid = res;
+        userAddress.UId = userid;
+        this.insertAddress(userAddress);
         this.http
           .post(this.UPDATE_USER_INFO_REGISTER_REST_API_URL, userAccountInfo, {
             params: { id: userid },
           })
           .toPromise()
           .then((res: any) => {
-            return res;
+            console.log(res);
           });
-        this.http.post(this.REGISTER_ADDRESS_URL, userAddress, {
-          params: { id: userid },
-        });
-        return userid;
       })
       .catch((err: any) => {
         console.log(err);
+      });
+  }
+  insertAddress(userAddress: UserAddressDetails): any {
+    console.log('Inside Insert');
+    this.http
+      .post(this.REGISTER_ADDRESS_URL, userAddress)
+      .toPromise()
+      .then((res: any) => {
+        console.log(res);
       });
   }
 }

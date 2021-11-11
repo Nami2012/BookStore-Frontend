@@ -7,7 +7,7 @@
         <a style="text-decoration: none; color: inherit;" routerLink="/category/{{book.CId}}"
             *ngFor="let book of wishlist">
             <div>
-                <img [src]="book.BImage" [alt]="book.title">
+                <img src="{{BOOK_IMAGE_API}}{{book.BId}}" [alt]="book.title">
             </div>
             <div>
 

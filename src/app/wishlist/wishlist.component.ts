@@ -11,6 +11,7 @@ export class WishlistComponent implements OnInit {
   constructor(private wishlistService: WishlistService) {
     this.setWishlist();
   }
+  BOOK_IMAGE_API = 'https://localhost:44380/api/image/book/';
 
   ngOnInit(): void {
     this.wishlistService.getWishlist().subscribe((data) => {

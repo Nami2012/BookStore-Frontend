@@ -32,8 +32,8 @@ export class UserDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.UId = this.route.snapshot.paramMap.get('id');
     this.populateUserDetails();
-    this.populateShippingAddress();
   }
 
   populateUserDetails() {
@@ -43,6 +43,8 @@ export class UserDetailsComponent implements OnInit {
       this.userDetails = res[0]; //change access method
       this.duplicateUserData = this.userDetails;
       console.log(this.duplicateUserData);
+
+      this.populateShippingAddress();
     });
   }
 
