@@ -31,14 +31,15 @@
             <a class="nav-link" routerLink="/category/create" routerLinkActive="active">Create Category (Admin)</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/coupon" routerLinkActive="active">Create Coupon (Admin)</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" routerLink="/userlist" routerLinkActive="active">Users (Admin)</a>
           </li> -->
         </ul>
 
         <ul class="navbar-nav mb-lg-0" style="font-size: large;">
+          
+          <li class="nav-item  pt-2 pe-2" *ngIf="isAdmin">
+            <a class="nav-link" routerLink="/coupon" routerLinkActive="active">Coupon</a>
+          </li>
 
           <li class="nav-item pt-2 pe-2">
             <a class="nav-link" routerLink="/wishlist" routerLinkActive="active">Wishlist</a>
