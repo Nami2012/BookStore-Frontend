@@ -19,9 +19,12 @@
 
                 <!-- CImage -->
                 <li class="list-group-item">
+                    <h5><b>Category Image:</b></h5>
+                    <div class="row" *ngIf="duplicateCategoryData.CImage">
+                        <div class="col-4"><img class="card-img-top" src="{{BOOK_IMAGE_API}}{{duplicateCategoryData.CId}}" alt="Card image cap"></div>
+                    </div>
                     <div class="row">
-                        <div class="col-10">
-                            <h5><b>Category Image:</b></h5>
+                        <div class="col-10">    
                             <input class="form-control" id="cimage" type="file" (change)="onFileSelected($event)">
                         </div>
                     </div>

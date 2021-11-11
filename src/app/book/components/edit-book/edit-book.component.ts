@@ -20,6 +20,8 @@ export class EditBookComponent implements OnInit {
   categoryList: Category[] = [];
   bookCategoryName!:string;
   categorySubscription!: Subscription;
+  BOOK_IMAGE_API = 'https://localhost:44380/api/image/book/';
+
   constructor(
     private bookService: BookService,
     private categoryService: CategoryService,
