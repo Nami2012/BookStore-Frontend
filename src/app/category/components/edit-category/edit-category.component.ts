@@ -16,6 +16,8 @@ export class EditCategoryComponent implements OnInit {
   buttonText = 'Edit';
   duplicateCategoryData!: AdminCategory;
   isUpdated = false;
+  BOOK_IMAGE_API = 'https://localhost:44380/api/image/Categories/';
+
   constructor(
     private categoryService: CategoryService,
     private route: ActivatedRoute

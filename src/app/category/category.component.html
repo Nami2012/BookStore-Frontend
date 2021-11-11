@@ -30,14 +30,14 @@
 
                     <div *ngIf="isAdmin">
                         <ng-template [ngIf]="category.CStatus" [ngIfElse]="elseBlock">
-                            <div class="col-2 text-right">
-                                <button type="button" class="btn btn-primary"
+                            <div class="col-2">
+                                <button type="button" class="btn btn-danger"
                                     (click)="toggleActiveStatus(category.CId)">Deactivate</button>
                             </div>
                         </ng-template>
                         <ng-template #elseBlock>
                             <div class="col-2">
-                                <button type="button" class="btn btn-danger"
+                                <button type="button" class="btn btn-primary"
                                     (click)="toggleActiveStatus(category.CId)">Activate</button>
                             </div>
                         </ng-template>
@@ -46,6 +46,8 @@
                                 <button type="button" class="btn btn-primary">Edit</button>
                             </div>
                         </a>
+                        <button type="button" class="btn btn-danger"
+                        (click)="delete(category.CId)">Delete</button>
                     </div>
 
 

@@ -98,8 +98,6 @@ export class BookProductDetailComponent implements OnInit {
   }
 
   addToWishlist(Bid: number): void {
-    //  this.bookService.getBookById(Bid).subscribe((data) => {
-    //    this.book = data;
     if (this.authService.isLoggedIn()) {
       this.wishlistService.addToWishlist(Bid).subscribe((res: any) => {
         this.populateBooks();
@@ -107,8 +105,6 @@ export class BookProductDetailComponent implements OnInit {
     } else {
       this.router.navigateByUrl('/login');
     }
-    // this.router.navigateByUrl('/wishlist');
-    //  });
   }
 
   toggleActiveStatus(BId: number): void {
@@ -119,6 +115,12 @@ export class BookProductDetailComponent implements OnInit {
 
   removeFromWishlist(BId: number): void {
     this.wishlistService.removeFromWishlist(BId).subscribe((res: any) => {
+      this.populateBooks();
+    });
+  }
+
+  delete(BId:number):void{
+    this.bookService.deleteBook(BId).subscribe((res:any)=>{
       this.populateBooks();
     });
   }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { CartService } from '../cart/services/cart.service';
 import { WishlistService } from './services/wishlist.service';
 
 @Component({
@@ -8,7 +10,10 @@ import { WishlistService } from './services/wishlist.service';
 })
 export class WishlistComponent implements OnInit {
   wishlist!: any[];
-  constructor(private wishlistService: WishlistService) {
+  constructor(private wishlistService: WishlistService,
+    private cartService:CartService,
+    private router: Router,
+    ) {
     this.setWishlist();
   }
   BOOK_IMAGE_API = 'https://localhost:44380/api/image/book/';
@@ -29,5 +34,14 @@ export class WishlistComponent implements OnInit {
     this.wishlistService.getWishlist().subscribe((data) => {
       this.wishlist = data;
     });
+  }
+
+  addToCart(Bid: number) {
+     this.cartService
+      .addToCart(Bid)
+      .subscribe((res: any[]) => {
+        console.log(res);
+      });
+  //  this.router.navigateByUrl('/cart');
   }
 }

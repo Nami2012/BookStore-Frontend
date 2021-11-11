@@ -51,4 +51,10 @@ export class CategoryComponent implements OnInit {
         this.populateCategory();
       });
   }
+
+  delete(CId:number):void{
+    this.categoryService.deleteCategory(CId).subscribe((res:any)=>{
+      this.populateCategory();
+    });
+  }
 }

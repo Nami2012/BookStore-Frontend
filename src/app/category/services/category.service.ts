@@ -82,7 +82,7 @@ export class CategoryService {
   deleteCategory(bid: number): Observable<any> {
     return this.http
       .delete(this.REST_API_URL_ASP + 'category/delete', {
-        params: { bid: bid },
+        params: { id: bid },
       })
       .pipe(
         map((res: any) => {

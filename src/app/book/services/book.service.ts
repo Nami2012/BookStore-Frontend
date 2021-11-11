@@ -76,7 +76,7 @@ export class BookService {
   }
 
   deleteBook(bid:number):Observable<any>{
-    return this.http.delete(this.REST_API_URL_ASP+'book/delete',{params:{bid:bid}}).pipe(map((res:any)=>{
+    return this.http.delete(this.REST_API_URL_ASP+'book/delete',{params:{id:bid}}).pipe(map((res:any)=>{
       return res;
     }));
   }

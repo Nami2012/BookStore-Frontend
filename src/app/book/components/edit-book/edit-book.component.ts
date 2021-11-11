@@ -18,7 +18,10 @@ export class EditBookComponent implements OnInit {
   duplicateBookData!: Book;
   isUpdated = false;
   categoryList: Category[] = [];
+  bookCategoryName!:string;
   categorySubscription!: Subscription;
+  BOOK_IMAGE_API = 'https://localhost:44380/api/image/book/';
+
   constructor(
     private bookService: BookService,
     private categoryService: CategoryService,
@@ -37,11 +40,19 @@ export class EditBookComponent implements OnInit {
       this.bookDetails = res;
       this.duplicateBookData = this.bookDetails;
       console.log(this.duplicateBookData);
+      this.getCategory(this.bookDetails.CId);
     });
+  }
+  getCategory(CId:number){
     this.categorySubscription = this.categoryService
       .getCategories()
       .subscribe((res: Category[]) => {
         this.categoryList = res;
+        for (let [i, val] of this.categoryList.entries()) {
+          if(CId===this.categoryList[i].CId){
+            this.bookCategoryName=this.categoryList[i].CName;
+          }
+        }
         console.log(this.categoryList);
       });
   }
