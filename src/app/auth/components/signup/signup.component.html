@@ -6,10 +6,10 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-4">
+        <div class="col-3">
 
         </div>
-        <div class="col-4">
+        <div class="col-6">
             <div class="row mt-5">
                 <div class="col-9">
                     <label for="name" class="form-label">Name</label>
@@ -54,6 +54,34 @@
             </div>
             <div class="row mt-2">
                 <div class="col-9">
+                    <label for="street" class="form-label">Street Name</label>
+                    <input formControlName="street" type="text" class="form-control" name="street" id="street"
+                        [ngClass]="{ 'is-invalid': userSignupForm.get('street')?.touched && userSignupForm.get('street')?.invalid }" />
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-9">
+                    <label for="city" class="form-label">City</label>
+                    <input formControlName="city" type="text" class="form-control" name="city" id="city"
+                        [ngClass]="{ 'is-invalid': userSignupForm.get('city')?.touched && userSignupForm.get('city')?.invalid }" />
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-9">
+                    <label for="city" class="form-label">State</label>
+                    <input formControlName="state" type="text" class="form-control" name="state" id="state"
+                        [ngClass]="{ 'is-invalid': userSignupForm.get('state')?.touched && userSignupForm.get('state')?.invalid }" />
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-9">
+                    <label for="pincode" class="form-label">Pincode</label>
+                    <input formControlName="pincode" type="text" class="form-control" name="pincode" id="pincode"
+                        [ngClass]="{ 'is-invalid': userSignupForm.get('pincode')?.touched && userSignupForm.get('pincode')?.invalid }" />
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-9">
                     <label for="shippingAddress" class="form-label">Shipping Address</label>
                     <textarea class="form-control" formControlName="shippingAddress" name="shippingAddress"
                         [ngClass]="{ 'is-invalid': userSignupForm.get('shippingAddress')?.touched && userSignupForm.get('shippingAddress')?.invalid }"
@@ -68,7 +96,7 @@
                     <a style="text-decoration: none; color: inherit;" routerLink="/login">
                         <button class=" btn btn-primary" type="submit" (click)="signup()">Sign Up</button>
                     </a>
-                 
+
                 </div>
             </div>
         </div>

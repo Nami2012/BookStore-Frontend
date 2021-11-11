@@ -81,15 +81,6 @@
                     </div>
                 </li>
 
-                <!---Shipping Address -->
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-10">
-                            <h5><b>ShippingAddress:</b></h5>
-                            <p> {{userDetails.ShippingAddress}}</p>
-                        </div>
-                    </div>
-                </li>
 
                 <!--- Email -->
                 <li class="list-group-item">
@@ -130,4 +121,13 @@
 
     </div>
 
+</div>
+
+<div class="card-body ">
+    <ul class="list-group ">
+        <!---Shipping Address -->
+        <li class="list-group-item" *ngFor="let ShippingAddress of shippingAddresses">
+            <app-address [ShId]="ShippingAddress.ShId" [UId]="UId" [address]="ShippingAddress"></app-address>
+        </li>
+    </ul>
 </div>

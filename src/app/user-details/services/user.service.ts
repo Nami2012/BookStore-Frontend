@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import {
   user,
   UserAccountInfo,
+  UserAddressDetails,
   UserCredentials,
   UserDetails,
 } from '../model/user-details.model';
@@ -69,7 +70,7 @@ export class UserService {
     userCredentials.Username = updateableUserData.Username;
     return userCredentials;
   }
-  
+
   //updateuser_information details
   private UPDATE_USER_DETAILS_REST_API_URL =
     'https://localhost:44380/api/userInfo/edit';
@@ -83,8 +84,8 @@ export class UserService {
       this.populateUserAccountInfo(updateableUserData);
     let userCredentials: UserCredentials =
       this.populateUserCredentials(updateableUserData);
-      // console.log(userAccountInfo);
-      // console.log(userCredentials);
+    // console.log(userAccountInfo);
+    // console.log(userCredentials);
     //update user account info
     let status = this.http
       .put(this.UPDATE_USER_DETAILS_REST_API_URL, userAccountInfo, {
@@ -125,7 +126,9 @@ export class UserService {
   private UPDATE_USER_CRED_REGISTER_REST_API_URL =
     'https://localhost:44380/api/register/user/cred';
 
-  registerUser(newUserData: UserDetails): any {
+  private REGISTER_ADDRESS_URL = '';
+
+  registerUser(newUserData: UserDetails, userAddress: UserAddressDetails): any {
     let userAccountInfo: UserAccountInfo =
       this.populateUserAccountInfo(newUserData);
     let userCredentials: UserCredentials =
@@ -146,6 +149,9 @@ export class UserService {
           .then((res: any) => {
             return res;
           });
+        this.http.post(this.REGISTER_ADDRESS_URL, userAddress, {
+          params: { id: userid },
+        });
         return userid;
       })
       .catch((err: any) => {

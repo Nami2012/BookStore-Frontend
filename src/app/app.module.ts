@@ -41,6 +41,7 @@ import { OrderPostComponent } from './orders/components/order-post/order-post.co
 import { EditCategoryComponent } from './category/components/edit-category/edit-category.component';
 import { EditBookComponent } from './book/components/edit-book/edit-book.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { AddressComponent } from './user-details/Components/address/address.component';
 
 @NgModule({
   declarations: [
@@ -78,6 +79,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     OrderPostComponent,
     EditCategoryComponent,
     EditBookComponent,
+    AddressComponent,
     
   ],
   imports: [

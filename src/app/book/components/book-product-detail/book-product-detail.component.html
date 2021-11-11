@@ -1,7 +1,7 @@
 <app-notfound [visible]="!book" notFoundMessage="Book Not Found!" resetLinkText="Go to Home">
 
 </app-notfound>
-<div class="card-body" *ngIf="!parambookId">
+<div class="card-body" *ngIf="book">
     <div class="row">
         <div class="col-4"><img class="card-img-top" src="{{BOOK_IMAGE_API}}{{book.BId}}" alt="Card image cap"></div>
         <div class="col-6">
@@ -71,102 +71,8 @@
             <a style="text-decoration: none; color: inherit;" routerLink="/book/edit/{{book.BId}}">
                 <button type="button" class="btn btn-primary">Edit</button>
             </a>
-            <!-- <div class="col">
-            <button *ngIf="isAdmin" type="button" class="btn btn-primary">Deactivate</button>
-            <button *ngIf="isAdmin" type="button" class="btn btn-primary">Delete</button>
-        </div> -->
 
         </div>
     </div>
 
-    <div class="container">
-
-        <div class="card m-4" *ngIf="book">
-
-            <div class="card-header">
-                {{book.CName}}
-            </div>
-
-
-            <div class="card-body" *ngIf="parambookId">
-                <div class="row">
-                    <div class="col-4"><img class="card-img-top" src="{{BOOK_IMAGE_API}}{{book.CId}}"
-                            alt="{{book.BTitle}}"></div>
-                    <div class="col-6">
-                        <div class="row">
-                            <div class="col">
-                                <h2 class="card-title display-5">
-                                    {{book.BTitle}}
-                                </h2>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <p class="card-text">
-                                    {{book.BDescription}}
-                                </p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-3">
-                                <p>Year :
-                                    <span class="card-text lead"> {{book.BYEAR}} </span>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <div class="col" style="padding-left: 0px;  padding-right: 0px;">
-
-
-                                    <p class="lead"> ISBN <fa-icon [icon]="faISBN"></fa-icon>&nbsp;{{book.BISBN}} </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <ng-template [ngIf]="isPresentInCart" [ngIfElse]="NotInCart">
-                                    <fa-icon [icon]="faCart"></fa-icon>
-                                </ng-template>
-                                <ng-template #NotInCart>
-                                    <fa-icon (click)="addToCart(book.BId) " [icon]="faCartEmpty"></fa-icon> &nbsp;
-                                </ng-template>
-                                <ng-template [ngIf]="isPresentInWishlist" [ngIfElse]="NotInWishlist">
-                                    <fa-icon [icon]="fasHeart"></fa-icon>
-                                </ng-template>
-                                <ng-template #NotInWishlist>
-                                    <fa-icon (click)="addToWishlist(book.BId)" [icon]="farHeart"></fa-icon>
-                                </ng-template>
-
-
-                            </div>
-                            <div class="col">
-
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div *ngIf="isAdmin">
-                        <ng-template [ngIf]="book.BStatus" [ngIfElse]="elseBlock">
-                            <div class="col-2">
-                                <button type="button" class="btn btn-primary"
-                                    (click)="toggleActiveStatus(book.BId)">Deactivate</button>
-                            </div>
-                        </ng-template>
-                        <ng-template #elseBlock>
-                            <div class="col-2">
-                                <button type="button" class="btn btn-danger"
-                                    (click)="toggleActiveStatus(book.BId)">Activate</button>
-                            </div>
-                        </ng-template>
-                        <a style="text-decoration: none; color: inherit;" routerLink="/book/edit/{{book.BId}}">
-                            <button type="button" class="btn btn-primary">Edit</button>
-                        </a>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
+</div>

@@ -3,7 +3,7 @@
         <li *ngFor="let book of cart">
 
             <div>
-                <img [src]="book.BImage" [alt]="book.BTitle">
+                <img src="{{BOOK_IMAGE_API}}{{book.BId}}" [alt]="book.BTitle">
             </div>
             <div class="h4">
                 <a routerLink="/category/{{book.CId}}" style="text-decoration: none; color: inherit;">
@@ -23,4 +23,16 @@
             <p class="total-price"><span class="h5">₹ {{totalPrice}}</span></p>
         </div>
     </div>
+</div>
+<div class="container">
+
+    <ul>
+        <div class="lead">&nbsp;Shipping to :</div>
+        <li class="h4 mb-3">
+            {{shippingAddress?.Street}},
+            {{shippingAddress?.City}},
+            {{shippingAddress?.State}},
+            {{shippingAddress?.Pincode}}
+        </li>
+    </ul>
 </div>
