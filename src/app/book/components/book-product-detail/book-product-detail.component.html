@@ -71,10 +71,8 @@
             <a style="text-decoration: none; color: inherit;" routerLink="/book/edit/{{book.BId}}">
                 <button type="button" class="btn btn-primary">Edit</button>
             </a>
-            <!-- <div class="col">
-            <button *ngIf="isAdmin" type="button" class="btn btn-primary">Deactivate</button>
-            <button *ngIf="isAdmin" type="button" class="btn btn-primary">Delete</button>
-        </div> -->
+            <button type="button" class="btn btn-danger"
+                        (click)="delete(book.BId)">Delete</button>
 
         </div>
     </div>
