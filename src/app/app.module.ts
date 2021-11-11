@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -39,6 +40,7 @@ import { CheckoutComponent } from './orders/components/checkout/checkout.compone
 import { OrderPostComponent } from './orders/components/order-post/order-post.component';
 import { EditCategoryComponent } from './category/components/edit-category/edit-category.component';
 import { EditBookComponent } from './book/components/edit-book/edit-book.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 @NgModule({
   declarations: [
@@ -80,6 +82,7 @@ import { EditBookComponent } from './book/components/edit-book/edit-book.compone
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
@@ -87,6 +90,7 @@ import { EditBookComponent } from './book/components/edit-book/edit-book.compone
     FontAwesomeModule,
     NgbModule,
     FormsModule,
+    CarouselModule,
   ],
   providers: [
     {

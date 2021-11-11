@@ -1,4 +1,38 @@
 /* You can add global styles to this file, and also import other style files */
 
+.featured .owl-prev, .featured .owl-next{
+    position: absolute !important;
+    background: #ffffff24 !important;
+    width: 64px !important;
+    height: 64px !important;
+    border-radius: 50% !important;
+    z-index: 2 !important;
+    font-size: 24px !important;
+    color: #111 !important;
+    transition: all .3s ease !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+}
+
+.featured .owl-prev{
+    left: 114px;
+}
+
+.featured .owl-next{
+    right: 48px;
+}
+
+.featured .owl-prev i, .featured .owl-next i{
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+}
+
+.featured .owl-prev:hover, .featured .owl-next:hover{
+    background: red !important;
+    color: white;
+}
+
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';

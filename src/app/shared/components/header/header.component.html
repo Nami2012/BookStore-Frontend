@@ -40,15 +40,6 @@
 
         <ul class="navbar-nav mb-lg-0" style="font-size: large;">
 
-          <li class="nav-item">
-            <a class="btn btn-sm btn-dark btn-outline-dark" routerLink="/cart" routerLinkActive="active">
-              <fa-icon class="fas fa-2x text-light" [icon]=" faShoppingCart">
-              </fa-icon>
-              <span
-                class="translate-middle badge border border-light rounded-circle bg-danger">{{totalBookCount}}</span>
-            </a>
-          </li>
-
           <li class="nav-item pt-2 pe-2">
             <a class="nav-link" routerLink="/wishlist" routerLinkActive="active">Wishlist</a>
           </li>
@@ -62,18 +53,27 @@
               <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
             </li>
 
-            <li class="nav-item pe-2 pt-2" loggedOut>
+            <!-- <li class="nav-item pe-2 pt-2" loggedOut>
               <a class="nav-link" routerLink="/signup" routerLinkActive="active">Sign Up</a>
-            </li>
-
-            <!-- <li class="nav-item">
-              <a class="nav-link" routerLink="/profile" routerLinkActive="active"> Current User Name </a> 
             </li> -->
+
+            <li class="nav-item  pe-2 pt-2" loggedIn>
+              <a class="nav-link" routerLink="/profile" routerLinkActive="active"> Profile </a> 
+            </li>
 
             <li class="nav-item pe-2 pt-2" loggedIn>
               <a class="nav-link" routerLink="/logout" routerLinkActive="active">Logout</a>
             </li>
           </app-menu>
+
+            <li class="nav-item">
+              <a class="btn btn-sm btn-dark btn-outline-dark" routerLink="/cart" routerLinkActive="active">
+                <fa-icon class="fas fa-2x text-light" [icon]=" faShoppingCart">
+                </fa-icon>
+                <span
+                  class="translate-middle badge border border-light rounded-circle bg-danger">{{totalBookCount}}</span>
+              </a>
+            </li>
         </ul>
 
       </div>

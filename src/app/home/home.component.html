@@ -1,8 +1,66 @@
-<ngb-carousel *ngIf="featured" class=" text-center">
+<div class="text-center" style="font-display: Italics; font-weight: bold;"> <h2>Featured Books</h2> </div>
+<section class="featured">
+    <div class="containers">
+        <owl-carousel-o [options]="carouselOptions">
+
+            <ng-template carouselSlide>
+                <div class="featured-image">
+                    <img [src]="featured[0].BImage" alt="featured-Image1">
+                </div> 
+                <div class="featured-content text-center">
+                    <h5>{{featured[0].BTitle}}</h5>
+                    <!-- <p>
+                        {{featured[0].BDescription}}
+                    </p> -->
+                </div>   
+            </ng-template>  
+
+            <ng-template carouselSlide>
+                <div class="featured-image">
+                    <img [src]="featured[1].BImage" alt="featured-Image2">
+                </div> 
+                <div class="featured-content text-center">
+                    <h5>{{featured[1].BTitle}}</h5>
+                    <!-- <p>
+                        {{featured[1].BDescription}}
+                    </p> -->
+                </div>   
+            </ng-template>  
+
+            <ng-template carouselSlide>
+                <div class="featured-image">
+                    <img [src]="featured[2].BImage" alt="featured-Image3">
+                </div> 
+                <div class="featured-content text-center">
+                    <h5>{{featured[2].BTitle}}</h5>
+                    <!-- <p>
+                        {{featured[2].BDescription}}
+                    </p> -->
+                </div>   
+            </ng-template>  
+
+            <ng-template carouselSlide>
+                <div class="featured-image">
+                    <img [src]="featured[3].BImage" alt="featured-Image4">
+                </div> 
+                <div class="featured-content text-center">
+                    <h5>{{featured[3].BTitle}}</h5>
+                    <!-- <p>
+                        {{featured[3].BDescription}}
+                    </p> -->
+                </div>   
+            </ng-template>  
+
+        
+          </owl-carousel-o>
+    </div>
+</section>
+
+<!-- <ngb-carousel *ngIf="featured" class=" text-center">
     <ng-template *ngFor="let book of featured" ngbSlide>
         <a routerLink="/category/{{book.CId}}" style="text-decoration: none; color: inherit;">
             <div class="picsum-img-wrapper">
-                <img [src]="book.BImage" alt="book.BDescription" width="40%" height="800px">
+                <img [src]="book.BImage" alt="book.BDescription" >
             </div>
             <div class="carousel-caption strokeme">
                 <h3>{{ book.BTitle }}</h3>
@@ -10,6 +68,6 @@
             </div>
         </a>
     </ng-template>
-</ngb-carousel>
+</ngb-carousel> -->
 
 <app-list-horizontal></app-list-horizontal>
