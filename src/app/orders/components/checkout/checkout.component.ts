@@ -4,6 +4,9 @@ import { CheckoutService } from './services/checkout.service';
 import { Coupon } from 'src/app/coupon/model/coupon.model';
 import { CartService } from 'src/app/cart/services/cart.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ShippingAddress } from 'src/app/user-details/model/address.model';
+import { AddressService } from 'src/app/user-details/services/address.service';
+import { FormControl, FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
@@ -23,10 +26,19 @@ export class CheckoutComponent implements OnInit {
 
   striked!: string;
 
+  shippingAddresses!: ShippingAddress[];
+
+  BOOK_IMAGE_API = 'https://localhost:44380/api/image/book/';
+
+  addressForm: FormGroup = new FormGroup({
+    shippingId: new FormControl(''),
+  });
+
   constructor(
     private checkoutService: CheckoutService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private addressService: AddressService
   ) {}
 
   ngOnInit(): void {
@@ -55,6 +67,17 @@ export class CheckoutComponent implements OnInit {
       console.log('Cart', this.cart);
       console.log('Total Price', this.totalPrice);
     });
+    this.getShippingAddresses();
+  }
+
+  getShippingAddresses() {
+    this.addressService
+      .getAllShippingAddressesByUser()
+      .subscribe((res: any) => {
+        this.addressForm.value.shippingId = res[0].ShId + '';
+        this.shippingAddresses = res;
+        console.log('Shipping Addresses', this.shippingAddresses);
+      });
   }
 
   handleChange() {
@@ -66,8 +89,13 @@ export class CheckoutComponent implements OnInit {
   }
 
   ConfirmOrder() {
+    console.log(this.addressForm.value);
     this.checkoutService
-      .confirmOrder(this.orderId, this.couponList[this.discount].CouponId)
+      .confirmOrder(
+        this.orderId,
+        this.couponList[this.discount].CouponId,
+        this.addressForm.value.shippingId
+      )
       .subscribe((res: any) => {
         console.log(res);
         this.router.navigate(['/order/' + this.orderId]);

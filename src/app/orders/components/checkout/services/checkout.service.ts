@@ -38,12 +38,13 @@ export class CheckoutService {
   }
 
   REST_API_URL_GET_CONFIRM_ORDER = 'https://localhost:44380/api/ConfirmOrder/';
-  confirmOrder(orderId: any, couponId: any): Observable<any> {
+  confirmOrder(orderId: any, couponId: any, shId: any): Observable<any> {
     console.log('Confirming', orderId, couponId);
     return this.http
       .post(this.REST_API_URL_GET_CONFIRM_ORDER, null, {
         params: {
           orderid: orderId,
+          shId: shId,
           couponId: couponId,
         },
       })

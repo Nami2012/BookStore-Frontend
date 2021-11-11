@@ -127,7 +127,7 @@
     <ul class="list-group ">
         <!---Shipping Address -->
         <li class="list-group-item" *ngFor="let ShippingAddress of shippingAddresses">
-            <app-address [ShId]="ShippingAddress.ShId"></app-address>
-            </li>
+            <app-address [ShId]="ShippingAddress.ShId" [UId]="UId" [address]="ShippingAddress"></app-address>
+        </li>
     </ul>
 </div>

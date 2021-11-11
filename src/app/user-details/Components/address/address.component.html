@@ -1,71 +1,68 @@
+<div class="row">
+  <div class="col-10">
+    <h5><b>ShippingAddress:</b></h5>
+    <p>{{address.Street}}</p>
+    <p>{{address.City}}</p>
+    <p>{{address.State}}</p>
+    <p>{{address.Pincode}}</p>
+  </div>
+  <div class="col-2">
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editShippingAddressModal"
+      (click)="handleEditModalOpen()">Edit</button>
+  </div>
+</div>
 
-       
-            <div class="row">
-                <div class="col-10">
-                    <h5><b>ShippingAddress:</b></h5>
-                    <p>{{shippingAddress.Street}}</p>
-                    <p>{{shippingAddress.City}}</p>
-                    <p>{{shippingAddress.State}}</p>
-                    <p>{{shippingAddress.Pincode}}</p>
-                </div>
-                <div class="col-2">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editShippingAddressModal"
-                    (click)="handleEditModalOpen()">Edit</button>
-                </div>
+
+<!-- Modal -->
+<div class="modal fade" id="editShippingAddressModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Update ShippingAddress</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" *ngIf="duplicateShippingAddressData">
+        <form ngNativeValidate (ngSubmit)='handleAddressUpdate()'>
+          <div class="form-group row mb-3">
+            <label for="staticEmail" class="col-sm-2 col-form-label">Street</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" placeholder="Enter Street" name='street'
+                [(ngModel)]="duplicateShippingAddressData.Street">
             </div>
-       
+          </div>
+          <div class="form-group row mb-3">
+            <label for="staticEmail" class="col-sm-2 col-form-label">City</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" placeholder="Enter City" name='city'
+                [(ngModel)]="duplicateShippingAddressData.City">
+            </div>
+          </div>
+          <div class="form-group row mb-3">
+            <label for="staticEmail" class="col-sm-2 col-form-label">State</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" placeholder="Enter State" name='state'
+                [(ngModel)]="duplicateShippingAddressData.State">
+            </div>
+          </div>
+          <div class="form-group row mb-3">
+            <label for="staticEmail" class="col-sm-2 col-form-label">PINCODE</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" placeholder="Enter Pincode" name='pincode'
+                [(ngModel)]="duplicateShippingAddressData.Pincode">
+            </div>
+          </div>
 
-         <!-- Modal -->
-         <div class="modal fade" id="editShippingAddressModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
-         <div class="modal-dialog" role="document">
-           <div class="modal-content">
-             <div class="modal-header">
-               <h5 class="modal-title" id="exampleModalLabel">Update ShippingAddress</h5>
-               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-             </div>
-             <div class="modal-body" *ngIf="duplicateShippingAddressData">
-               <form ngNativeValidate (ngSubmit)='handleAddressUpdate()'>
-                 <div class="form-group row mb-3">
-                   <label for="staticEmail" class="col-sm-2 col-form-label">Street</label>
-                   <div class="col-sm-10">
-                     <input type="text" class="form-control" placeholder="Enter Street" name='street'
-                       [(ngModel)]="duplicateShippingAddressData.Street">
-                   </div>
-                 </div>
-                 <div class="form-group row mb-3">
-                   <label for="staticEmail" class="col-sm-2 col-form-label">City</label>
-                   <div class="col-sm-10">
-                     <input type="text" class="form-control" placeholder="Enter City" name='city'
-                       [(ngModel)]="duplicateShippingAddressData.City">
-                   </div>
-                 </div>
-                 <div class="form-group row mb-3">
-                   <label for="staticEmail" class="col-sm-2 col-form-label">State</label>
-                   <div class="col-sm-10">
-                     <input type="text" class="form-control" placeholder="Enter State" name='state'
-                       [(ngModel)]="duplicateShippingAddressData.State">
-                   </div>
-                 </div>
-                 <div class="form-group row mb-3">
-                    <label for="staticEmail" class="col-sm-2 col-form-label">PINCODE</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" placeholder="Enter Pincode" name='pincode'
-                        [(ngModel)]="duplicateShippingAddressData.Pincode">
-                    </div>
-                  </div>
+          <div class="alert alert-success" *ngIf='isUpdated'>
+            Updated successfully!
+          </div>
 
-                 <div class="alert alert-success" *ngIf='isUpdated'>
-                   Updated successfully!
-                 </div>
-
-                 <div class="modal-footer">
-                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                   <button type="submit" class="btn btn-primary">Save changes</button>
-                 </div>
-               </form>
-             </div>
-           </div>
-         </div>
-       </div>
-    
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -3,7 +3,10 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { UserService } from '../../../user-details/services/user.service';
-import { UserDetails } from 'src/app/user-details/model/user-details.model';
+import {
+  UserAddressDetails,
+  UserDetails,
+} from 'src/app/user-details/model/user-details.model';
 
 @Component({
   selector: 'app-signup',
@@ -26,6 +29,14 @@ export class SignupComponent implements OnInit {
       name: new FormControl('', [Validators.required]),
       phoneNumber: new FormControl('', [Validators.required]),
       shippingAddress: new FormControl('', [Validators.required]),
+      street: new FormControl('', [Validators.required]),
+      city: new FormControl('', [Validators.required]),
+      state: new FormControl('', [Validators.required]),
+      pincode: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(6),
+        Validators.maxLength(10),
+      ]),
       password: new FormControl('', [
         Validators.required,
         Validators.minLength(6),
@@ -50,8 +61,20 @@ export class SignupComponent implements OnInit {
     return userdetails;
   }
 
+  populateUserAddress(userSignupForm: FormGroup): UserAddressDetails {
+    let userdetails: UserAddressDetails = new UserAddressDetails();
+    userdetails.Street = userSignupForm.controls['street'].value;
+    userdetails.City = userSignupForm.controls['city'].value;
+    userdetails.State = userSignupForm.controls['state'].value;
+    userdetails.Pincode = userSignupForm.controls['pincode'].value;
+    return userdetails;
+  }
+
   signup(): void {
     let userdetails: UserDetails = this.populate(this.userSignupForm);
-    this.userService.registerUser(userdetails);
+    let userAddress: UserAddressDetails = this.populateUserAddress(
+      this.userSignupForm
+    );
+    this.userService.registerUser(userdetails, userAddress);
   }
 }

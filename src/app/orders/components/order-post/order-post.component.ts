@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AddressService } from 'src/app/user-details/services/address.service';
 import { CheckoutService } from '../checkout/services/checkout.service';
 
 @Component({
@@ -10,12 +11,17 @@ import { CheckoutService } from '../checkout/services/checkout.service';
 export class OrderPostComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
-    private checkoutService: CheckoutService
+    private checkoutService: CheckoutService,
+    private addressService: AddressService
   ) {}
   cart: any[] = [];
   order!: any;
   orderId: number = 0;
   totalPrice = 0;
+
+  shippingAddress!: any;
+
+  BOOK_IMAGE_API = 'https://localhost:44380/api/image/book/';
 
   ngOnInit(): void {
     this.orderId = this.activatedRoute.snapshot.params.id;
@@ -34,6 +40,12 @@ export class OrderPostComponent implements OnInit {
       }
       console.log('Cart', this.cart);
       // console.log('Total Price', this.totalPrice);
+      this.addressService
+        .getShippingAddressById(this.order?.ShippingAddress)
+        .subscribe((res: any) => {
+          console.log('Shipping Address', res);
+          this.shippingAddress = res;
+        });
     });
   }
 }

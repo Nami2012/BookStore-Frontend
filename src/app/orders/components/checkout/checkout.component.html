@@ -3,7 +3,7 @@
         <li *ngFor="let book of cart">
 
             <div>
-                <img [src]="book.BImage" [alt]="book.BTitle">
+                <img src="{{BOOK_IMAGE_API}}{{book.BId}}" [alt]="book.BTitle">
             </div>
             <div class="h4">
                 <a routerLink="/category{{book.CId}}" style="text-decoration: none; color: inherit;">
@@ -37,3 +37,20 @@
         </div>
     </div>
 </div>
+<form class="container" [formGroup]="addressForm">
+    <ul>
+        <li *ngFor="let address of shippingAddresses">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" formControlName="shippingId" id="{{address.ShId}}"
+                    value="{{address.ShId}}">
+                <label class="form-check-label" for="{{address.ShId}}">
+                    {{address.Street}}
+                    {{address.City}}
+                    {{address.State}}
+                    {{address.Pincode}}
+                </label>
+            </div>
+        </li>
+
+    </ul>
+</form>

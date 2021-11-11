@@ -11,6 +11,8 @@ export class ListHorizontalComponent implements OnInit {
 
   categoryList: any = [];
 
+  BOOK_IMAGE_API = 'https://localhost:44380/api/image/book/';
+
   currentCategory: number = 0;
 
   constructor(private sharedService: SharedService) {}
