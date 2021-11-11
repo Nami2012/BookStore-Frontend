@@ -54,25 +54,24 @@
 
         </div>
     </div>
-    <div class="row">
-        <div *ngIf="isAdmin">
-            <ng-template [ngIf]="book.BStatus" [ngIfElse]="elseBlock">
-                <div class="col-2">
-                    <button type="button" class="btn btn-primary"
-                        (click)="toggleActiveStatus(book.BId)">Deactivate</button>
-                </div>
-            </ng-template>
-            <ng-template #elseBlock>
-                <div class="col-2">
-                    <button type="button" class="btn btn-danger"
-                        (click)="toggleActiveStatus(book.BId)">Activate</button>
-                </div>
-            </ng-template>
-            <a style="text-decoration: none; color: inherit;" routerLink="/book/edit/{{book.BId}}">
-                <button type="button" class="btn btn-primary">Edit</button>
-            </a>
 
+    <div class="d-flex justify-content-end" *ngIf="isAdmin">
+        <ng-template [ngIf]="book.BStatus" [ngIfElse]="elseBlock">
+            <div class="p-2">
+                <button type="button" class="btn btn-danger"
+                    (click)="toggleActiveStatus(book.BId)">Deactivate</button>
+            </div>
+        </ng-template>
+        <ng-template #elseBlock>
+            <div class="p-2 ">
+                <button type="button" class="btn" style="background-color: green; color: white; font-weight: 500;"
+                    (click)="toggleActiveStatus(book.BId)">Activate</button>
+            </div>
+        </ng-template>
+        <div class="p-2">
+            <button class="btn btn-dark" routerLink="/book/edit/{{book.BId}}"> Edit </button>
         </div>
+        
     </div>
 
 </div>

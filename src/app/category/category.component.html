@@ -30,7 +30,7 @@
 
                     <div *ngIf="isAdmin">
                         <ng-template [ngIf]="category.CStatus" [ngIfElse]="elseBlock">
-                            <div class="col-2">
+                            <div class="col-2 text-right">
                                 <button type="button" class="btn btn-primary"
                                     (click)="toggleActiveStatus(category.CId)">Deactivate</button>
                             </div>
@@ -42,7 +42,9 @@
                             </div>
                         </ng-template>
                         <a style="text-decoration: none; color: inherit;" routerLink="/category/edit/{{category.CId}}">
-                            <button type="button" class="btn btn-primary">Edit</button>
+                            <div class="col-2 text-right">
+                                <button type="button" class="btn btn-primary">Edit</button>
+                            </div>
                         </a>
                     </div>
 
