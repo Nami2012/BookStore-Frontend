@@ -2,23 +2,21 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-footer',
-  template:`
+  template:`  
   <div class="text-center">
-    <hr>
-    <app-menu>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Back to Top</a>
-      </li>
-    </app-menu>
-    <p class="grey">Footer Sentence 1</p>
-    <p class="grey">Footer Sentence 2</p>
+    Conditions of Use & SalePrivacy NoticeInterest-Based Ads© 1996-2021
   </div>
 ` ,
   styles: [
-    `
-      .grey{
-        color: grey;
-      }
+    ` 
+    div{
+      background-color: black;
+      color: white;
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+      margin: 0;
+    }
     `
   ]
 })
