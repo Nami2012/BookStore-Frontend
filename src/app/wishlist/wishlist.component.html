@@ -1,0 +1,38 @@
+<app-notfound [visible]="!wishlist || wishlist.length == 0" notFoundMessage="Your Wishlist is Empty"
+    resetLinkText="Go Home">
+</app-notfound>
+
+<div *ngIf="wishlist && wishlist.length > 0" class="container">
+    <ul>
+        <a style="text-decoration: none; color: inherit;" routerLink="/category/{{book.CId}}"
+            *ngFor="let book of wishlist">
+            <div>
+                <img src="{{BOOK_IMAGE_API}}{{book.BId}}" [alt]="book.title">
+            </div>
+            <div>
+
+                {{book.BTitle}}
+            </div>
+
+            <div>
+                {{book.CName}}
+            </div>
+
+            <div>
+                {{book.BPrice + " INR "}}
+            </div>
+
+            <div>
+                <button class="remove-button" (click)="addToCart(book.BId)">
+                    Add to cart
+                </button>
+            </div>
+
+            <div>
+                <button class="remove-button" (click)="removeFromWishlist(book)">
+                    Remove
+                </button>
+            </div>
+
+        </a>
+    </ul>

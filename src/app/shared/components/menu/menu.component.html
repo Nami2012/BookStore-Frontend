@@ -1,0 +1,6 @@
+<ul class="navbar-nav me-auto mb-2 mb-md-0">
+    <ng-content select="[loggedIn]" *ngIf="loggedIn(); else elseBlock"></ng-content>
+    <ng-template #elseBlock>
+        <ng-content select="[loggedOut]"></ng-content>
+    </ng-template>
+</ul>

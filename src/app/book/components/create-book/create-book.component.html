@@ -1,0 +1,100 @@
+<div class="container">
+    <main>
+        <div class="py-5 text-center">
+            <img class="d-block mx-auto mb-4" src="https://getbootstrap.com/docs/5.1/assets/brand/bootstrap-logo.svg"
+                alt="" width="72" height="57">
+            <h2>Add Book</h2>
+        </div>
+
+        <div class="row g-5">
+            <div class="col-sm-0 col-md-1 col-lg-2 "></div>
+            <div class="col-md-7 col-lg-8">
+                <form class="needs-validation" [formGroup]="addBookForm" (ngSubmit)="handleAddBook()">
+                    <div class="row g-3">
+                        <div class="col-sm-6">
+                            <label for="country" class="form-label">Category</label>
+                            <select class="form-select" id="category" required formControlName="cid"
+                                [ngClass]="{ 'is-invalid': addBookForm.get('cid')?.touched && addBookForm.get('cid')?.invalid }">
+                                <option *ngFor="let category of categories" value="{{category.CId}}">{{category.CName}}
+                                </option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Please select a Category.
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-0"></div>
+                        <div class="col-sm-12">
+                            <label for="btitle" class="form-label">Title</label>
+                            <input type="text" class="form-control" formControlName="btitle" id="btitle" placeholder=""
+                                value="" required=""
+                                [ngClass]="{ 'is-invalid': addBookForm.get('btitle')?.touched && addBookForm.get('btitle')?.invalid }">
+                            <div class="invalid-feedback">
+                                Valid Title is required.
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <label for="cimage" class="form-label">Book Image</label>
+
+                            <input class="form-control" id="cimage" type="file" (change)="onFileSelected($event)">
+                        </div>
+                        <div class="col-sm-12">
+                            <label for="bauthor" class="form-label">Author</label>
+                            <input type="text" class="form-control" formControlName="bauthor" id="btitle" placeholder=""
+                                value="" required
+                                [ngClass]="{ 'is-invalid': addBookForm.get('bauthor')?.touched && addBookForm.get('bauthor')?.invalid }">
+                            <div class="invalid-feedback">
+                                Valid Title is required.
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <label for="bisbn" class="form-label">ISBN</label>
+                            <input type="text" class="form-control" id="bisbn" formControlName="bisbn" placeholder=""
+                                value="" required=""
+                                [ngClass]="{ 'is-invalid': addBookForm.get('bisbn')?.touched && addBookForm.get('bisbn')?.invalid }">
+                            <div class="invalid-feedback">
+                                Valid ISBN is required.
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label for="byear" class="form-label">Year</label>
+                            <input type="number" min="1500" max="2500" step="1" class="form-control" id="byear"
+                                placeholder="" value="2000" formControlName="byear" required
+                                [ngClass]="{ 'is-invalid': addBookForm.get('byear')?.touched && addBookForm.get('byear')?.invalid }">
+                            <div class="invalid-feedback">
+                                Enter Year between 1500 and 2500.
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label for="bprice" class="form-label">Price</label>
+                            <div class="input-group has-validation">
+                                <span class="input-group-text">INR</span>
+                                <input type="number" min="0" step="0.01" class="form-control" id="bprice"
+                                    placeholder="0.00" required formControlName="bprice"
+                                    [ngClass]="{ 'is-invalid': addBookForm.get('bprice')?.touched && addBookForm.get('bprice')?.invalid }">
+                                <div class="invalid-feedback">
+                                    Enter a valid price
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <label for="bdescription">Description</label>
+                            <textarea class="form-control" placeholder="Enter book description(Optional)"
+                                id="bdescription" formControlName="bdescription"
+                                [ngClass]="{ 'is-invalid': addBookForm.get('bdescription')?.touched && addBookForm.get('bdescription')?.invalid }"></textarea>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-3 col-sm-12 col-lg-2">
+                            <button [disabled]="addBookForm.invalid" class="btn btn-primary" type="submit">Add
+                                Book</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+</div>

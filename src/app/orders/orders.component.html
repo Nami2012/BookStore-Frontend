@@ -1,0 +1,24 @@
+<app-notfound [visible]="orders.length <= 0" notFoundMessage="Your Order List is Empty" resetLinkText="Shop Now"
+    resetLinkRoute="/categories">
+</app-notfound>
+
+<div class="container">
+    <ul *ngIf="orders.length > 0">
+        <a class="h4    " routerLink="/order/{{order.OrderId}}" style="text-decoration: none; color: inherit;"
+            *ngFor="let order of orders">
+            <div>
+                <p class="lead">Order# <span class="h4">
+                        {{order.OrderId}}
+                    </span></p>
+
+            </div>
+            <p class="h4">
+                <small class="text-muted">Total : </small>
+                <span class="h5">
+                    {{"₹" + order.Amount }}
+                </span>
+            </p>
+
+        </a>
+    </ul>
+</div>

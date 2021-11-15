@@ -1,0 +1,25 @@
+<app-notfound [visible]="bookList.length <= 0" notFoundMessage="No books available in this category, checkout others."
+    resetLinkText="Shop Now" resetLinkRoute="/categories">
+</app-notfound>
+
+<div class="container" *ngIf="bookList.length > 0">
+    <a *ngIf="isAdmin" routerLink="/book/create" style="text-decoration: none;color: black;">
+        <button type="button" class="btn btn-primary">
+            New
+            <!-- Little plus icon -->
+            <!-- <svg class="svg-circleplus" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="45" fill="none" stroke-width="7.5"></circle>
+            <line x1="32.5" y1="50" x2="67.5" y2="50" stroke-width="5"></line>
+            <line x1="50" y1="32.5" x2="50" y2="67.5" stroke-width="5"></line>
+        </svg> -->
+        </button>
+    </a>
+    <div class="container">
+        <div class="card m-4" *ngFor="let book of bookList">
+            <div class="card-header">
+                {{book.CName}}
+            </div>
+            <app-book-product-detail [bookid]=book.BId></app-book-product-detail>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,60 @@
+<app-notfound [visible]="cartItemsList.length <= 0" notFoundMessage="Your Cart is Empty" resetLinkText="Shop Now"
+    resetLinkRoute="/categories">
+</app-notfound>
+
+<!-- <div *ngIf="cart && cart.items.length > 0" class="container"> -->
+<div *ngIf="cartItemsList.length > 0" class="container">
+    <ul>
+        <li *ngFor="let cartItem of cartItemsList">
+
+            <div>
+                <!-- <img [src]="cartItem.book.BImage" [alt]="cartItem.book.BTitle"> -->
+                <img src="{{BOOK_IMAGE_API}}{{cartItem.Book.BId}}" [alt]="cartItem.Book.BTitle">
+            </div>
+            <div>
+                <a style="text-decoration: none; color: inherit;" routerLink="/category/{{cartItem.Book.CId}}">
+                    {{cartItem.Book.BTitle}}
+                </a>
+            </div>
+
+            <!-- <div>
+                <select #quantitySelect (change)="changeQuantity(cartItem,
+                quantitySelect.value)">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div> -->
+            <div>
+                <button type="button" class="btn btn-secondary rounded-circle"
+                    (click)="increment(cartItem.Book.BId,cartItem.Count)"> + </button>
+                <!--  <input type="text" class="form-control" style="display: inline;width:25%" [(ngModel)]="cartItem.Count">-->
+                {{cartItem.Count}}
+                <button type="button" class="btn btn-secondary rounded-circle"
+                    (click)="decrement(cartItem.Book.BId,cartItem.Count)"> - </button>
+            </div>
+
+            <div>
+                {{cartItem.Book.BPrice + " INR "}}
+            </div>
+
+            <div>
+                <button class="remove-button" (click)="removeFromCart(cartItem.Book.BId)">
+                    Remove
+                </button>
+            </div>
+        </li>
+    </ul>
+
+
+    <div class="checkout">
+        <div>
+            <div class="Book-count">No. of books : {{totalBookCount}}</div>
+            <div class="total-price">{{totalPrice}}</div>
+            <button class="btn btn-primary" [routerLink]="['/order/checkout']" (click)="handleCheckout()">
+                Checkout</button>
+        </div>
+    </div>
+</div>

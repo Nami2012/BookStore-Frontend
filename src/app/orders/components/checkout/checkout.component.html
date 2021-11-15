@@ -1,0 +1,56 @@
+<div class="container">
+    <ul>
+        <li *ngFor="let book of cart">
+
+            <div>
+                <img src="{{BOOK_IMAGE_API}}{{book.BId}}" [alt]="book.BTitle">
+            </div>
+            <div class="h4">
+                <a routerLink="/category{{book.CId}}" style="text-decoration: none; color: inherit;">
+                    {{book.BTitle}}
+                </a>
+            </div>
+
+            <div class="h5">
+                {{book.BPrice + " INR "}} x {{book.count}}
+            </div>
+        </li>
+    </ul>
+
+
+    <div class="checkout">
+        <div>
+            Availabe Coupons :
+            <select [(ngModel)]="discount" (change)="handleChange()">
+                <option value="0" selected>None</option>
+                <option *ngFor="let coupon of couponList; let i = index" [value]="i" [id]="coupon.CouponId">
+                    {{coupon.CouponId}}
+                </option>
+            </select>
+            <p class="total-price"><span class="h5 {{striked}}">₹ {{totalPrice}}</span></p>
+            <p class="discounted-price" *ngIf="discountedPrice"><span class="h5">₹ {{discountedPrice}}</span></p>
+            <div class="container">
+                <button class="btn btn-primary m-2" (click)="ConfirmOrder()"> Confirm </button>
+                <button class="btn btn-danger m-2" (click)="cancelOrder()"> Cancel </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<form class="container" [formGroup]="addressForm">
+    <ul>
+        <li *ngFor="let address of shippingAddresses">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" formControlName="shippingId" id="{{address.ShId}}"
+                    value="{{address.ShId}}">
+                <label class="form-check-label" for="{{address.ShId}}">
+                    {{address.Street}}
+                    {{address.City}}
+                    {{address.State}}
+                    {{address.Pincode}}
+                </label>
+            </div>
+        </li>
+
+    </ul>
+</form>

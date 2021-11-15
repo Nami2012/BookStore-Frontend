@@ -1,0 +1,27 @@
+<body class="text-center" data-new-gr-c-s-check-loaded="14.1036.0" data-gr-ext-installed="">
+    <main class="form-signin">
+        <form [formGroup]="userLoginForm" (ngSubmit)="onLogin()">
+            <img class="mb-4" src="https://getbootstrap.com/docs/5.1/assets/brand/bootstrap-logo.svg" alt="" width="72"
+                height="57">
+            <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+            <div class="form-floating">
+                <input type="email" formControlName="email" class="form-control" id="floatingInput"
+                    placeholder="name@example.com" autofocus
+                    [ngClass]="{ 'is-invalid': userLoginForm.get('email')?.touched && userLoginForm.get('email')?.invalid }">
+                <label for="floatingInput">Email address</label>
+            </div>
+            <div class="form-floating">
+                <input type="password" formControlName="password" class="form-control" id="floatingPassword"
+                    placeholder="Password"
+                    [ngClass]="{ 'is-invalid': userLoginForm.get('password')?.touched && userLoginForm.get('password')?.invalid }">
+                <label for="floatingPassword">Password</label>
+            </div>
+            <div *ngIf="loginStatus" class="alert alert-danger" role="alert">
+                Username or password is incorrect
+            </div>
+            <button class="w-100 btn btn-lg btn-dark" type="submit">Sign in</button>
+        </form>
+        <div>Dont have an account? <a routerLink="/signup">Signup</a> here</div>
+    </main>
+</body>

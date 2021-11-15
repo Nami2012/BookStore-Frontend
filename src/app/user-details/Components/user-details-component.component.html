@@ -1,0 +1,133 @@
+<div class="card mx-auto" style="width: 50%;border: none;" *ngIf="userDetails">
+    <div class="card-header" style="background-color: white;border:none">
+        <h1> Account Information </h1>
+    </div>
+
+
+    <div class="card-body ">
+        <ul class="list-group ">
+            <!--- NAME -->
+            <ng-template [ngIf]="isEditing" [ngIfElse]="isShowing">
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-10">
+                            <h5><b>Name:</b></h5>
+                            <input type="text" class="form-control" [(ngModel)]="duplicateUserData.Name">
+                        </div>
+                    </div>
+                </li>
+
+                <!---Phone No -->
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-10">
+                            <h5><b>Phone No:</b></h5>
+                            <input type="text" class="form-control" [(ngModel)]="duplicateUserData.PhoneNo">
+                        </div>
+                    </div>
+                </li>
+
+                <!---Shipping Address -->
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-10">
+                            <h5><b>ShippingAddress:</b></h5>
+                            <input type="text" class="form-control" [(ngModel)]="duplicateUserData.ShippingAddress">
+                        </div>
+                    </div>
+                </li>
+
+                <!--- Email -->
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-10">
+                            <h5><b>Email (also your username):</b></h5>
+                            <input type="text" class="form-control" [(ngModel)]="duplicateUserData.Username">
+                        </div>
+                    </div>
+                </li>
+
+                <!--- Password -->
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-10">
+                            <h5><b>Password:</b></h5>
+                            <input type="text" class="form-control" [(ngModel)]="duplicateUserData.Password">
+                        </div>
+
+                    </div>
+                </li>
+            </ng-template>
+
+            <ng-template #isShowing>
+                <!-- Name -->
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-10">
+                            <h5><b>Name:</b></h5>
+                            <p>{{userDetails.Name}}</p>
+                        </div>
+
+                    </div>
+                </li>
+
+                <!---Phone No -->
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-10">
+                            <h5><b>Phone No:</b></h5>
+                            <p>{{userDetails.PhoneNo}}</p>
+                        </div>
+                    </div>
+                </li>
+
+
+                <!--- Email -->
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-10">
+                            <h5><b>Email (also your username):</b></h5>
+                            <p> {{userDetails.Username}}</p>
+                        </div>
+                    </div>
+                </li>
+
+                <!--- Password -->
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-10">
+                            <h5><b>Password:</b></h5>
+                            <p>*****</p>
+                        </div>
+                    </div>
+                </li>
+            </ng-template>
+            <li class="list-group-item" style="background-color: white;border:none">
+                <button type="button" class="btn btn-light" (click)="handleEditButton()">{{buttonText}}</button>
+                <button type="button" class="col-2 btn btn-primary" (click)="updateUser()">Save</button>
+
+                <a style="text-decoration: none; color: inherit;" routerLink="/userlist">
+                    <button type="button" class="col-2 btn btn-warning">Done</button>
+                </a>
+            </li>
+        </ul>
+
+
+
+
+
+    </div>
+    <div>
+
+    </div>
+
+</div>
+
+<div class="card-body ">
+    <ul class="list-group ">
+        <!---Shipping Address -->
+        <li class="list-group-item" *ngFor="let ShippingAddress of shippingAddresses">
+            <app-address [ShId]="ShippingAddress.ShId" [address]="ShippingAddress"></app-address>
+        </li>
+    </ul>
+</div>
