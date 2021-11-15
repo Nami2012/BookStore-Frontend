@@ -43,7 +43,7 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit(): void {
     this.couponSubscription = this.checkoutService
-      .getCoupons()
+      .getActiveCoupons()
       .subscribe((res: any[]) => {
         this.couponList = res;
         console.log('Coupons', this.couponList);

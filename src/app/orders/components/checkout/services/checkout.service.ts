@@ -37,6 +37,15 @@ export class CheckoutService {
       );
   }
 
+  getActiveCoupons(): Observable<Coupon[]> {
+    return this.http.get(this.REST_API_URL + 'Coupons/valid').pipe(
+      map((res: any) => {
+        //write code to sort based on position here.
+        console.log(res);
+        return res;
+      })
+    );
+  }
   REST_API_URL_GET_CONFIRM_ORDER = 'https://localhost:44380/api/ConfirmOrder/';
   confirmOrder(orderId: any, couponId: any, shId: any): Observable<any> {
     console.log('Confirming', orderId, couponId);

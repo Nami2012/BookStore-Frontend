@@ -47,11 +47,12 @@
                 <li class="list-group-item">
                     <div class="row">
                         <h5><b>Book Image:</b></h5>
-                        <div *ngIf="duplicateBookData.BImage" class="col-4"><img class="card-img-top" src="{{BOOK_IMAGE_API}}{{duplicateBookData.BId}}" alt="Card image cap"></div>
+                        <div *ngIf="duplicateBookData.BImage" class="col-4"><img class="card-img-top"
+                                src="{{BOOK_IMAGE_API}}{{duplicateBookData.BId}}" alt="Card image cap"></div>
                     </div>
                     <div class="row">
                         <div class="col-10">
-                            
+
                             <input class="form-control" id="cimage" type="file" (change)="onFileSelected($event)">
                         </div>
                     </div>
@@ -104,7 +105,7 @@
                 <li class="list-group-item">
                     <div class="row">
                         <div class="col-10">
-                            <h5><b>Password:</b></h5>
+                            <h5><b>Position:</b></h5>
                             <input type="text" class="form-control" [(ngModel)]="duplicateBookData.BPosition">
                         </div>
 
@@ -180,7 +181,7 @@
                     <div class="row">
                         <div class="col-10">
                             <h5><b>Published Year:</b></h5>
-                            <p>{{bookDetails.BYEAR}}</p>
+                            <p>{{bookDetails.BYEAR | slice:0:4}}</p>
                         </div>
                     </div>
                 </li>
