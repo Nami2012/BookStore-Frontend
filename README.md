@@ -12,7 +12,7 @@ A web app developed using Angular for simulating a Bookstore.
 `npm install` \
 `ng serve` 
 
-<b> This web app is integrated with a collection of web apis which can be found [here](https://github.com/Nami2012/BookStore-Backend.git) </b>
+<b> This web app is integrated with a collection of web APIs which can be found [here](https://github.com/Nami2012/BookStore-Backend.git) </b>
 
 
 # Sample view of the Application
