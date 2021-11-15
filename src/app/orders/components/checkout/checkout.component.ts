@@ -2,16 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { CheckoutService } from './services/checkout.service';
 import { Coupon } from 'src/app/coupon/model/coupon.model';
-import { CartService } from 'src/app/cart/services/cart.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ShippingAddress } from 'src/app/user-details/model/address.model';
 import { AddressService } from 'src/app/user-details/services/address.service';
 import { FormControl, FormGroup } from '@angular/forms';
+
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.scss'],
 })
+
 export class CheckoutComponent implements OnInit {
   couponList: Coupon[] = [];
   couponSubscription!: Subscription;
@@ -48,7 +49,6 @@ export class CheckoutComponent implements OnInit {
         this.couponList = res;
         console.log('Coupons', this.couponList);
       });
-    // this.cart = this.cartService.checkout();
 
     this.orderId = this.route.snapshot.paramMap.get('orderid');
     console.log('Order Id', this.orderId);

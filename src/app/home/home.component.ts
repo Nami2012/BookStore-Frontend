@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  // Owl Carousel Options for responsiveness and navspeed etc
   carouselOptions: OwlOptions = {
     loop: true,
     mouseDrag: true,

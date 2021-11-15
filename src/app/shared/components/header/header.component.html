@@ -1,3 +1,4 @@
+
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
@@ -17,22 +18,8 @@
           </li>
 
           <li class="nav-item px-4">
-            <!-- <a class="nav-link" routerLink="/book/create" routerLinkActive="active">Create Book (Admin)</a> -->
             <app-search></app-search>
           </li>
-
-          <!-- <li class="nav-item">
-            <a class="nav-link" aria-current="page" routerLink="/" routerLinkActive="active"
-              [routerLinkActiveOptions]="{exact : true}">Home</a>
-          </li> -->
-
-
-          <!-- <li class="nav-item">
-            <a class="nav-link" routerLink="/category/create" routerLinkActive="active">Create Category (Admin)</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/userlist" routerLinkActive="active">Users (Admin)</a>
-          </li> -->
         </ul>
 
         <ul class="navbar-nav mb-lg-0" style="font-size: large;">
@@ -49,14 +36,11 @@
             <a class="nav-link" routerLink="/orders" routerLinkActive="active">Orders</a>
           </li>
 
+          <!-- li inside <app-menu> is passed into the app-menu component and ng-content is used to project that in app-menu -->
           <app-menu>
             <li class="nav-item pe-2 pt-2" loggedOut>
               <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
             </li>
-
-            <!-- <li class="nav-item pe-2 pt-2" loggedOut>
-              <a class="nav-link" routerLink="/signup" routerLinkActive="active">Sign Up</a>
-            </li> -->
 
             <li class="nav-item  pe-2 pt-2" loggedIn>
               <a class="nav-link" routerLink="/profile" routerLinkActive="active"> Profile </a> 

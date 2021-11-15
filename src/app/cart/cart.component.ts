@@ -19,7 +19,7 @@ export class CartComponent implements OnInit {
   totalBookCount: any = 0;
 
   constructor(private cartService: CartService, private router: Router) {
-    this.setCart();
+    // this.setCart();
   }
 
   ngOnInit(): void {
@@ -67,15 +67,17 @@ export class CartComponent implements OnInit {
     // this.setCart();
   }
 
-  changeQuantity(cartItem: CartItem, quantityStr: string) {
-    // const quantity = parseInt(quantityStr);
-    // this.cartService.changeQuantity(cartItem.book.BId, quantity)
-    // this.setCart();
-  }
+  // this changeQty function was used for testing during initial phase
+  // changeQuantity(cartItem: CartItem, quantityStr: string) {
+  //   // const quantity = parseInt(quantityStr);
+  //   // this.cartService.changeQuantity(cartItem.book.BId, quantity)
+  //   // this.setCart();
+  // }
 
-  setCart() {
-    // this.cart = this.cartService.getCart();
-  }
+  // for initial Phase
+  // setCart() {
+  //   // this.cart = this.cartService.getCart();
+  // }
 
   handleCheckout() {
     this.cartService.placeOrder().subscribe((res: any) => {

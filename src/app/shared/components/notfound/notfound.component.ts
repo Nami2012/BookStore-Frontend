@@ -7,6 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class NotfoundComponent implements OnInit {
 
+  
   @Input() visible:boolean = false;
   @Input() notFoundMessage: string = "Nothing Found!";
   @Input() resetLinkText: string = "Reset";

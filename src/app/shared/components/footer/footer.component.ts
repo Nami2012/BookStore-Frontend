@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+// footer is fixed at bottom
 @Component({
   selector: 'app-footer',
   template:`  

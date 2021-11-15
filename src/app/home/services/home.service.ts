@@ -11,6 +11,7 @@ export class HomeService {
 
   constructor(private http: HttpClient) {}
 
+  // get Featured Books from the Api
   getFeaturedBooks(): Observable<any> {
     return this.http.get(this.REST_API_URL + 'books/gettopbooks').pipe(
       map((resData: any) => {

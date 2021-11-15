@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class DataService {
-  private REST_API_URL = 'https://mocki.io/v1/19091420-a9b4-469d-a914-cdb911f75b78';
+  private REST_API_URL = 'https://mocki.io/v1/19091420-a9b4-469d-a914-cdb911f75b78'; // fake backend
 
   constructor(private http: HttpClient) { }
 

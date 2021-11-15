@@ -2,13 +2,12 @@
     resetLinkRoute="/categories">
 </app-notfound>
 
-<!-- <div *ngIf="cart && cart.items.length > 0" class="container"> -->
+<!-- This div only displayed if cart is present else not found will be displayed -->
 <div *ngIf="cartItemsList.length > 0" class="container">
     <ul>
         <li *ngFor="let cartItem of cartItemsList">
 
             <div>
-                <!-- <img [src]="cartItem.book.BImage" [alt]="cartItem.book.BTitle"> -->
                 <img src="{{BOOK_IMAGE_API}}{{cartItem.Book.BId}}" [alt]="cartItem.Book.BTitle">
             </div>
             <div>
@@ -17,20 +16,9 @@
                 </a>
             </div>
 
-            <!-- <div>
-                <select #quantitySelect (change)="changeQuantity(cartItem,
-                quantitySelect.value)">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                </select>
-            </div> -->
             <div>
                 <button type="button" class="btn btn-secondary rounded-circle"
                     (click)="increment(cartItem.Book.BId,cartItem.Count)"> + </button>
-                <!--  <input type="text" class="form-control" style="display: inline;width:25%" [(ngModel)]="cartItem.Count">-->
                 {{cartItem.Count}}
                 <button type="button" class="btn btn-secondary rounded-circle"
                     (click)="decrement(cartItem.Book.BId,cartItem.Count)"> - </button>

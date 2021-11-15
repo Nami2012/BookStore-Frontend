@@ -21,6 +21,7 @@ export class SharedService {
 
   constructor(private http: HttpClient) {}
 
+  // Here fake Api is used for the featured books in the Owl Carousel
   getFeaturedBooks(): Observable<any> {
     return this.http.get(this.REST_API_URL + 'featuredBooks.json').pipe(
       map((resData: any) => {

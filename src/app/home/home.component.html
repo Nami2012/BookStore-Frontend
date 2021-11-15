@@ -1,3 +1,6 @@
+<!-- Owl Carousel -->
+<!-- check style.scss for some css and also in home.component.scss -->
+
 <div class="text-center" style="font-display: Italics; font-weight: bold;">
     <h2>Featured Books</h2>
 </div>
@@ -57,19 +60,4 @@
         </owl-carousel-o>
     </div>
 </section>
-
-<!-- <ngb-carousel *ngIf="featured" class=" text-center">
-    <ng-template *ngFor="let book of featured" ngbSlide>
-        <a routerLink="/category/{{book.CId}}" style="text-decoration: none; color: inherit;">
-            <div class="picsum-img-wrapper">
-                <img [src]="book.BImage" alt="book.BDescription" >
-            </div>
-            <div class="carousel-caption strokeme">
-                <h3>{{ book.BTitle }}</h3>
-                <p>{{ book.BDescription }}</p>
-            </div>
-        </a>
-    </ng-template>
-</ngb-carousel> -->
-
 <app-list-horizontal></app-list-horizontal>

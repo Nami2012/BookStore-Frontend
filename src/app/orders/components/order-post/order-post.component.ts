@@ -9,11 +9,13 @@ import { CheckoutService } from '../checkout/services/checkout.service';
   styleUrls: ['./order-post.component.scss'],
 })
 export class OrderPostComponent implements OnInit {
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private checkoutService: CheckoutService,
     private addressService: AddressService
   ) {}
+
   cart: any[] = [];
   order!: any;
   orderId: number = 0;
@@ -38,8 +40,7 @@ export class OrderPostComponent implements OnInit {
           count: this.order.OrderItems[i].COUNT,
         });
       }
-      console.log('Cart', this.cart);
-      // console.log('Total Price', this.totalPrice);
+      //console.log('Cart', this.cart);
       this.addressService
         .getShippingAddressById(this.order?.ShippingAddress)
         .subscribe((res: any) => {
